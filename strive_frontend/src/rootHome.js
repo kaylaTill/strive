@@ -1,11 +1,10 @@
 import React, { Suspense } from 'react';
 import styled from 'styled-components';
-import { BrowserRouter as Router, Link, Route, Switch } from 'react-router-dom';
-// import NavBar from './navbar.js';
-const Register = (React.lazy(() => import('./register.js')));
-
-import axios from 'axios';
 import { Button } from 'react-bootstrap';
+import { BrowserRouter as Router, Link, Route, Switch } from 'react-router-dom';
+const Register = (React.lazy(() => import('./register.js')));
+const Login = (React.lazy(() => import('./login.js')));
+import axios from 'axios';
 
 const Center = styled.h1`
     width: 1000px; 
@@ -85,14 +84,13 @@ const RegisterFailure = (props) => {
 };
 
 
-
 class RootHome extends React.Component {
     constructor(props) {
         super(props);
             // save state => session
             // login 
             // password
-            
+
         this.handleRegister = this.handleRegister.bind(this);
         // this.handleLogin = this.handleLogin.bind(this);
     }
@@ -114,18 +112,11 @@ class RootHome extends React.Component {
     }
 
 
-    // handleLogin(username, password) {
-        //axios get call => /login 
-    // }
-
-
-
-
-
-
-
-
-
+    handleLogin(username, password) {
+        // axios get call => /login 
+        console.log(username);
+        console.log(password);
+    }
 
 
 
@@ -180,6 +171,10 @@ class RootHome extends React.Component {
                                 <RegisterFailure />
                             </Route>
                         } 
+
+                        <Route exact={true} path={'/login'}>
+                            <Login handleLogin={this.handleLogin}/>
+                        </Route>
                     </Switch>
                 </Suspense>
             </Router>

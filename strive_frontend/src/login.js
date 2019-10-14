@@ -1,4 +1,6 @@
 import React from "react";
+import { FormGroup, FormControl, Form, Button } from "react-bootstrap";
+import styled from 'styled-components';
 
 const StyledForm = styled.form`
     font-size: 15px;
@@ -7,8 +9,6 @@ const StyledForm = styled.form`
     align: center;
     text-align: center;
 `;
-
-
 
 class Login extends React.Component {
 
@@ -20,21 +20,37 @@ class Login extends React.Component {
             password: ""
         }
         this.validForm = this.validForm.bind(this);
-    }
+        this.handleChange = this.handleChange.bind(this);
+    };
 
     validForm() {
         return this.state.username.length > 0 && this.state.password.length > 0;
-    }
+    };
 
     handleChange(event) {
         this.setState({ [event.target.name]: event.target.value });
     };
 
 
+    async handleSubmit(event) {
+        event.preventDefault();
+
+        if (!this.validForm()) {
+            alert('Sorry not a valid form!')
+        } else {
+            this.props.handleLogin(
+                this.state.username,
+                this.state.password
+            )
+        }
+
+    }
+
+
 
     render() {
         return (
-            <StyledForm>
+            <StyledForm onSubmit={this.handleSubmit} >
                 <FormGroup controlId="username">
                     <Form.Label>Username</Form.Label>
                     <br></br>
@@ -58,13 +74,11 @@ class Login extends React.Component {
                 </FormGroup>
                 <br></br>
 
-                <Button type="submit">Sign Up</Button>
+                <Button type="submit">Log in</Button>
             </StyledForm>
         );
     }
 
-}
+};
 
-
-
-export default Login
+export default Login;
