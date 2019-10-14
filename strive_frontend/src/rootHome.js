@@ -54,7 +54,7 @@ const NavItem = styled.div`
 `;
 
 const RegisterSucces = (props) => {
-    return(
+    return (
         <div>
             <div>
                 Registration Complete!
@@ -65,7 +65,23 @@ const RegisterSucces = (props) => {
                 </Button>
             </Link>
         </div>
-    )
+    );
+    
+};
+
+const RegisterFailure = (props) => {
+    return(
+        <div>
+            <div>
+                Uh Oh, looks like you already have an accout, try logining in!
+            </div>
+            <Link to={'/'}>
+                <Button variant="outline-secondary">
+                    Back to Home
+                </Button>
+            </Link>
+        </div>
+    );
 };
 
 
@@ -75,7 +91,6 @@ class RootHome extends React.Component {
         super(props);
         this.handleRegister = this.handleRegister.bind(this);
     }
-
 
     handleRegister(email, first_name, last_name, username, password) {
         axios.post('/register', {
@@ -132,10 +147,18 @@ class RootHome extends React.Component {
                             <Register handleRegister={this.handleRegister}/>
                         </Route>
 
-                        {/* SEND TO PROFILE  */}
-                        <Route exact={true} path={'/successRegister'}>
-                            <RegisterSucces/>
-                        </Route>
+
+                        {/* REGISTER CONFIRMATION */}
+                        {
+                            this.handleRegister ? 
+                            <Route exact={true} path={'/successRegister'}>
+                                <RegisterSucces />
+                            </Route>
+                            : 
+                            <Route exact={true} path={'/failedRegister'}>
+                                <RegisterFailure />
+                            </Route>
+                        } 
                     </Switch>
                 </Suspense>
             </Router>

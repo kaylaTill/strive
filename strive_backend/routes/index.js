@@ -1,5 +1,6 @@
 var express = require('express');
 var router = express.Router();
+const Sequelize = require('sequelize');
 const quotes = require('../models/quotes.js');
 const users = require('../models/users.js');
 
@@ -20,16 +21,29 @@ router.get('/quote', function (req, res, next) {
 
 //register=> post new user
 router.post('/register', function (req, res, next) {
-  users.User.create({
-      email: req.body.email,
-      first_name: req.body.first_name,
-      last_name: req.body.last_name,
-      username: req.body.username,
-      password: req.body.password
+  users.User.findAll({ 
+    where: Sequelize.or(
+      {email: req.body.email},
+      {username: req.body.first_name}
+    )
   })
-    .then(() => {
-        res.sendStatus(201).end()
-    });
+  .then((results) => {
+    if (results.length === 0) {
+      users.User.create({
+        email: req.body.email,
+        first_name: req.body.first_name,
+        last_name: req.body.last_name,
+        username: req.body.username,
+        password: req.body.password
+      })
+    }
+  })
+  .then((response) => {
+    response.sendStatus(201).end()
+  })
+  .catch((err) => {
+    res.send('Sorry UserName or Email is already taken!, Try Loging in!');
+  });
 });
 
 module.exports = router;
