@@ -10,8 +10,6 @@ const StyledForm = styled.form`
     text-align: center;
 `;
 
-
-
 class Register extends React.Component {
     constructor(props) {
         super(props);
@@ -122,7 +120,7 @@ class Register extends React.Component {
                 </FormGroup>
 
                 <FormGroup controlId="confirmPassword">
-                    <Form.Label>Conform Password</Form.Label>
+                    <Form.Label>Confirm Password</Form.Label>
                     <br></br>
                     <FormControl
                         type="text"

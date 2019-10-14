@@ -5,6 +5,7 @@ import { BrowserRouter as Router, Link, Route, Switch } from 'react-router-dom';
 const Register = (React.lazy(() => import('./register.js')));
 
 import axios from 'axios';
+import { Button } from 'react-bootstrap';
 
 const Center = styled.h1`
     width: 1000px; 
@@ -51,6 +52,21 @@ const NavItem = styled.div`
     font-size: 15px;
     font-family: OCR A Std, monospace;
 `;
+
+const RegisterSucces = (props) => {
+    <div>
+        <div>
+            Registration Complete!
+        </div>
+        <Link to={'/homeProfile'}>
+            <Button variant="outline-secondary">
+                View your Page
+            </Button>
+        </Link>
+    </div>
+};
+
+
 
 class RootHome extends React.Component {
     constructor(props) {
@@ -101,16 +117,23 @@ class RootHome extends React.Component {
                         </Link>
                     </NavRight>
                 </Nav>
-                
+
                 <Suspense fallback={<div>Loading...</div>}>
                     <Switch>
+                        {/* HOME PAGE && LOG OUT  */}
                         <Route exact={true} path={'/'}>
                             <Center>"Not your average to-do list"</Center>
                         </Route>
+
+                        {/* REGISTER NEW USER */}
                         <Route exact={true} path={'/register'}>
                             <Register handleRegister={this.handleRegister}/>
                         </Route>
 
+                        {/* SEND TO PROFILE  */}
+                        <Route exact={true} path={'/mainProfile'}>
+                            <RegisterSucces/>
+                        </Route>
                     </Switch>
                 </Suspense>
             </Router>
