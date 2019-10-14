@@ -26,9 +26,8 @@ class UserHomePage extends React.Component {
     render() {
         return (
             <div>
-                <div>{
-                    `${this.state.quote.quote_text}  -${this.state.quote.quote_author}`
-                }</div>
+                <div>{`${this.state.quote.quote_text}`}</div>
+                <div>{`- ${this.state.quote.quote_author}`}</div>
             </div>
 
         );
