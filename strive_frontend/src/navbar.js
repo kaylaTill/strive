@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
+import { BrowserRouter as Router, Link } from 'react-router-dom';
 
 const Nav = styled.div`
     max-width: 1010px;
@@ -25,7 +26,7 @@ const NavRight = styled.div`
         margin-right: 50px;
     }
 `;
-const NavItem = styled.a`
+const NavItem = styled.div`
     color: rgba(0, 0, 0, 1);
     float: left;
     padding: 12px;
@@ -38,16 +39,26 @@ const NavItem = styled.a`
 const NavBar = ((props) => {
     return (
         <div>
-            <Nav>
-                <NavLeft>Strive</NavLeft>
-                <NavRight>
-                    <NavItem href="/about">About Strive</NavItem>
-                    <NavItem>|</NavItem>
-                    <NavItem href="/register">Register</NavItem>
-                    <NavItem>|</NavItem>
-                    <NavItem href="/login">Login</NavItem>
-                </NavRight>
-            </Nav>
+            <Router>
+                <Nav>
+                    <NavLeft>Strive</NavLeft>
+                    <NavRight>
+                        <Link to={'/about'}>
+                            <NavItem> About Strive </NavItem>
+                        </Link>
+                        <NavItem>|</NavItem>
+
+                        <Link to={'/register'}>
+                            <NavItem> Register </NavItem>
+                        </Link>
+                        <NavItem>|</NavItem>
+
+                        <Link to={'/login'}>
+                            <NavItem> Login </NavItem>
+                        </Link>
+                    </NavRight>
+                </Nav>
+            </Router>
         </div>
     );
 })

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import NavBar from './navbar.js';
 import styled from 'styled-components';
+import { BrowserRouter as Router, Link, Route } from 'react-router-dom';
 import Register from './register.js'
 import axios from 'axios';
 
@@ -40,11 +41,12 @@ class RootHome extends React.Component {
 
     render() {
         return (
-            <div>
+            <Router>
                 <NavBar/>
                 <Center>"Not your average to-do list"</Center>
-                <Register handleRegister={this.handleRegister}/>
-            </div>
+                <Route path={'/register'} component={<Register handleRegister={this.handleRegister}/>}/>
+                {/* <Register handleRegister={this.handleRegister}/> */}
+            </Router>
         );
     }
 

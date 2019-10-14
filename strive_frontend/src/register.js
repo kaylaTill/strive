@@ -1,5 +1,5 @@
 import React from "react";
-import { HelpBlock, FormGroup, FormControl, ControlLabel, Form, Button} from "react-bootstrap";
+import { FormGroup, FormControl, Form, Button} from "react-bootstrap";
 import axios from 'axios';
 
 class Register extends React.Component {
@@ -44,7 +44,6 @@ class Register extends React.Component {
             this.state.password
         )
     }
-
 
 
     handleChange(event) {
