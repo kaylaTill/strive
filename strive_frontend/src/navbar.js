@@ -2,56 +2,56 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 
 
-const NavBar = styled.div`
-  background-color: #fff;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.0975);
-`;
-const NavHeader = styled.div`
-  max-width: 1010px;
-  padding: 26px 20px;
-  width: 100%;
-  display: flex;
-  align-items: center;
-  margin: 0 auto;
+const Nav = styled.div`
+    max-width: 1010px;
+    padding: 26px 20px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    margin: 0 auto;
+    background-color: #fff;
 `;
 const NavLeft = styled.div`
-  width: 33.333%;
-  text-align: left;
+    width: 20%;
+    text-align: left;
+    font-family: OCR A Std, monospace;  
 `;
 
 const NavRight = styled.div`
-  width: 33.333%;
-  text-align: right;
-  svg {
-    margin-right: 20px;
-  }
+    width: 50%;
+    text-align: right;
+    position: relative;
+    left: 45%;
+    svg {
+        margin-right: 50px;
+    }
 `;
-const MenuLink = styled.button``
-;
+const NavItem = styled.a`
+    color: rgba(0, 0, 0, 1);
+    float: left;
+    padding: 12px;
+    text-decoration: none;
+    text-align: right; 
+    font-size: 15px;
+    font-family: OCR A Std, monospace;
+`;
 
-const Nav = ((props) => {
-    const [active, setActive] = useState(false);
+const NavBar = ((props) => {
     return (
         <div>
-            <NavBar>
-                <NavHeader>
-                    <NavLeft>Strive</NavLeft>
-                    <NavRight>
-                        <MenuLink href="/about">
-                            <button onClick={() => setActive(!active)} href="/about">About</button>
-                        </MenuLink>
-                        <MenuLink href="/register">
-                            <button onClick={() => setActive(!active)} href="/register">Register</button>
-                        </MenuLink>
-                        <MenuLink href="/login">
-                            <button onClick={() => setActive(!active)} href="/register">Login</button>
-                        </MenuLink>
-                    </NavRight>
-                </NavHeader>
-            </NavBar>
+            <Nav>
+                <NavLeft>Strive</NavLeft>
+                <NavRight>
+                    <NavItem href="/about">About Strive</NavItem>
+                    <NavItem>|</NavItem>
+                    <NavItem href="/register">Register</NavItem>
+                    <NavItem>|</NavItem>
+                    <NavItem href="/login">Login</NavItem>
+                </NavRight>
+            </Nav>
         </div>
     );
 })
 
 
-export default Nav;
+export default NavBar;
