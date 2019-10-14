@@ -18,12 +18,6 @@ router.get('/quote', function (req, res, next) {
 });
 
 
-router.get('/register', function (req, res, next) {
-  res.sendStatus(200);
-});
-
-
-
 //register=> post new user
 router.post('/register', function (req, res, next) {
   users.User.create({
@@ -39,4 +33,3 @@ router.post('/register', function (req, res, next) {
 });
 
 module.exports = router;
-

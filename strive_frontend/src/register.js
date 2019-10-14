@@ -5,6 +5,9 @@ import styled from 'styled-components';
 const StyledForm = styled.form`
     font-size: 15px;
     font-family: OCR A Std, monospace;
+    padding: 60px;
+    align: center;
+    text-align: center;
 `;
 
 
