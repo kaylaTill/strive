@@ -44,7 +44,6 @@ sequelize
     });
 
 
-
 // sync user model
 User.sync({ force: true }).then(() => {
     // Now the `users` table in the database corresponds to the model definition
