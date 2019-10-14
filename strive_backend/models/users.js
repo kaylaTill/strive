@@ -1,7 +1,5 @@
 //import sequelize module
 var Sequelize = require("sequelize");
-
-
 // connect to db 
 const sequelize = new Sequelize('mysql://root@localhost:3306/strive');
 
@@ -55,3 +53,12 @@ User.sync({ force: true }).then(() => {
         password: 'password'
     });
 });
+
+
+
+
+
+module.exports = {
+    sequelize: sequelize,
+    Sequelize: Sequelize
+}
