@@ -101,13 +101,15 @@ class RootHome extends React.Component {
                         </Link>
                     </NavRight>
                 </Nav>
-
-                <Center>"Not your average to-do list"</Center>
                 <Suspense fallback={<div>Loading...</div>}>
                     <Switch>
+                        <Route exact={true} path={'/'}>
+                            <Center>"Not your average to-do list"</Center>
+                        </Route>
                         <Route exact={true} path={'/register'}>
                             <Register handleRegister={this.handleRegister}/>
                         </Route>
+
                     </Switch>
                 </Suspense>
             </Router>
