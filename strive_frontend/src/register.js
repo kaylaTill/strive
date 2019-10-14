@@ -1,6 +1,7 @@
 import React from "react";
 import { FormGroup, FormControl, Form, Button} from "react-bootstrap";
 import styled from 'styled-components';
+import { BrowserRouter as Router, Link, Route, Switch } from 'react-router-dom';
 
 const StyledForm = styled.form`
     font-size: 15px;
@@ -130,7 +131,9 @@ class Register extends React.Component {
                     />
                 </FormGroup>
                 <br></br>
-                <Button type="submit">Sign Up</Button>
+                <Link to={'/successRegister'}>
+                    <Button type="submit">Sign Up</Button>
+                </Link>
             </StyledForm> 
         );
     }

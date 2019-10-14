@@ -54,16 +54,18 @@ const NavItem = styled.div`
 `;
 
 const RegisterSucces = (props) => {
-    <div>
+    return(
         <div>
-            Registration Complete!
+            <div>
+                Registration Complete!
+            </div>
+            <Link to={'/homeProfile'}>
+                <Button variant="outline-secondary">
+                    View your Page
+                </Button>
+            </Link>
         </div>
-        <Link to={'/homeProfile'}>
-            <Button variant="outline-secondary">
-                View your Page
-            </Button>
-        </Link>
-    </div>
+    )
 };
 
 
@@ -131,7 +133,7 @@ class RootHome extends React.Component {
                         </Route>
 
                         {/* SEND TO PROFILE  */}
-                        <Route exact={true} path={'/mainProfile'}>
+                        <Route exact={true} path={'/successRegister'}>
                             <RegisterSucces/>
                         </Route>
                     </Switch>
