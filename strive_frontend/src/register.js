@@ -1,5 +1,13 @@
 import React from "react";
 import { FormGroup, FormControl, Form, Button} from "react-bootstrap";
+import styled from 'styled-components';
+
+const StyledForm = styled.form`
+    font-size: 15px;
+    font-family: OCR A Std, monospace;
+`;
+
+
 
 class Register extends React.Component {
     constructor(props) {
@@ -52,32 +60,34 @@ class Register extends React.Component {
     }
 
 
-
     render() {
         return (
-            <form onSubmit={this.handleSubmit} >
+            <StyledForm onSubmit={this.handleSubmit} >
                 <FormGroup controlId="email">
                     <Form.Label>Email</Form.Label>
+                    <br></br>
                     <FormControl
                         type="email"
                         name="email"
                         value={this.state.email}
                         onChange={this.handleChange}
-                    />
+                        />
                 </FormGroup>
 
                 <FormGroup controlId="first_name">
                     <Form.Label>First Name</Form.Label>
+                    <br></br>
                     <FormControl
                         type="first_name"
                         name="first_name"
                         value={this.state.first_name}
                         onChange={this.handleChange}
-                    />
+                        />
                 </FormGroup>
 
                 <FormGroup controlId="last_name">
                     <Form.Label>Last Name</Form.Label>
+                    <br></br>
                     <FormControl
                         type="last_name"
                         name="last_name"
@@ -88,6 +98,7 @@ class Register extends React.Component {
 
                 <FormGroup controlId="username">
                     <Form.Label>Username</Form.Label>
+                    <br></br>
                     <FormControl
                         type="username"
                         name="username"
@@ -98,6 +109,7 @@ class Register extends React.Component {
 
                 <FormGroup controlId="password">
                     <Form.Label>Password</Form.Label>
+                    <br></br>
                     <FormControl
                         type="text"
                         name="password"
@@ -108,6 +120,7 @@ class Register extends React.Component {
 
                 <FormGroup controlId="confirmPassword">
                     <Form.Label>Conform Password</Form.Label>
+                    <br></br>
                     <FormControl
                         type="text"
                         name="confirmPassword"
@@ -115,8 +128,9 @@ class Register extends React.Component {
                         onChange={this.handleChange}
                     />
                 </FormGroup>
+                <br></br>
                 <Button type="submit">Sign Up</Button>
-            </form> 
+            </StyledForm> 
         );
     }
 }

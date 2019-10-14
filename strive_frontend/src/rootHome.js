@@ -101,6 +101,7 @@ class RootHome extends React.Component {
                         </Link>
                     </NavRight>
                 </Nav>
+                
                 <Suspense fallback={<div>Loading...</div>}>
                     <Switch>
                         <Route exact={true} path={'/'}>
