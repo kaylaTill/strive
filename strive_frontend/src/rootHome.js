@@ -89,7 +89,12 @@ const RegisterFailure = (props) => {
 class RootHome extends React.Component {
     constructor(props) {
         super(props);
+            // save state => session
+            // login 
+            // password
+            
         this.handleRegister = this.handleRegister.bind(this);
+        // this.handleLogin = this.handleLogin.bind(this);
     }
 
     handleRegister(email, first_name, last_name, username, password) {
@@ -107,6 +112,22 @@ class RootHome extends React.Component {
                 console.log(error);
             });
     }
+
+
+    // handleLogin(username, password) {
+        //axios get call => /login 
+    // }
+
+
+
+
+
+
+
+
+
+
+
 
     render() {
         return (
