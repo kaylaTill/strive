@@ -1,9 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import Home from './home.js';
 
 
 ReactDOM.render(
-    <div>helloWorld- Server is serving static files</div>,
+    <div><Home/></div>,
     document.getElementById('app')
 );
 
