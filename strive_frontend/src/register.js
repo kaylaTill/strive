@@ -15,7 +15,7 @@ class Register extends React.Component {
         }
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleChange = this.handleChange.bind(this);
-
+        this.validForm = this.validForm.bind(this);
     }
 
     validForm() {
@@ -32,7 +32,7 @@ class Register extends React.Component {
     async handleSubmit(event) {
         event.preventDefault();
 
-        if (!validForm()) {
+        if (!this.validForm()) {
             alert('Sorry not a valid form!')
         }
 
