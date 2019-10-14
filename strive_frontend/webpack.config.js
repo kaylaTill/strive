@@ -2,7 +2,6 @@ const webpack = require('webpack');
 
 module.exports = {
     mode: 'development',
-    
     entry: './src/index.js',
     module: {
         rules: [
@@ -10,9 +9,14 @@ module.exports = {
                 test: /\.(js|jsx)$/,
                 exclude: /node_modules/,
                 use: ['babel-loader']
+            },
+            { 
+                test: /\.css$/, 
+                loader: "style-loader!css-loader" 
             }
         ]
     },
+
     resolve: {
         extensions: ['*', '.js', '.jsx']
     },

@@ -5,6 +5,9 @@ const users = require('../models/users.js');
 
 
 //login
+// router.post('/register', function (req, res, next) {
+
+// });
 
 
 //register
