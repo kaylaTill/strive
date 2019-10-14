@@ -75,8 +75,6 @@ class RootHome extends React.Component {
             });
     }
 
-
-
     render() {
         return (
             <Router>
@@ -102,14 +100,13 @@ class RootHome extends React.Component {
                             <NavItem> Login </NavItem>
                         </Link>
                     </NavRight>
-
                 </Nav>
 
                 <Center>"Not your average to-do list"</Center>
                 <Suspense fallback={<div>Loading...</div>}>
                     <Switch>
                         <Route exact={true} path={'/register'}>
-                            <Register/>
+                            <Register handleRegister={this.handleRegister}/>
                         </Route>
                     </Switch>
                 </Suspense>

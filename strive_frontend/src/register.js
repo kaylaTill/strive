@@ -34,15 +34,16 @@ class Register extends React.Component {
 
         if (!this.validForm()) {
             alert('Sorry not a valid form!')
+        } else {
+            this.props.handleRegister(
+                this.state.email,
+                this.state.first_name,
+                this.state.last_name,
+                this.state.username,
+                this.state.password
+            )
         }
 
-        this.props.handleRegister(
-            this.state.email,
-            this.state.first_name,
-            this.state.last_name,
-            this.state.username,
-            this.state.password
-        )
     }
 
 
@@ -58,17 +59,16 @@ class Register extends React.Component {
                 <FormGroup controlId="email">
                     <Form.Label>Email</Form.Label>
                     <FormControl
-                        autoFocus
                         type="email"
                         name="email"
                         value={this.state.email}
                         onChange={this.handleChange}
                     />
                 </FormGroup>
+
                 <FormGroup controlId="first_name">
                     <Form.Label>First Name</Form.Label>
                     <FormControl
-                        autoFocus
                         type="first_name"
                         name="first_name"
                         value={this.state.first_name}
