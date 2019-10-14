@@ -1,9 +1,13 @@
 import React, { useState } from 'react';
+import Nav from './navbar.js';
 
 
 const RootHome = ((props) => {
     return (
-        <div>Root Home Page</div>
+        <div>
+            <Nav/>
+            <div>"Not your average to-do list"</div> 
+        </div>
     );
 })
 
