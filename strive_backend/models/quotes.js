@@ -49,4 +49,6 @@ Quote.sync({ force: true }).then(() => {
 });
 
 
-
+module.exports = {
+    Quote: Quote
+}
