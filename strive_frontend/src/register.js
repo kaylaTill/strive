@@ -1,10 +1,10 @@
 import React from "react";
 import { FormGroup, FormControl, Form, Button} from "react-bootstrap";
-import axios from 'axios';
 
 class Register extends React.Component {
     constructor(props) {
         super(props);
+
         this.state = {
             email: "",
             first_name: "",
@@ -99,7 +99,7 @@ class Register extends React.Component {
                 <FormGroup controlId="password">
                     <Form.Label>Password</Form.Label>
                     <FormControl
-                        type="password"
+                        type="text"
                         name="password"
                         value={this.state.password}
                         onChange={this.handleChange}
@@ -109,13 +109,13 @@ class Register extends React.Component {
                 <FormGroup controlId="confirmPassword">
                     <Form.Label>Conform Password</Form.Label>
                     <FormControl
-                        type="password"
+                        type="text"
                         name="confirmPassword"
                         value={this.state.confirmPassword}
                         onChange={this.handleChange}
                     />
                 </FormGroup>
-                <Button type="submit">Submit</Button>
+                <Button type="submit">Sign Up</Button>
             </form> 
         );
     }

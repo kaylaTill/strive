@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
-import NavBar from './navbar.js';
+import React, { Suspense } from 'react';
 import styled from 'styled-components';
-import { BrowserRouter as Router, Link, Route } from 'react-router-dom';
-import Register from './register.js'
+import { BrowserRouter as Router, Link, Route, Switch } from 'react-router-dom';
+// import NavBar from './navbar.js';
+const Register = (React.lazy(() => import('./register.js')));
+
 import axios from 'axios';
 
 const Center = styled.h1`
@@ -12,6 +13,42 @@ const Center = styled.h1`
     align: center;
     text-align: center;
     font-size: 50px;
+    font-family: OCR A Std, monospace;
+`;
+
+const Nav = styled.div`
+    max-width: 1010px;
+    padding: 26px 20px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    margin: 0 auto;
+    background-color: #fff;
+`;
+const NavLeft = styled.div`
+    width: 20%;
+    text-align: left;
+    color: rgba(0, 0, 0, 1);
+    font-family: OCR A Std, monospace; 
+    text-decoration: none; 
+`;
+
+const NavRight = styled.div`
+    width: 50%;
+    text-align: right;
+    position: relative;
+    left: 45%;
+    svg {
+        margin-right: 50px;
+    }
+`;
+const NavItem = styled.div`
+    color: rgba(0, 0, 0, 1);
+    float: left;
+    padding: 12px;
+    text-decoration: none;
+    text-align: right; 
+    font-size: 15px;
     font-family: OCR A Std, monospace;
 `;
 
@@ -39,18 +76,47 @@ class RootHome extends React.Component {
     }
 
 
+
     render() {
         return (
             <Router>
-                <NavBar/>
+                <Nav>
+                    <NavLeft>
+                        <Link to={'/'}>
+                            <NavItem> Strive </NavItem>
+                        </Link>
+                    </NavLeft>
+
+                    <NavRight>
+                        <Link to={'/about'}>
+                            <NavItem> About Strive </NavItem>
+                        </Link>
+                        <NavItem>|</NavItem>
+
+                        <Link to={'/register'}>
+                            <NavItem> Register </NavItem>
+                        </Link>
+                        <NavItem>|</NavItem>
+
+                        <Link to={'/login'}>
+                            <NavItem> Login </NavItem>
+                        </Link>
+                    </NavRight>
+
+                </Nav>
+
                 <Center>"Not your average to-do list"</Center>
-                <Route path={'/register'} component={<Register handleRegister={this.handleRegister}/>}/>
-                {/* <Register handleRegister={this.handleRegister}/> */}
+                <Suspense fallback={<div>Loading...</div>}>
+                    <Switch>
+                        <Route exact={true} path={'/register'}>
+                            <Register/>
+                        </Route>
+                    </Switch>
+                </Suspense>
             </Router>
         );
     }
-
-
+    
 }
 
 export default RootHome;
