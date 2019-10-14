@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 
-
 const Nav = styled.div`
     max-width: 1010px;
     padding: 26px 20px;

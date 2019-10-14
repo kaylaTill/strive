@@ -18,7 +18,13 @@ router.get('/quote', function (req, res, next) {
 });
 
 
-//register
+router.get('/register', function (req, res, next) {
+  res.sendStatus(200);
+});
+
+
+
+//register=> post new user
 router.post('/register', function (req, res, next) {
   users.User.create({
       email: req.body.email,

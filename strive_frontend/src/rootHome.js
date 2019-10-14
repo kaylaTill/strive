@@ -41,7 +41,7 @@ class RootHome extends React.Component {
     render() {
         return (
             <div>
-                <NavBar />
+                <NavBar/>
                 <Center>"Not your average to-do list"</Center>
                 <Register handleRegister={this.handleRegister}/>
             </div>

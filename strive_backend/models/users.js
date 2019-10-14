@@ -56,8 +56,6 @@ User.sync({ force: true }).then(() => {
 
 
 
-
-
 module.exports = {
     sequelize: sequelize,
     Sequelize: Sequelize,
