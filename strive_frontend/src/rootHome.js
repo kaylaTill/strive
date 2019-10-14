@@ -22,7 +22,7 @@ class RootHome extends React.Component {
 
 
     handleRegister(email, first_name, last_name, username, password) {
-        axios.post('/user', {
+        axios.post('/register', {
             email: email,
             first_name: first_name,
             last_name: last_name,
