@@ -67,7 +67,8 @@ class RootHome extends React.Component {
             // login 
             // password
         this.state = {
-            redirectState: false
+            redirectSuccess: false,
+            redirectFailure: false
         }
 
         this.handleRegister = this.handleRegister.bind(this);
@@ -83,9 +84,17 @@ class RootHome extends React.Component {
             password: password,
         })
             .then((response) => {
-                if (response.data === 'OK') {
+                if (response.data == 'OK') {
+                    console.log(response.data);
                     this.setState({
-                        redirectState: true
+                        redirectSuccess: true,
+                        redirectFailure: false
+                    })
+                } else {
+                    console.log(response.data);
+                    this.setState({
+                        redirectState: false,
+                        redirectFailure: true
                     })
                 }
             })
@@ -112,7 +121,8 @@ class RootHome extends React.Component {
 
 
     render() {
-        const { redirectState } = this.state;
+        const { redirectSuccess } = this.state;
+        const { redirectFailure } = this.state;
         return (
             <Router>
                 <Nav>
@@ -167,8 +177,8 @@ class RootHome extends React.Component {
                         {/* REGISTER */}
                         <Route exact={true} path={'/register'}>
                             <Register handleRegister={this.handleRegister}/>
-                            {redirectState ? (<Redirect to={'/registrationSuccess'} />) 
-                            : (<Redirect to={'/register' ||'/registrationFailure'} />) }
+                            {redirectSuccess && !redirectFailure && (<Redirect to={'/registrationSuccess'} />)}
+                            {!redirectSuccess && redirectFailure && (<Redirect to={'/registrationFailure'} />)}
                         </Route>
 
                         {/* LOGIN */}
