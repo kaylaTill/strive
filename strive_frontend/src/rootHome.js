@@ -1,7 +1,7 @@
 import React, { Suspense } from 'react';
 import styled from 'styled-components';
 import { Button } from 'react-bootstrap';
-import { BrowserRouter as Router, Link, Route, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Link, Route, Switch, Redirect } from 'react-router-dom';
 const Register = (React.lazy(() => import('./register.js')));
 const Login = (React.lazy(() => import('./login.js')));
 const AboutPage = (React.lazy(() => import('./about.js')));
@@ -62,6 +62,9 @@ class RootHome extends React.Component {
             // save state => session
             // login 
             // password
+        this.setState({
+            redirectState: false
+        })
 
         this.handleRegister = this.handleRegister.bind(this);
         this.handleLogin = this.handleLogin.bind(this);
@@ -75,12 +78,14 @@ class RootHome extends React.Component {
             username: username,
             password: password,
         })
-            .then(function (response) {
-                if (typeof(response.data) === 'string') {
-                    console.log(response.data);
+            .then((response) => {
+                if (typeof(response.data) == 'OK') {
+                    this.setState({
+                        redirectState: true
+                    })
                 }
             })
-            .catch(function (error) {
+            .catch((error) => {
                 console.log(error);
             });
     }
@@ -103,6 +108,8 @@ class RootHome extends React.Component {
 
 
     render() {
+        const { from } = this.props.location.state || '/';
+        const { redirectState } = this.state;
         return (
             <Router>
                 <Nav>
@@ -146,6 +153,9 @@ class RootHome extends React.Component {
                         {/* REGISTER */}
                         <Route exact={true} path={'/register'}>
                             <Register handleRegister={this.handleRegister}/>
+                            {fireRedirect && (
+                                <Redirect to={from || '/thank-you'} />
+                            )}
                         </Route>
 
                         {/* REGISTER CONFIRMATION */}
