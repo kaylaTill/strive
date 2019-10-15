@@ -49,6 +49,7 @@ router.post('/register', function (req, res, next) {
         })
       });
     } else {
+      console.log('Invalid Registration');
       res.send('Sorry, that username or email is already taken! Try loggin in!');
     }
   })
