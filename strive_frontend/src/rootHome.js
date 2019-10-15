@@ -199,11 +199,7 @@ class RootHome extends React.Component {
                             <Login handleLogin={this.handleLogin}/>
                             {loggedIn && (<Redirect to={'/home'}/>)}
                         </Route>
-
-
-
-                       
-
+                
                     </Switch>
                 </Suspense>
             </Router>
