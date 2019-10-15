@@ -214,7 +214,7 @@ class RootHome extends React.Component {
                 </Nav>
 
                 {/* REACT ROUTES */}
-                <Suspense fallback={<div>Loading...</div>}>
+                <Suspense fallback={<div> </div>}>
                     <Switch>
                         {/* HOME PAGE && LOG OUT  */}
                         <Route exact={true} path={'/'}>
