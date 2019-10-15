@@ -4,9 +4,17 @@ import { Button } from 'react-bootstrap';
 import { BrowserRouter as Router, Link, Route, Switch } from 'react-router-dom';
 
 
+const StyledRes = styled.div`
+    font-size: 15px;
+    font-family: OCR A Std, monospace;
+    padding: 60px;
+    align: center;
+    text-align: center;
+`;
+
 const RegisterFailure = (props) => {
     return (
-        <div>
+        <StyledRes>
             <div>
                 Uh Oh, looks like you already have an accout, try logining in!
             </div>
@@ -15,7 +23,7 @@ const RegisterFailure = (props) => {
                     Back to Home
                 </Button>
             </Link>
-        </div>
+        </StyledRes>
     );
 };
 
