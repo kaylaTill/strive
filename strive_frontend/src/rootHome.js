@@ -68,7 +68,8 @@ class RootHome extends React.Component {
             // password
         this.state = {
             redirectSuccess: false,
-            redirectFailure: false
+            redirectFailure: false,
+            loggedIn: false
         }
 
         this.handleRegister = this.handleRegister.bind(this);
@@ -112,6 +113,11 @@ class RootHome extends React.Component {
         })
         .then((response) => {
             console.log(response);
+            if (response.data == "Logged In") {
+                this.setState({
+                    loggedIn: true
+                })
+            }
         })
         .catch(function (error) {
             console.log(error);
@@ -123,6 +129,7 @@ class RootHome extends React.Component {
     render() {
         const { redirectSuccess } = this.state;
         const { redirectFailure } = this.state;
+        const { loggedIn } = this.state;
         return (
             <Router>
                 <Nav>
@@ -164,6 +171,12 @@ class RootHome extends React.Component {
                         </Route>
 
 
+                        <Route exact={true} path={'/home'}>
+                            {/* logged in ? redirect => userHomePage : redirect => / */}
+                            <UserHomePage />
+                        </Route>
+
+
                         {/* REGISTER CONFIRMATION */}
                         <Route exact={true} path={'/registrationSuccess'}>
                             <RegisterSuccess />
@@ -184,14 +197,12 @@ class RootHome extends React.Component {
                         {/* LOGIN */}
                         <Route exact={true} path={'/login'}>
                             <Login handleLogin={this.handleLogin}/>
+                            {loggedIn && (<Redirect to={'/home'}/>)}
                         </Route>
 
 
 
-                        <Route exact={true} path={'/home'}>
-                            {/* logged in ? redirect => userHomePage : redirect => / */}
-                           <UserHomePage/>
-                        </Route>
+                       
 
                     </Switch>
                 </Suspense>
