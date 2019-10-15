@@ -19,7 +19,7 @@ const RegisterSuccess = (props) => {
             <div>
                 Registration Complete!
             </div>
-            <Link to={'/homeProfile'}>
+            <Link to={'/home'}>
                 <Button variant="outline-secondary">
                     View your Page
                 </Button>

@@ -5,9 +5,9 @@ import { BrowserRouter as Router, Link, Route, Switch, Redirect } from 'react-ro
 const Register = (React.lazy(() => import('./register.js')));
 const Login = (React.lazy(() => import('./login.js')));
 const AboutPage = (React.lazy(() => import('./about.js')));
+const UserHomePage = (React.lazy(() => import('./userHomepage.js')));
 const RegisterSuccess = (React.lazy(() => import('./registrationSucces.js')));
 const RegisterFailure = (React.lazy(() => import('./registrationFailed.js')));
-
 
 import axios from 'axios';
 
@@ -185,6 +185,14 @@ class RootHome extends React.Component {
                         <Route exact={true} path={'/login'}>
                             <Login handleLogin={this.handleLogin}/>
                         </Route>
+
+
+
+                        <Route exact={true} path={'/home'}>
+                            {/* logged in ? redirect => userHomePage : redirect => / */}
+                           <UserHomePage/>
+                        </Route>
+
                     </Switch>
                 </Suspense>
             </Router>
