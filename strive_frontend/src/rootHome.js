@@ -158,8 +158,8 @@ class RootHome extends React.Component {
                                 <NavItem> Login </NavItem>
                             </Link>
                         </NavRight>
-                    </Nav>
-                }
+                    </Nav>}
+                    
                     <Switch>
                         {/* HOME PAGE AND LOGOUT */}
                         <Route exact={true} path={'/'}>

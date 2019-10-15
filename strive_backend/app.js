@@ -22,6 +22,7 @@ app.use('/about', indexRouter);
 app.use('/register', indexRouter);
 app.use('/login', indexRouter);
 app.use('/quote', indexRouter);
+app.use('/home', indexRouter);
 
 
 

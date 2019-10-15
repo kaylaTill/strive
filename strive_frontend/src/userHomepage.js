@@ -19,7 +19,7 @@ const Center = styled.h1`
 const Nav = styled.div`
     max-width: 1010px;
     padding: 26px 20px;
-    width: 100%;
+    width: 97%;
     display: flex;
     align-items: center;
     margin: 0 auto;
@@ -34,7 +34,7 @@ const NavLeft = styled.div`
 `;
 
 const NavRight = styled.div`
-    width: 50%;
+    width: 700%;
     text-align: right;
     position: relative;
     left: 45%;
