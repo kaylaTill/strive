@@ -26,7 +26,7 @@ router.post('/register', function (req, res, next) {
   users.User.findAll({ 
     where: Sequelize.or(
       {email: req.body.email},
-      {username: req.body.first_name}
+      {username: req.body.username}
     )
   })
   .then((results) => {
@@ -48,7 +48,7 @@ router.post('/register', function (req, res, next) {
         })
       });
     } else {
-      console.log('Soryy Already taken!');
+      console.log('Sorry, that username or email is already taken! Try loggin in!');
     }
   })
     .catch((err) => {

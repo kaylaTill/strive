@@ -43,15 +43,9 @@ sequelize
 
 
 // sync user model
-User.sync({ force: true }).then(() => {
+User.sync({ force: false }).then(() => {
     // Now the `users` table in the database corresponds to the model definition
-    return User.create({
-        first_name: 'Kayla',
-        last_name: 'Tillman',
-        email: 'kaylatillman70@gmail.com',
-        username: 'kay.Till',
-        password: 'password'
-    });
+    console.log('Synced to user table');
 });
 
 
