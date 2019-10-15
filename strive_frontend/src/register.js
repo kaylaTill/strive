@@ -131,7 +131,6 @@ class Register extends React.Component {
                     />
                 </FormGroup>
                 <br></br>
-
                 <Button type="submit">Sign Up</Button>
             </StyledForm> 
         );
