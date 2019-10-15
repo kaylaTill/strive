@@ -1,4 +1,3 @@
-var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
 // var session = require('express-session')
@@ -21,6 +20,7 @@ app.use(express.static(path.join(__dirname, '../strive_frontend/dist/')));
 
 app.use('/', indexRouter);
 app.use('/register', indexRouter);
+app.use('/login', indexRouter);
 
 
 app.listen(3000)

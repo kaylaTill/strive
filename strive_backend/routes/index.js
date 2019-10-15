@@ -1,5 +1,6 @@
 var express = require('express');
 var router = express.Router();
+var path = require('path');
 const Sequelize = require('sequelize');
 const quotes = require('../models/quotes.js');
 const users = require('../models/users.js');
@@ -7,8 +8,8 @@ const bcrypt = require('bcrypt');
 const saltRounds = 10;
 
 /* GET home page. */
-router.get('/', function(req, res, next) {
-  res.sendStatus(200);
+router.get('*', function(req, res, next) {
+  res.sendFile(path.resolve(__dirname, '../../strive_frontend/dist/index.html'))
 });
 
 
