@@ -83,6 +83,23 @@ const RegisterFailure = (props) => {
     );
 };
 
+const About = (props) => {
+    return(
+        <div>
+            <div>
+                Welcome to Strive, Get motivated. Get organized. Get ahead.
+            </div>
+            <Link to={'/register'}>
+                <Button variant="outline-secondary">
+                    Get Started.
+                </Button>
+            </Link>
+        </div>
+    );
+};
+
+
+
 
 class RootHome extends React.Component {
     constructor(props) {
