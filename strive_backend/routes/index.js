@@ -56,4 +56,29 @@ router.post('/register', function (req, res, next) {
     });
 });
 
+
+
+
+router.post('/login', function (req, res) {
+  users.User.findOne({
+    where: {
+      username: req.body.username
+    }
+  })
+  .then(function (user) {
+    if (!user) {
+      res.send("Sorry, couldn't find a user under that username!");
+    } else {
+      bcrypt.compare(req.body.password, user.password, function (err, result) {
+        if (result == true) {
+          res.send('Logged In');
+
+        } else {
+          res.send('Incorrect password, Please try again!');
+        }
+      });
+    }
+  });
+});
+
 module.exports = router;
