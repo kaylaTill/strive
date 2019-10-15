@@ -18,7 +18,7 @@ const RegisterFailure = (props) => {
             <div>
                 Uh Oh, looks like you already have an accout, try logining in!
             </div>
-            <Link to={'/'}>
+            <Link to={'/welcome'}>
                 <Button variant="outline-secondary">
                     Back to Home
                 </Button>
