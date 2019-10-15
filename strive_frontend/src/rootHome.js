@@ -99,8 +99,6 @@ const About = (props) => {
 };
 
 
-
-
 class RootHome extends React.Component {
     constructor(props) {
         super(props);
@@ -171,11 +169,16 @@ class RootHome extends React.Component {
                             <Center>"Not your average to-do list"</Center>
                         </Route>
 
-                        {/* REGISTER NEW USER */}
+
+                        {/* ABOUT  */}
+                        <Route exact={true} path={'/about'}>
+                            <About/>
+                        </Route>
+
+                        {/* REGISTER */}
                         <Route exact={true} path={'/register'}>
                             <Register handleRegister={this.handleRegister}/>
                         </Route>
-
 
                         {/* REGISTER CONFIRMATION */}
                         {
@@ -189,9 +192,12 @@ class RootHome extends React.Component {
                             </Route>
                         } 
 
+                        {/* LOGIN */}
                         <Route exact={true} path={'/login'}>
                             <Login handleLogin={this.handleLogin}/>
                         </Route>
+
+
                     </Switch>
                 </Suspense>
             </Router>
