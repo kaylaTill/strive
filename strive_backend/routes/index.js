@@ -3,6 +3,8 @@ var router = express.Router();
 const Sequelize = require('sequelize');
 const quotes = require('../models/quotes.js');
 const users = require('../models/users.js');
+const bcrypt = require('bcrypt');
+const saltRounds = 10;
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -28,22 +30,30 @@ router.post('/register', function (req, res, next) {
     )
   })
   .then((results) => {
-    if (results.length === 0) {
-      users.User.create({
-        email: req.body.email,
-        first_name: req.body.first_name,
-        last_name: req.body.last_name,
-        username: req.body.username,
-        password: req.body.password
-      })
+    if (results.length == 0) {
+      bcrypt.hash(req.body.password, saltRounds, function (err, hash) {
+        users.User.create({
+          email: req.body.email,
+          first_name: req.body.first_name,
+          last_name: req.body.last_name,
+          username: req.body.username,
+          password: hash
+        })
+        .then(function (data) {
+          console.log('Succesful Registration!');
+          res.sendStatus(200).end();
+        })
+        .catch(function(err) {
+          console.log(`Hash Error: ${err}`);
+        })
+      });
+    } else {
+      console.log('Soryy Already taken!');
     }
   })
-  .then((response) => {
-    response.sendStatus(201).end()
-  })
-  .catch((err) => {
-    res.send('Sorry UserName or Email is already taken!, Try Loging in!');
-  });
+    .catch((err) => {
+      console.log(err);
+    });
 });
 
 module.exports = router;
