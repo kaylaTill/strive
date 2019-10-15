@@ -5,6 +5,10 @@ import { BrowserRouter as Router, Link, Route, Switch, Redirect } from 'react-ro
 const Register = (React.lazy(() => import('./register.js')));
 const Login = (React.lazy(() => import('./login.js')));
 const AboutPage = (React.lazy(() => import('./about.js')));
+const RegisterSuccess = (React.lazy(() => import('./registrationSucces.js')));
+const RegisterFailure = (React.lazy(() => import('./registrationFailed.js')));
+
+
 import axios from 'axios';
 
 
@@ -62,9 +66,9 @@ class RootHome extends React.Component {
             // save state => session
             // login 
             // password
-        this.setState({
+        this.state = {
             redirectState: false
-        })
+        }
 
         this.handleRegister = this.handleRegister.bind(this);
         this.handleLogin = this.handleLogin.bind(this);
@@ -79,7 +83,7 @@ class RootHome extends React.Component {
             password: password,
         })
             .then((response) => {
-                if (typeof(response.data) == 'OK') {
+                if (response.data === 'OK') {
                     this.setState({
                         redirectState: true
                     })
@@ -108,7 +112,6 @@ class RootHome extends React.Component {
 
 
     render() {
-        const { from } = this.props.location.state || '/';
         const { redirectState } = this.state;
         return (
             <Router>
@@ -150,16 +153,23 @@ class RootHome extends React.Component {
                             <AboutPage/>
                         </Route>
 
+
+                        {/* REGISTER CONFIRMATION */}
+                        <Route exact={true} path={'/registrationSuccess'}>
+                            <RegisterSuccess />
+                        </Route>
+
+                        <Route exact={true} path={'/registrationFailure'}>
+                            <RegisterFailure />
+                        </Route>
+
+
                         {/* REGISTER */}
                         <Route exact={true} path={'/register'}>
                             <Register handleRegister={this.handleRegister}/>
-                            {fireRedirect && (
-                                <Redirect to={from || '/thank-you'} />
-                            )}
+                            {redirectState ? (<Redirect to={'/registrationSuccess'} />) 
+                            : (<Redirect to={'/register' ||'/registrationFailure'} />) }
                         </Route>
-
-                        {/* REGISTER CONFIRMATION */}
-                
 
                         {/* LOGIN */}
                         <Route exact={true} path={'/login'}>

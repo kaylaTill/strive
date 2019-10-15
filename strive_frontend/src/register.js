@@ -1,7 +1,7 @@
 import React from "react";
 import { FormGroup, FormControl, Form, Button} from "react-bootstrap";
 import styled from 'styled-components';
-// import { BrowserRouter as Router, Link, Route, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Link, Route, Switch } from 'react-router-dom';
 
 const StyledForm = styled.form`
     font-size: 15px;
