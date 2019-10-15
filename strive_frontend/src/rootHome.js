@@ -132,6 +132,8 @@ class RootHome extends React.Component {
         const { loggedIn } = this.state;
         return (
             <Router>
+                {/* REACT ROUTES */}
+                <Suspense fallback={<div> </div>}>
                 {loggedIn ? 
                     <UserHomePage/> :
                     <Nav>
@@ -158,9 +160,6 @@ class RootHome extends React.Component {
                         </NavRight>
                     </Nav>
                 }
-        
-                {/* REACT ROUTES */}
-                <Suspense fallback={<div> </div>}>
                     <Switch>
                         {/* HOME PAGE AND LOGOUT */}
                         <Route exact={true} path={'/'}>

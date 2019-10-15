@@ -13,6 +13,7 @@ class UserHomePage extends React.Component {
     componentDidMount() {
         axios.get('/quote')
             .then(({ data }) => {
+                console.log(data);
                 this.setState({
                     quote: {
                         quote_text: data.quote_text,

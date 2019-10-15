@@ -4,9 +4,8 @@ var path = require('path');
 var bodyParser = require('body-parser');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
-
 var indexRouter = require('./routes/index');
-// var registerRouter = require('./routes/register');
+
 
 var app = express();
 
@@ -19,8 +18,13 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, '../strive_frontend/dist/')));
 
 app.use('/', indexRouter);
+app.use('/about', indexRouter);
 app.use('/register', indexRouter);
 app.use('/login', indexRouter);
+app.use('/quote', indexRouter);
+
+
+
 
 
 app.listen(3000)
