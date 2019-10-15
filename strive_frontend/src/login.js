@@ -21,6 +21,7 @@ class Login extends React.Component {
         }
         this.validForm = this.validForm.bind(this);
         this.handleChange = this.handleChange.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
     };
 
     validForm() {
@@ -36,7 +37,8 @@ class Login extends React.Component {
         event.preventDefault();
 
         if (!this.validForm()) {
-            alert('Sorry not a valid form!')
+            alert('Sorry not a valid form!');
+            return;
         } else {
             this.props.handleLogin(
                 this.state.username,

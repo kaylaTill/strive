@@ -86,7 +86,6 @@ const RegisterFailure = (props) => {
 };
 
 
-
 const About = styled.div`
     width: 960px;
     margin: auto 0;
@@ -149,7 +148,7 @@ class RootHome extends React.Component {
             // password
 
         this.handleRegister = this.handleRegister.bind(this);
-        // this.handleLogin = this.handleLogin.bind(this);
+        this.handleLogin = this.handleLogin.bind(this);
     }
 
     handleRegister(email, first_name, last_name, username, password) {
@@ -161,7 +160,9 @@ class RootHome extends React.Component {
             password: password,
         })
             .then(function (response) {
-                console.log(response);
+                if (typeof(response.data) === 'string') {
+                    console.log(response.data);
+                }
             })
             .catch(function (error) {
                 console.log(error);
@@ -170,9 +171,17 @@ class RootHome extends React.Component {
 
 
     handleLogin(username, password) {
-        // axios get call => /login 
-        console.log(username);
-        console.log(password);
+        // axios post call => /login 
+        axios.post('/login', {
+            username: username,
+            password: password
+        })
+        .then((response) => {
+            console.log(response);
+        })
+        .catch(function (error) {
+            console.log(error);
+        });
     }
 
 
@@ -224,16 +233,7 @@ class RootHome extends React.Component {
                         </Route>
 
                         {/* REGISTER CONFIRMATION */}
-                        {
-                            this.handleRegister ? 
-                            <Route exact={true} path={'/successRegister'}>
-                                <RegisterSucces />
-                            </Route>
-                            : 
-                            <Route exact={true} path={'/failedRegister'}>
-                                <RegisterFailure />
-                            </Route>
-                        } 
+                
 
                         {/* LOGIN */}
                         <Route exact={true} path={'/login'}>
