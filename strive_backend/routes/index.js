@@ -8,7 +8,7 @@ const bcrypt = require('bcrypt');
 const saltRounds = 10;
 
 /* GET home page. */
-router.get('*', function(req, res, next) {
+router.get('/*', function(req, res, next) {
   res.sendFile(path.resolve(__dirname, '../../strive_frontend/dist/index.html'))
 });
 
