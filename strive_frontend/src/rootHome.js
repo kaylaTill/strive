@@ -132,77 +132,74 @@ class RootHome extends React.Component {
         const { loggedIn } = this.state;
         return (
             <Router>
+                <Nav>
+                    <NavLeft>
+                        <Link to={'/'}>
+                            <NavItem> Strive </NavItem>
+                        </Link>
+                    </NavLeft>
+
+                    <NavRight>
+                        <Link to={'/about'}>
+                            <NavItem> About Strive </NavItem>
+                        </Link>
+                        <NavItem>|</NavItem>
+
+                        <Link to={'/register'}>
+                            <NavItem> Register </NavItem>
+                        </Link>
+                        <NavItem>|</NavItem>
+
+                        <Link to={'/login'}>
+                            <NavItem> Login </NavItem>
+                        </Link>
+                    </NavRight>
+                </Nav>
+
                 {/* REACT ROUTES */}
                 <Suspense fallback={<div> </div>}>
                     <Switch>
                         {/* HOME PAGE && LOG OUT  */}
-                        <Route path={'/welcome'}>
-                            <Nav>
-                                <NavLeft>
-                                    <Link to={'/welcome'}>
-                                        <NavItem> Strive </NavItem>
-                                    </Link>
-                                </NavLeft>
-
-                                <NavRight>
-                                    <Link to={'/welcome/about'}>
-                                        <NavItem> About Strive </NavItem>
-                                    </Link>
-                                    <NavItem>|</NavItem>
-
-                                    <Link to={'/welcome/register'}>
-                                        <NavItem> Register </NavItem>
-                                    </Link>
-                                    <NavItem>|</NavItem>
-
-                                    <Link to={'/welcome/login'}>
-                                        <NavItem> Login </NavItem>
-                                    </Link>
-                                </NavRight>
-                            </Nav>
-
-                            <Route exact={true} path={'/welcome'}>
-                                <Center>"Not your average to-do list"</Center>
-                            </Route>
-
-
-                            {/* ABOUT  */}
-                            <Route exact={true} path={'/welcome/about'}>
-                                <AboutPage />
-                            </Route>
-
-                            {/* REGISTER CONFIRMATION */}
-                            <Route exact={true} path={'/welcome/registrationSuccess'}>
-                                <RegisterSuccess />
-                            </Route>
-
-                            <Route exact={true} path={'/welcom/registrationFailure'}>
-                                <RegisterFailure />
-                            </Route>
-
-
-                            {/* REGISTER */}
-                            <Route exact={true} path={'/welcome/register'}>
-                                <Register handleRegister={this.handleRegister} />
-                                {redirectSuccess && !redirectFailure && (<Redirect to={'/registrationSuccess'} />)}
-                                {!redirectSuccess && redirectFailure && (<Redirect to={'/registrationFailure'} />)}
-                            </Route>
-
-
-                            {/* LOGIN */}
-                            <Route exact={true} path={'/welcome/login'}>
-                                <Login handleLogin={this.handleLogin} />
-                                {loggedIn && (<Redirect to={'/home'} />)}
-                            </Route>
+                        <Route exact={true} path={'/'}>
+                            <Center>"Not your average to-do list"</Center>
                         </Route>
 
 
-                        <Route path={'/home'}>
-                            <Route path={'/home'}>
-                                {/* logged in ? redirect => userHomePage : redirect => / */}
-                                <UserHomePage />
-                            </Route>
+                        {/* ABOUT  */}
+                        <Route exact={true} path={'/about'}>
+                            <AboutPage />
                         </Route>
+
+
+                        <Route exact={true} path={'/home'}>
+                            {/* logged in ? redirect => userHomePage : redirect => / */}
+                            <UserHomePage />
+                        </Route>
+
+
+                        {/* REGISTER CONFIRMATION */}
+                        <Route exact={true} path={'/registrationSuccess'}>
+                            <RegisterSuccess />
+                        </Route>
+
+                        <Route exact={true} path={'/registrationFailure'}>
+                            <RegisterFailure />
+                        </Route>
+
+
+                        {/* REGISTER */}
+                        <Route exact={true} path={'/register'}>
+                            <Register handleRegister={this.handleRegister} />
+                            {redirectSuccess && !redirectFailure && (<Redirect to={'/registrationSuccess'} />)}
+                            {!redirectSuccess && redirectFailure && (<Redirect to={'/registrationFailure'} />)}
+                        </Route>
+
+                        {/* LOGIN */}
+                        <Route exact={true} path={'/login'}>
+                            <Login handleLogin={this.handleLogin} />
+                            {loggedIn && (<Redirect to={'/home'} />)}
+                        </Route>
+
                     </Switch>
                 </Suspense>
             </Router>

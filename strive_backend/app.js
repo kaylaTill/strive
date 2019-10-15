@@ -18,7 +18,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, '../strive_frontend/dist/')));
 
-app.use('/welcome', indexRouter);
+app.use('/', indexRouter);
 app.use('/register', indexRouter);
 app.use('/login', indexRouter);
 
