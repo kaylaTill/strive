@@ -158,8 +158,9 @@ class RootHome extends React.Component {
             <Router>
                 {/* REACT ROUTES */}
                 <Suspense fallback={<div></div>}>
-                    <Switch>    
-                         {/* HOME PAGE AND LOGOUT  */}
+
+                    {!sessionOpen ? <Switch>
+                        {/* HOME PAGE AND LOGOUT  */}
                         <Route exact={true} path={'/'}>
                             <Nav>
                                 <NavLeft>
@@ -223,7 +224,7 @@ class RootHome extends React.Component {
                             <RegisterFailure />
                         </Route>
                         <Route exact={true} path={'/failedLogin'}>
-                            <LoginFailure/>
+                            <LoginFailure />
                         </Route>
 
 
@@ -283,15 +284,10 @@ class RootHome extends React.Component {
                                 </NavRight>
                             </Nav>
                             <Login handleLogin={this.handleLogin} />
-                            {loginFailed && (<Redirect to={'/failedLogin'}/>)}
-                        </Route>
-                        <Route path={'/home'}>
-                            {sessionOpen ? <UserHomePage logout={this.handleLogout} sessionStatus={this.state.sessionOpen} /> : <Redirect to={'/'}/>}
-                        </Route>             
-                    </Switch>
-                    {/* USER HOMPAGE */}
+                            {loginFailed && (<Redirect to={'/failedLogin'} />)}
+                        </Route> </Switch> : <UserHomePage logout={this.handleLogout} sessionStatus={this.state.sessionOpen} />
+                    }
                 </Suspense>
-                {sessionOpen && <Redirect to={'/home'} />}
             </Router>
         );
     }

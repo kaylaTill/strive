@@ -112,21 +112,16 @@ class UserHomePage extends React.Component {
 
                         </NavRight>
                     </Nav>
-                    {/* <Center>
+                    <Center>
                         <div>{`${this.state.quote_text}`}</div>
                         <br></br>
                         <div>{`- ${this.state.quote_author}`}</div>
-                    </Center> */}
+                    </Center>
+                    
                     <Switch>
-
                         {/* USER HOMEPAGE ROUTES */}
                         <Route exact={'true'} path={'/home'}>
-                            <Center>
-                                <div>{`${this.state.quote_text}`}</div>
-                                <br></br>
-                                <div>{`- ${this.state.quote_author}`}</div>
-                            </Center>
-                            {/* {this.props.sessionStatus ? <UserHomePage/> : (<Redirect to={'/'} />)} */}
+                          
                         </Route>
 
                         {/* OBJECTIVES */}
