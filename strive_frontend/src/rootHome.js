@@ -158,39 +158,60 @@ class RootHome extends React.Component {
             <Router>
                 {/* REACT ROUTES */}
                 <Suspense fallback={<div></div>}>
-                {sessionOpen ? <Redirect to={'/home'} />:
-                    <Nav>
-                        <NavLeft>
-                            <Link to={'/'}>
-                                <NavItem> Strive </NavItem>
-                            </Link>
-                        </NavLeft>
-
-                        <NavRight>
-                            <Link to={'/about'}>
-                                <NavItem> About Strive </NavItem>
-                            </Link>
-                            <NavItem>|</NavItem>
-
-                            <Link to={'/register'}>
-                                <NavItem> Register </NavItem>
-                            </Link>
-                            <NavItem>|</NavItem>
-
-                            <Link to={'/login'}>
-                                <NavItem> Login </NavItem>
-                            </Link>
-                        </NavRight>
-                    </Nav>}
-
-                    <Switch>
-                        {/* HOME PAGE AND LOGOUT */}
+                    <Switch>    
+                         {/* HOME PAGE AND LOGOUT  */}
                         <Route exact={true} path={'/'}>
+                            <Nav>
+                                <NavLeft>
+                                    <Link to={'/'}>
+                                        <NavItem> Strive </NavItem>
+                                    </Link>
+                                </NavLeft>
+
+                                <NavRight>
+                                    <Link to={'/about'}>
+                                        <NavItem> About Strive </NavItem>
+                                    </Link>
+                                    <NavItem>|</NavItem>
+
+                                    <Link to={'/register'}>
+                                        <NavItem> Register </NavItem>
+                                    </Link>
+                                    <NavItem>|</NavItem>
+
+                                    <Link to={'/login'}>
+                                        <NavItem> Login </NavItem>
+                                    </Link>
+                                </NavRight>
+                            </Nav>
                             <Center>"Not your average to-do list"</Center>
                         </Route>
 
                         {/* ABOUT  */}
                         <Route exact={true} path={'/about'}>
+                            <Nav>
+                                <NavLeft>
+                                    <Link to={'/'}>
+                                        <NavItem> Strive </NavItem>
+                                    </Link>
+                                </NavLeft>
+
+                                <NavRight>
+                                    <Link to={'/about'}>
+                                        <NavItem> About Strive </NavItem>
+                                    </Link>
+                                    <NavItem>|</NavItem>
+
+                                    <Link to={'/register'}>
+                                        <NavItem> Register </NavItem>
+                                    </Link>
+                                    <NavItem>|</NavItem>
+
+                                    <Link to={'/login'}>
+                                        <NavItem> Login </NavItem>
+                                    </Link>
+                                </NavRight>
+                            </Nav>
                             <AboutPage />
                         </Route>
 
@@ -208,6 +229,29 @@ class RootHome extends React.Component {
 
                         {/* REGISTER */}
                         <Route exact={true} path={'/register'}>
+                            <Nav>
+                                <NavLeft>
+                                    <Link to={'/'}>
+                                        <NavItem> Strive </NavItem>
+                                    </Link>
+                                </NavLeft>
+
+                                <NavRight>
+                                    <Link to={'/about'}>
+                                        <NavItem> About Strive </NavItem>
+                                    </Link>
+                                    <NavItem>|</NavItem>
+
+                                    <Link to={'/register'}>
+                                        <NavItem> Register </NavItem>
+                                    </Link>
+                                    <NavItem>|</NavItem>
+
+                                    <Link to={'/login'}>
+                                        <NavItem> Login </NavItem>
+                                    </Link>
+                                </NavRight>
+                            </Nav>
                             <Register handleRegister={this.handleRegister} />
                             {(redirectSuccess && !redirectFailure) && (<Redirect to={'/registrationSuccess'} />)}
                             {(!redirectSuccess && redirectFailure) && (<Redirect to={'/registrationFailure'} />)}
@@ -215,17 +259,39 @@ class RootHome extends React.Component {
 
                         {/* LOGIN */}
                         <Route exact={true} path={'/login'}>
+                            <Nav>
+                                <NavLeft>
+                                    <Link to={'/'}>
+                                        <NavItem> Strive </NavItem>
+                                    </Link>
+                                </NavLeft>
+
+                                <NavRight>
+                                    <Link to={'/about'}>
+                                        <NavItem> About Strive </NavItem>
+                                    </Link>
+                                    <NavItem>|</NavItem>
+
+                                    <Link to={'/register'}>
+                                        <NavItem> Register </NavItem>
+                                    </Link>
+                                    <NavItem>|</NavItem>
+
+                                    <Link to={'/login'}>
+                                        <NavItem> Login </NavItem>
+                                    </Link>
+                                </NavRight>
+                            </Nav>
                             <Login handleLogin={this.handleLogin} />
-                            {sessionOpen && (<Redirect to={'/home'} />)}
-                            {loginFailed && (<Redirect to={'/failedLogin'} />)}
+                            {loginFailed && (<Redirect to={'/failedLogin'}/>)}
                         </Route>
-                        
-                        {/* USER HOMPAGE */}
-                        <Route exact={true} path={'/home'}>
-                            {sessionOpen ? <UserHomePage logout={this.handleLogout} sessionStatus={this.state.sessionOpen} /> : (<Redirect to={'/'} />)}
-                        </Route>
+                        <Route path={'/home'}>
+                            {sessionOpen ? <UserHomePage logout={this.handleLogout} sessionStatus={this.state.sessionOpen} /> : <Redirect to={'/'}/>}
+                        </Route>             
                     </Switch>
+                    {/* USER HOMPAGE */}
                 </Suspense>
+                {sessionOpen && <Redirect to={'/home'} />}
             </Router>
         );
     }

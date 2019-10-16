@@ -82,46 +82,51 @@ class UserHomePage extends React.Component {
     render() {
         return (
             <Router>
-                <Nav>
-                    <NavLeft>
-                        <Link to={'/home'}>
-                            <NavItem> Strive </NavItem>
-                        </Link>
-                    </NavLeft>
-
-                    <NavRight>
-                        <Link to={'/objectives'}>
-                            <NavItem> Objectives </NavItem>
-                        </Link>
-                        <NavItem>|</NavItem>
-
-                        <Link to={'/keyResults'}>
-                            <NavItem> Key Results </NavItem>
-                        </Link>
-                        <NavItem>|</NavItem>
-
-                        <Link to={'/progress'}>
-                            <NavItem> Progress </NavItem>
-                        </Link>
-                        <NavItem>|</NavItem>
-
-                        <Link to={'/'}>
-                            <NavItem onClick={this.handleClick}> Logout </NavItem>
-                        </Link>
-
-                    </NavRight>
-                </Nav>
-
-
                 <Suspense fallback={<div></div>}>
+                    <Nav>
+                        <NavLeft>
+                            <Link to={'/home'}>
+                                <NavItem> Strive </NavItem>
+                            </Link>
+                        </NavLeft>
+
+                        <NavRight>
+                            <Link to={'/objectives'}>
+                                <NavItem> Objectives </NavItem>
+                            </Link>
+                            <NavItem>|</NavItem>
+
+                            <Link to={'/keyResults'}>
+                                <NavItem> Key Results </NavItem>
+                            </Link>
+                            <NavItem>|</NavItem>
+
+                            <Link to={'/progress'}>
+                                <NavItem> Progress </NavItem>
+                            </Link>
+                            <NavItem>|</NavItem>
+
+                            <Link to={'/'}>
+                                <NavItem onClick={this.handleClick}> Logout </NavItem>
+                            </Link>
+
+                        </NavRight>
+                    </Nav>
+                    {/* <Center>
+                        <div>{`${this.state.quote_text}`}</div>
+                        <br></br>
+                        <div>{`- ${this.state.quote_author}`}</div>
+                    </Center> */}
                     <Switch>
+
                         {/* USER HOMEPAGE ROUTES */}
-                        <Route exact={true} path={'/home'}>
+                        <Route exact={'true'} path={'/home'}>
                             <Center>
                                 <div>{`${this.state.quote_text}`}</div>
                                 <br></br>
                                 <div>{`- ${this.state.quote_author}`}</div>
                             </Center>
+                            {/* {this.props.sessionStatus ? <UserHomePage/> : (<Redirect to={'/'} />)} */}
                         </Route>
 
                         {/* OBJECTIVES */}
