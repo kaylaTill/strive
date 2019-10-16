@@ -162,8 +162,14 @@ class RootHome extends React.Component {
                                 {loginFailed && (<Redirect to={'/failedLogin'} />)}
                             </Route> 
                         </Switch> 
-                            : <UserHomePage logout={this.handleLogout} sessionStatus={this.state.sessionOpen}/>
-                        }
+                            :  <Redirect to={'/home'}/>}
+
+                        {/* HOME PAGE */}
+                        <Switch>
+                            <Route path={'/home'}>
+                                <UserHomePage logout={this.handleLogout} sessionStatus={this.state.sessionOpen} />
+                            </Route>
+                        </Switch>
                 </Suspense>
             </Router>
         );
