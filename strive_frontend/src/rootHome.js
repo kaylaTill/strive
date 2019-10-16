@@ -8,6 +8,7 @@ const AboutPage = (React.lazy(() => import('./about.js')));
 const UserHomePage = (React.lazy(() => import('./userHomepage.js')));
 const RegisterSuccess = (React.lazy(() => import('./registrationSuccess.js')));
 const RegisterFailure = (React.lazy(() => import('./registrationFailed.js')));
+const LoginFailure = (React.lazy(() => import('./loginFailed.js')));
 
 import axios from 'axios';
 
@@ -65,7 +66,8 @@ class RootHome extends React.Component {
         this.state = {
             redirectSuccess: false,
             redirectFailure: false,
-            sessionOpen: false
+            sessionOpen: false,
+            loginFailed: false
         }
 
         this.handleRegister = this.handleRegister.bind(this);
@@ -130,8 +132,10 @@ class RootHome extends React.Component {
         .then(() => {
             this.loggedIn();
         })
-        .catch(function (error) {
-            console.log(error);
+        .catch((error) => {
+            this.setState({
+                loginFailed: true
+            })
         });
     }
 
@@ -154,6 +158,7 @@ class RootHome extends React.Component {
         const { redirectSuccess } = this.state;
         const { redirectFailure } = this.state;
         const { sessionOpen } = this.state;
+        const { loginFailed } = this.state;
         return (
             <Router>
                 {/* REACT ROUTES */}
@@ -194,13 +199,15 @@ class RootHome extends React.Component {
                             <AboutPage />
                         </Route>
 
-                        {/* REGISTER CONFIRMATION */}
+                        {/* REGISTER AND LOG INCONFIRMATION */}
                         <Route exact={true} path={'/registrationSuccess'}>
                             <RegisterSuccess />
                         </Route>
-
                         <Route exact={true} path={'/registrationFailure'}>
                             <RegisterFailure />
+                        </Route>
+                        <Route exact={true} path={'/failedLogin'}>
+                            <LoginFailure/>
                         </Route>
 
 
@@ -215,13 +222,13 @@ class RootHome extends React.Component {
                         <Route exact={true} path={'/login'}>
                             <Login handleLogin={this.handleLogin} />
                             {sessionOpen && (<Redirect to={'/home'} />)}
+                            {loginFailed && (<Redirect to={'/failedLogin'} />)}
                         </Route>
                         
                         {/* USER HOMPAGE */}
                         <Route exact={true} path={'/home'}>
                             {sessionOpen ? <UserHomePage logout={this.handleLogout} sessionStatus={this.state.sessionOpen} /> : (<Redirect to={'/'} />)}
                         </Route>
-
                     </Switch>
                 </Suspense>
             </Router>
