@@ -29,7 +29,7 @@ app.use('/register', indexRouter);
 app.use('/login', indexRouter);
 app.use('/quote', indexRouter);
 app.use('/home', indexRouter);
-app.use('/dashboard', indexRouter);
+app.use('/objectives', indexRouter);
 
 
 
