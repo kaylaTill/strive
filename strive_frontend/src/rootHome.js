@@ -1,6 +1,5 @@
 import React, { Suspense } from 'react';
 import styled from 'styled-components';
-import { Button } from 'react-bootstrap';
 import { BrowserRouter as Router, Link, Route, Switch, Redirect } from 'react-router-dom';
 const Register = (React.lazy(() => import('./register.js')));
 const Login = (React.lazy(() => import('./login.js')));
@@ -9,7 +8,7 @@ const UserHomePage = (React.lazy(() => import('./userHomepage.js')));
 const RegisterSuccess = (React.lazy(() => import('./registrationSuccess.js')));
 const RegisterFailure = (React.lazy(() => import('./registrationFailed.js')));
 const LoginFailure = (React.lazy(() => import('./loginFailed.js')));
-const NavBar = (React.lazy(() => import('./nav.js')));
+const PublicNav = (React.lazy(() => import('./publicNav.js')));
 import axios from 'axios';
 
 const Center = styled.h1`
@@ -104,7 +103,7 @@ class RootHome extends React.Component {
                 this.setState({
                     sessionOpen: false
                 })
-                console.log('byebye, session destroyed by logout');
+                console.log('byebye, session destroyed by logout.');
             })
             .catch((err) => {
                 console.log(err);
@@ -122,16 +121,17 @@ class RootHome extends React.Component {
                 {/* REACT ROUTES */}
                 <Suspense fallback={<div></div>}>
                     {!sessionOpen ? 
+                        // USER NOT LOGGED IN => ROUTES FOR PUBLIC PAGE
                         <Switch>
                             {/* HOME PAGE AND LOGOUT  */}
                             <Route exact={true} path={'/'}>
-                                <NavBar/>
+                                <PublicNav/>
                                 <Center>"Not your average to-do list"</Center>
                             </Route>
 
                             {/* ABOUT  */}
                             <Route exact={true} path={'/about'}>
-                               <NavBar/>
+                               <PublicNav/>
                                 <AboutPage />
                             </Route>
 
@@ -149,7 +149,7 @@ class RootHome extends React.Component {
 
                             {/* REGISTER */}
                             <Route exact={true} path={'/register'}>
-                               <NavBar/>
+                               <PublicNav/>
                                 <Register handleRegister={this.handleRegister} />
                                 {(redirectSuccess && !redirectFailure) && (<Redirect to={'/registrationSuccess'} />)}
                                 {(!redirectSuccess && redirectFailure) && (<Redirect to={'/registrationFailure'} />)}
@@ -157,12 +157,12 @@ class RootHome extends React.Component {
 
                             {/* LOGIN */}
                             <Route exact={true} path={'/login'}>
-                                <NavBar/>
+                                <PublicNav/>
                                 <Login handleLogin={this.handleLogin} />
                                 {loginFailed && (<Redirect to={'/failedLogin'} />)}
                             </Route> 
-                            </Switch> 
-                            : <UserHomePage logout={this.handleLogout} sessionStatus={this.state.sessionOpen} />
+                        </Switch> 
+                            : <UserHomePage logout={this.handleLogout} sessionStatus={this.state.sessionOpen}/>
                         }
                 </Suspense>
             </Router>

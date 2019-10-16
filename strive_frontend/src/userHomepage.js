@@ -4,6 +4,7 @@ import { Button } from 'react-bootstrap';
 import { BrowserRouter as Router, Link, Route, Switch, Redirect } from 'react-router-dom';
 import axios from 'axios';
 const Objectives = (React.lazy(() => import('./objectives.js')));
+const PrivateNav = (React.lazy(() => import('./privateNav.js')));
 
 
 const Center = styled.h1`
@@ -16,32 +17,6 @@ const Center = styled.h1`
     font-family: OCR A Std, monospace;
 `;
 
-const Nav = styled.div`
-    max-width: 1010px;
-    padding: 26px 20px;
-    width: 97%;
-    display: flex;
-    align-items: center;
-    margin: 0 auto;
-    background-color: #fff;
-`;
-const NavLeft = styled.div`
-    width: 20%;
-    text-align: left;
-    color: rgba(0, 0, 0, 1);
-    font-family: OCR A Std, monospace; 
-    text-decoration: none; 
-`;
-
-const NavRight = styled.div`
-    width: 700%;
-    text-align: right;
-    position: relative;
-    left: 45%;
-    svg {
-        margin-right: 50px;
-    }
-`;
 const NavItem = styled.div`
     color: rgba(0, 0, 0, 1);
     float: left;
@@ -50,14 +25,21 @@ const NavItem = styled.div`
     text-align: right; 
     font-size: 15px;
     font-family: OCR A Std, monospace;
+    position: relative;
+    left: 45%;
+    svg {
+        margin-right: 50px;
+    }
 `;
+
 
 class UserHomePage extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
             quote_author: "",
-            quote_text: ""
+            quote_text: "",
+            sessionStatus: this.props.sessionStatus
         }
         this.handleClick = this.handleClick.bind(this);
     }
@@ -83,49 +65,28 @@ class UserHomePage extends React.Component {
         return (
             <Router>
                 <Suspense fallback={<div></div>}>
-                    <Nav>
-                        <NavLeft>
-                            <Link to={'/home'}>
-                                <NavItem> Strive </NavItem>
-                            </Link>
-                        </NavLeft>
-
-                        <NavRight>
-                            <Link to={'/objectives'}>
-                                <NavItem> Objectives </NavItem>
-                            </Link>
-                            <NavItem>|</NavItem>
-
-                            <Link to={'/keyResults'}>
-                                <NavItem> Key Results </NavItem>
-                            </Link>
-                            <NavItem>|</NavItem>
-
-                            <Link to={'/progress'}>
-                                <NavItem> Progress </NavItem>
-                            </Link>
-                            <NavItem>|</NavItem>
-
-                            <Link to={'/'}>
-                                <NavItem onClick={this.handleClick}> Logout </NavItem>
-                            </Link>
-
-                        </NavRight>
-                    </Nav>
-                    <Center>
-                        <div>{`${this.state.quote_text}`}</div>
-                        <br></br>
-                        <div>{`- ${this.state.quote_author}`}</div>
-                    </Center>
-                    
+                    {/* DYNAMIC DASHBOARD ROUTES */}
                     <Switch>
-                        {/* USER HOMEPAGE ROUTES */}
+                        {/* DASHBOARD */}
                         <Route exact={'true'} path={'/home'}>
-                          
+                            <PrivateNav/>
+                            <Link to={'/'}>
+                                <NavItem onClick={this.handleClick}> Logout</NavItem>
+                            </Link>
+                            <Center>
+                                <div>{`${this.state.quote_text}`}</div>
+                                <br></br>
+                                <div>{`- ${this.state.quote_author}`}</div>
+                            </Center>
                         </Route>
+
 
                         {/* OBJECTIVES */}
                         <Route exact={true} path={'/objectives'}>
+                            <PrivateNav />
+                            <Link to={'/'}>
+                                <NavItem onClick={this.handleClick}> Logout</NavItem>
+                            </Link>
                             <Objectives/>
                         </Route>
                     </Switch>

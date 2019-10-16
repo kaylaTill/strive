@@ -41,31 +41,33 @@ const NavItem = styled.div`
     font-family: OCR A Std, monospace;
 `;
 
-const NavBar = ((props) => {
+const PrivateNav = ((props) => {
     return (
-        < Nav >
+        <Nav>
             <NavLeft>
-                <Link to={'/'}>
+                <Link to={'/home'}>
                     <NavItem> Strive </NavItem>
                 </Link>
             </NavLeft>
 
             <NavRight>
-                <Link to={'/about'}>
-                    <NavItem> About Strive </NavItem>
+                <Link to={'/objectives'}>
+                    <NavItem> Objectives </NavItem>
                 </Link>
                 <NavItem>|</NavItem>
 
-                <Link to={'/register'}>
-                    <NavItem> Register </NavItem>
+                <Link to={'/keyResults'}>
+                    <NavItem> Key Results </NavItem>
                 </Link>
                 <NavItem>|</NavItem>
 
-                <Link to={'/login'}>
-                    <NavItem> Login </NavItem>
+                <Link to={'/progress'}>
+                    <NavItem> Progress </NavItem>
                 </Link>
+                <NavItem>|</NavItem>
             </NavRight>
-        </Nav >
+        </Nav>
     )
 });
-export default NavBar;
+
+export default PrivateNav;
