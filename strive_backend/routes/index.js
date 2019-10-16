@@ -58,7 +58,7 @@ router.post('/register', function (req, res, next) {
       });
     } else {
       console.log('Invalid Registration');
-      res.send('Sorry, that username or email is already taken! Try loggin in!');
+      res.sendStatus(401);
     }
   })
     .catch((err) => {
@@ -75,7 +75,8 @@ router.post('/login', function (req, res, next) {
   })
   .then((user)=> {
     if (!user) {
-      res.send("Sorry, couldn't find a user under that username!");
+      res.sendStatus(401);
+      console.log("Sorry, couldn't find a user under that username!");
     } else {
 
       bcrypt.compare(req.body.password, user.password, function (err, result) {
@@ -90,7 +91,8 @@ router.post('/login', function (req, res, next) {
             res.send('Logged In');
           });
         } else {
-          res.send('Incorrect password, Please try again!');
+          res.sendStatus(401);
+          console.log('Incorrect password, Please try again!');
         }
       });
     }

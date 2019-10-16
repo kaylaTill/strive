@@ -68,7 +68,7 @@ class Login extends React.Component {
                     <Form.Label>Password</Form.Label>
                     <br></br>
                     <FormControl
-                        type="text"
+                        type="password"
                         name="password"
                         value={this.state.password}
                         onChange={this.handleChange}
