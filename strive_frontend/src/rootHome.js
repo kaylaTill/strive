@@ -232,7 +232,6 @@ class RootHome extends React.Component {
                     </Switch>
                 </Suspense>
             </Router>
-
         );
     }
     
