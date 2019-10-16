@@ -113,7 +113,7 @@ class Register extends React.Component {
                     <Form.Label>Password</Form.Label>
                     <br></br>
                     <FormControl
-                        type="text"
+                        type="password"
                         name="password"
                         value={this.state.password}
                         onChange={this.handleChange}
@@ -124,7 +124,7 @@ class Register extends React.Component {
                     <Form.Label>Confirm Password</Form.Label>
                     <br></br>
                     <FormControl
-                        type="text"
+                        type="password"
                         name="confirmPassword"
                         value={this.state.confirmPassword}
                         onChange={this.handleChange}

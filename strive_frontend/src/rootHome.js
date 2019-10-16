@@ -9,7 +9,6 @@ const UserHomePage = (React.lazy(() => import('./userHomepage.js')));
 const RegisterSuccess = (React.lazy(() => import('./registrationSuccess.js')));
 const RegisterFailure = (React.lazy(() => import('./registrationFailed.js')));
 const LoginFailure = (React.lazy(() => import('./loginFailed.js')));
-
 import axios from 'axios';
 
 
@@ -67,18 +66,28 @@ class RootHome extends React.Component {
             redirectSuccess: false,
             redirectFailure: false,
             sessionOpen: false,
-            loginFailed: false
+            loginFailed: false,
         }
 
         this.handleRegister = this.handleRegister.bind(this);
         this.handleLogin = this.handleLogin.bind(this);
         this.handleLogout = this.handleLogout.bind(this);
-        this.loggedIn = this.loggedIn.bind(this);
     }
 
 
     componentDidMount() {
-        this.loggedIn();
+        axios.get('/dashboard')
+            .then((response) => {
+                if (response.status === 200) {
+                    console.log('Login set by dashboard!');
+                    this.setState({
+                        sessionOpen: true
+                    })
+                }
+            })
+            .catch((err) => {
+                console.log(err);
+            });
     }
 
 
@@ -108,29 +117,15 @@ class RootHome extends React.Component {
             });
     }
 
-
-    loggedIn() {
-        axios.get('/dashboard')
-            .then((response) => {
-                if (response.status === 200) {
-                    console.log('Login set by dashboard!');
-                    this.setState({
-                        sessionOpen: true
-                    })
-                }
-            })
-            .catch((err) => {
-                console.log(err);
-            });
-    }
-
     handleLogin(username, password) {
         axios.post('/login', {
             username: username,
             password: password
         })
         .then(() => {
-            this.loggedIn();
+            this.setState({
+                sessionOpen: true
+            })
         })
         .catch((error) => {
             this.setState({

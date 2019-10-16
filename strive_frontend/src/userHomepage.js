@@ -62,7 +62,7 @@ class UserHomePage extends React.Component {
     }
 
    componentDidMount() {
-       this.getQuote();
+        this.getQuote();
     }
 
     getQuote() {
@@ -82,7 +82,7 @@ class UserHomePage extends React.Component {
     handleClick() {
         this.props.logout();
     }
-
+    
     render() {
         return (
             <div>
