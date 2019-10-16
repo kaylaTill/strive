@@ -80,7 +80,7 @@ router.post('/login', function (req, res, next) {
           req.session.save((err) => {
             if (err) {
               console.log(err);
-              console.log(req.session);
+              // console.log(req.session);
             }
             res.send('Logged In');
           });
@@ -93,11 +93,11 @@ router.post('/login', function (req, res, next) {
 });
 
 
-
 // testing cookie connection
 router.get('/dashboard', function(req, res, next) {
   if (req.session.user) {
     console.log(`Succesful session for ${req.session.user}`);
+    console.log(req.session);
     return res.sendStatus(200);
   }
 });
