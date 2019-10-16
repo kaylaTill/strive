@@ -9,6 +9,9 @@ const RegisterSuccess = (React.lazy(() => import('./registrationSuccess.js')));
 const RegisterFailure = (React.lazy(() => import('./registrationFailed.js')));
 const LoginFailure = (React.lazy(() => import('./loginFailed.js')));
 const PublicNav = (React.lazy(() => import('./publicNav.js')));
+const PrivateNav = (React.lazy(() => import('./privateNav.js')));
+const Objectives = (React.lazy(() => import('./objectives.js')));
+const NewObjective = (React.lazy(() => import('./newObj.js')));
 import axios from 'axios';
 
 const Center = styled.h1`
@@ -164,12 +167,21 @@ class RootHome extends React.Component {
                         </Switch> 
                             :  <Redirect to={'/home'}/>}
 
-                        {/* HOME PAGE */}
-                        <Switch>
-                            <Route path={'/home'}>
-                                <UserHomePage logout={this.handleLogout} sessionStatus={this.state.sessionOpen} />
-                            </Route>
-                        </Switch>
+                    {/* HOME PAGE ROUTES*/ }
+                    <Route path={'/home'}>
+                        <UserHomePage logout={this.handleLogout} sessionStatus={this.state.sessionOpen} />
+                    </Route>
+
+                    <Route exact={true} path={'/objectives'}>
+                        <PrivateNav />
+                        <Objectives />
+                    </Route>
+
+                    {/* NEW OBJECTIVE */}
+                    <Route exact={true} path={'/newObjective'}>
+                        <PrivateNav />
+                        <NewObjective />
+                    </Route>
                 </Suspense>
             </Router>
         );

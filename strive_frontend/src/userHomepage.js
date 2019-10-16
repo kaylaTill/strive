@@ -1,10 +1,11 @@
 import React, { Suspense } from 'react';
 import styled from 'styled-components';
 import { Button } from 'react-bootstrap';
-import { BrowserRouter as Router, Link, Route, Switch, Redirect } from 'react-router-dom';
+import { BrowserRouter as Router, Link, Route, Switch, Redirect, useParams, useRouteMatch} from 'react-router-dom';
 import axios from 'axios';
-const Objectives = (React.lazy(() => import('./objectives.js')));
 const PrivateNav = (React.lazy(() => import('./privateNav.js')));
+const Objectives = (React.lazy(() => import('./objectives.js')));
+const NewObjective = (React.lazy(() => import('./newObj.js')));
 
 
 const Center = styled.h1`
@@ -49,29 +50,22 @@ class UserHomePage extends React.Component {
     
     render() {
         return (
-            <Router>
+            <div>
                 <Suspense fallback={<div></div>}>
                     {/* DYNAMIC DASHBOARD ROUTES */}
                     <Switch>
-                        {/* DASHBOARD */}
-                        <Route exact={'true'} path={'/home'}>
-                            <PrivateNav handleClick={this.handleClick}/>
+                        {/* ORIGINAL HOME PAGE */}
+                        <Route exact={true} path={'/home'}>
+                            <PrivateNav/>
                             <Center>
                                 <div>{`${this.state.quote_text}`}</div>
                                 <br></br>
                                 <div>{`- ${this.state.quote_author}`}</div>
                             </Center>
                         </Route>
-
-
-                        {/* OBJECTIVES */}
-                        <Route exact={true} path={'/objectives'}>
-                            <PrivateNav handleClick={this.handleClick}/>
-                            <Objectives/>
-                        </Route>
                     </Switch>
                 </Suspense>               
-            </Router>
+            </div>
         );
     }
 }

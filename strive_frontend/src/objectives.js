@@ -1,8 +1,8 @@
 import React, {Suspense} from 'react';
 import styled from 'styled-components';
 import { Form, Button, Overlay } from 'react-bootstrap';
-import { BrowserRouter as Router, Link, Route, Switch, Redirect } from 'react-router-dom';
-const NewObjective = (React.lazy(() => import('./newObj.js')));
+import { BrowserRouter as Router, Link, Route, Switch, Redirect, useParams, useRouteMatch  } from 'react-router-dom';
+
 
 
 const StyledDiv = styled.div`
@@ -67,32 +67,25 @@ class Objectives extends React.Component {
     }
 
     render() {
+        // const { path, url } = useRouteMatch();
         return (
-            <Router>
-                <Suspense fallback={<div></div>}>
-                    <Route path={'/objectives'}>
-                        <Container>
-                            <Objective>
-                                <ObjectiveOverlay>
-                                    <Description>
-                                        Example Objective
-                                    </Description>
-                                </ObjectiveOverlay>
-                            </Objective>
-                        </Container>
-                        <Link to={'/new'}>
-                            <StyledDiv>
-                                New Objective
-                            </StyledDiv>
-                        </Link>
-                    </Route>
-                    <Switch>   
-                        <Route exact={true} path={'/new'}>
-                            <NewObjective />
-                        </Route>
-                    </Switch>
-                </Suspense>
-            </Router>
+            <div>
+                {/* <Container>
+                    <Objective>
+                        <ObjectiveOverlay>
+                            <Description>
+                                Example Objective
+                            </Description>
+                        </ObjectiveOverlay>
+                    </Objective>
+                </Container> */}
+                <div>Objectives</div>
+                <Link to={'/newObjectives'}>
+                    <StyledDiv>
+                        New Objective
+                    </StyledDiv>
+                </Link>
+            </div>
         );
 
     }
