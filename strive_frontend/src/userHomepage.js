@@ -58,6 +58,7 @@ class UserHomePage extends React.Component {
             quote: {}
         }
         this.getQuotes = this.getQuotes.bind(this);
+        this.handleClick = this.handleClick.bind(this);
     }
 
    componentDidMount() {
@@ -79,9 +80,9 @@ class UserHomePage extends React.Component {
                 console.log(err);
             }); 
     }
-
-
-
+    handleClick() {
+        this.props.logout();
+    }
 
     render() {
         return (
@@ -108,10 +109,7 @@ class UserHomePage extends React.Component {
                             <NavItem> Progress </NavItem>
                         </Link>
                         <NavItem>|</NavItem>
-
-                        <Link to={'/'}>
-                            <NavItem> Logout </NavItem>
-                        </Link>
+                        <NavItem onClick={this.handleClick}> Logout </NavItem>
                     </NavRight>
                 </Nav>
 

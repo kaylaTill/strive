@@ -60,8 +60,6 @@ router.post('/register', function (req, res, next) {
 });
 
 
-
-
 router.post('/login', function (req, res, next) {
   users.User.findOne({
     where: {
@@ -101,6 +99,15 @@ router.get('/dashboard', function(req, res, next) {
     return res.sendStatus(200);
   }
 });
+
+router.get('/logout', (req, res, next) => {
+  req.session.destroy(function (err) {
+    if (err) {
+      console.log(err);
+    }
+    console.log('byebye from /logout')
+  })
+})
 
 
 

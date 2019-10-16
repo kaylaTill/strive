@@ -74,6 +74,7 @@ class RootHome extends React.Component {
 
         this.handleRegister = this.handleRegister.bind(this);
         this.handleLogin = this.handleLogin.bind(this);
+        this.handleLogout = this.handleLogout.bind(this);
         this.loggedIn = this.loggedIn.bind(this);
     }
 
@@ -81,6 +82,7 @@ class RootHome extends React.Component {
     componentDidMount() {
         this.loggedIn();
     }
+
 
     loggedIn() {
         axios.get('/dashboard')
@@ -111,7 +113,8 @@ class RootHome extends React.Component {
                     console.log(response.data);
                     this.setState({
                         redirectSuccess: true,
-                        redirectFailure: false
+                        redirectFailure: false,
+                        sessionOpen: true
                     })
                 } else {
                     console.log(response.data);
@@ -142,6 +145,20 @@ class RootHome extends React.Component {
     }
 
 
+    handleLogout() {
+        axios.get('/logout')
+            .then(() => {
+                this.setState({
+                    sessionOpen: false
+                })
+                console.log('byebye, session destroyed by logout');
+            })
+            .catch((err) => {
+                console.log(err);
+            });
+    }
+
+
     render() {
         const { redirectSuccess } = this.state;
         const { redirectFailure } = this.state;
@@ -149,7 +166,7 @@ class RootHome extends React.Component {
         return (
             <Router>
                 {/* REACT ROUTES */}
-                <Suspense fallback={<div> </div>}>
+                <Suspense fallback={<div>Loading</div>}>
                 {sessionOpen ? <Redirect to={'/home'} />:
                     <Nav>
                         <NavLeft>
@@ -209,8 +226,9 @@ class RootHome extends React.Component {
                             {sessionOpen && (<Redirect to={'/home'} />)}
                         </Route>
                         
+                        {/* USER HOMPAGE */}
                         <Route exact={true} path={'/home'}>
-                            {sessionOpen ? <UserHomePage homeSession={this.state.sessionOpen} /> : (<Redirect to={'/'} />)}
+                            {sessionOpen ? <UserHomePage logout={this.handleLogout} sessionStatus={this.state.sessionOpen} /> : (<Redirect to={'/'} />)}
                         </Route>
 
                     </Switch>
