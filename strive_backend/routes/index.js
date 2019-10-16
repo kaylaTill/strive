@@ -60,7 +60,7 @@ router.post('/register', function (req, res, next) {
 
 
 
-router.post('/login', function (req, res) {
+router.post('/login', function (req, res, next) {
   users.User.findOne({
     where: {
       username: req.body.username
@@ -73,7 +73,9 @@ router.post('/login', function (req, res) {
       bcrypt.compare(req.body.password, user.password, function (err, result) {
         if (result == true) {
           res.send('Logged In');
-
+          //store cookies for user login
+          req.session.user = user;
+          console.log(req.session.user);
         } else {
           res.send('Incorrect password, Please try again!');
         }
@@ -81,5 +83,19 @@ router.post('/login', function (req, res) {
     }
   });
 });
+
+
+router.get('/dashboard', function(req, res, next) {
+  if (!req.session.user) {
+    return res.sendStatus(401);
+  }
+  return res.sendStatus(200).send('Logged In');
+
+})
+
+
+
+
+
 
 module.exports = router;
