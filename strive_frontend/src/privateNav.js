@@ -3,8 +3,6 @@ import styled from 'styled-components';
 import { Button } from 'react-bootstrap';
 import { BrowserRouter as Router, Link, Route, Switch, Redirect } from 'react-router-dom';
 
-
-
 const Nav = styled.div`
     max-width: 1010px;
     padding: 26px 20px;
@@ -15,7 +13,7 @@ const Nav = styled.div`
     background-color: #fff;
 `;
 const NavLeft = styled.div`
-    width: 20%;
+    width: 7%;
     text-align: left;
     color: rgba(0, 0, 0, 1);
     font-family: OCR A Std, monospace; 
@@ -23,7 +21,7 @@ const NavLeft = styled.div`
 `;
 
 const NavRight = styled.div`
-    width: 50%;
+    width: 70%;
     text-align: right;
     position: relative;
     left: 45%;
@@ -35,7 +33,6 @@ const NavItem = styled.div`
     color: rgba(0, 0, 0, 1);
     float: left;
     padding: 12px;
-    text-decoration: none;
     text-align: right; 
     font-size: 15px;
     font-family: OCR A Std, monospace;
@@ -65,6 +62,9 @@ const PrivateNav = ((props) => {
                     <NavItem> Progress </NavItem>
                 </Link>
                 <NavItem>|</NavItem>
+                <Link to={'/'}>
+                    <NavItem onClick={props.handleClick}> Logout</NavItem>
+                </Link>
             </NavRight>
         </Nav>
     )

@@ -17,20 +17,6 @@ const Center = styled.h1`
     font-family: OCR A Std, monospace;
 `;
 
-const NavItem = styled.div`
-    color: rgba(0, 0, 0, 1);
-    float: left;
-    padding: 12px;
-    text-decoration: none;
-    text-align: right; 
-    font-size: 15px;
-    font-family: OCR A Std, monospace;
-    position: relative;
-    left: 45%;
-    svg {
-        margin-right: 50px;
-    }
-`;
 
 
 class UserHomePage extends React.Component {
@@ -69,10 +55,7 @@ class UserHomePage extends React.Component {
                     <Switch>
                         {/* DASHBOARD */}
                         <Route exact={'true'} path={'/home'}>
-                            <PrivateNav/>
-                            <Link to={'/'}>
-                                <NavItem onClick={this.handleClick}> Logout</NavItem>
-                            </Link>
+                            <PrivateNav handleClick={this.handleClick}/>
                             <Center>
                                 <div>{`${this.state.quote_text}`}</div>
                                 <br></br>
@@ -83,10 +66,7 @@ class UserHomePage extends React.Component {
 
                         {/* OBJECTIVES */}
                         <Route exact={true} path={'/objectives'}>
-                            <PrivateNav />
-                            <Link to={'/'}>
-                                <NavItem onClick={this.handleClick}> Logout</NavItem>
-                            </Link>
+                            <PrivateNav handleClick={this.handleClick}/>
                             <Objectives/>
                         </Route>
                     </Switch>
