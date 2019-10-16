@@ -16,9 +16,9 @@ const RegisterFailure = (props) => {
     return (
         <StyledRes>
             <div>
-                Uh Oh, looks like you already have an accout, try logining in!
+                Uh Oh, looks like you already have an accout, try loggining in!
             </div>
-            <Link to={'/welcome'}>
+            <Link to={'/'}>
                 <Button variant="outline-secondary">
                     Back to Home
                 </Button>

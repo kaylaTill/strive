@@ -6,7 +6,7 @@ const Register = (React.lazy(() => import('./register.js')));
 const Login = (React.lazy(() => import('./login.js')));
 const AboutPage = (React.lazy(() => import('./about.js')));
 const UserHomePage = (React.lazy(() => import('./userHomepage.js')));
-const RegisterSuccess = (React.lazy(() => import('./registrationSucces.js')));
+const RegisterSuccess = (React.lazy(() => import('./registrationSuccess.js')));
 const RegisterFailure = (React.lazy(() => import('./registrationFailed.js')));
 
 import axios from 'axios';
@@ -89,23 +89,20 @@ class RootHome extends React.Component {
             password: password,
         })
             .then((response) => {
-                if (response.status === 200) {
+                if (response.status == 200) {
                     console.log(response.data);
                     this.setState({
                         redirectSuccess: true,
                         redirectFailure: false,
                         sessionOpen: true
                     })
-                } else {
-                    console.log(response.data);
-                    this.setState({
-                        redirectState: false,
-                        redirectFailure: true
-                    })
-                }
+                } 
             })
             .catch((error) => {
-                console.log(error);
+                this.setState({
+                    redirectSuccess: false,
+                    redirectFailure: true
+                })
             });
     }
 
@@ -160,7 +157,7 @@ class RootHome extends React.Component {
         return (
             <Router>
                 {/* REACT ROUTES */}
-                <Suspense fallback={<div>Loading</div>}>
+                <Suspense fallback={<div></div>}>
                 {sessionOpen ? <Redirect to={'/home'} />:
                     <Nav>
                         <NavLeft>
@@ -210,8 +207,8 @@ class RootHome extends React.Component {
                         {/* REGISTER */}
                         <Route exact={true} path={'/register'}>
                             <Register handleRegister={this.handleRegister} />
-                            {redirectSuccess && !redirectFailure && (<Redirect to={'/registrationSuccess'} />)}
-                            {!redirectSuccess && redirectFailure && (<Redirect to={'/registrationFailure'} />)}
+                            {(redirectSuccess && !redirectFailure) && (<Redirect to={'/registrationSuccess'} />)}
+                            {(!redirectSuccess && redirectFailure) && (<Redirect to={'/registrationFailure'} />)}
                         </Route>
 
                         {/* LOGIN */}
