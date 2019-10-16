@@ -4,7 +4,9 @@ var path = require('path');
 const Sequelize = require('sequelize');
 const quotes = require('../models/quotes.js');
 const users = require('../models/users.js');
+var session = require('express-session');
 const bcrypt = require('bcrypt');
+
 const saltRounds = 10;
 
 /* GET home page. */
@@ -66,16 +68,22 @@ router.post('/login', function (req, res, next) {
       username: req.body.username
     }
   })
-  .then(function (user) {
+  .then((user)=> {
     if (!user) {
       res.send("Sorry, couldn't find a user under that username!");
     } else {
+
       bcrypt.compare(req.body.password, user.password, function (err, result) {
         if (result == true) {
-          res.send('Logged In');
           //store cookies for user login
           req.session.user = user;
-          console.log(req.session.user);
+          req.session.save((err) => {
+            if (err) {
+              console.log(err);
+              console.log(req.session);
+            }
+            res.send('Logged In');
+          });
         } else {
           res.send('Incorrect password, Please try again!');
         }
@@ -85,13 +93,14 @@ router.post('/login', function (req, res, next) {
 });
 
 
-router.get('/dashboard', function(req, res, next) {
-  if (!req.session.user) {
-    return res.sendStatus(401);
-  }
-  return res.sendStatus(200).send('Logged In');
 
-})
+// testing cookie connection
+router.get('/dashboard', function(req, res, next) {
+  if (req.session.user) {
+    console.log(`Succesful session for ${req.session.user}`);
+    return res.sendStatus(200);
+  }
+});
 
 
 
