@@ -14,7 +14,7 @@ app.use(session({
     saveUninitialized: true,
     resave: false,
     cookie: {
-        maxAge: 6000
+        maxAge: 3600000
     }
 }));
 app.use(express.json());

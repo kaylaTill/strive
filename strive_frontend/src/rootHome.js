@@ -77,6 +77,11 @@ class RootHome extends React.Component {
         this.loggedIn = this.loggedIn.bind(this);
     }
 
+
+    componentDidMount() {
+        this.loggedIn();
+    }
+
     loggedIn() {
         axios.get('/dashboard')
             .then((response) => {
@@ -145,8 +150,7 @@ class RootHome extends React.Component {
             <Router>
                 {/* REACT ROUTES */}
                 <Suspense fallback={<div> </div>}>
-                {sessionOpen ? 
-                    <UserHomePage/> :
+                {sessionOpen ? <Redirect to={'/home'} />:
                     <Nav>
                         <NavLeft>
                             <Link to={'/'}>
@@ -204,6 +208,11 @@ class RootHome extends React.Component {
                             <Login handleLogin={this.handleLogin} />
                             {sessionOpen && (<Redirect to={'/home'} />)}
                         </Route>
+                        
+                        <Route exact={true} path={'/home'}>
+                            {sessionOpen ? <UserHomePage homeSession={this.state.sessionOpen} /> : (<Redirect to={'/'} />)}
+                        </Route>
+
                     </Switch>
                 </Suspense>
             </Router>
