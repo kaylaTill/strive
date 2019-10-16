@@ -31,6 +31,7 @@ router.post('/register', function (req, res, next) {
       {username: req.body.username}
     )
   })
+
   .then((results) => {
     if (results.length == 0) {
       bcrypt.hash(req.body.password, saltRounds, function (err, hash) {
@@ -41,9 +42,15 @@ router.post('/register', function (req, res, next) {
           username: req.body.username,
           password: hash
         })
-        .then(function (data) {
-          console.log('Succesful Registration!');
-          res.sendStatus(200).end();
+        .then((user)=> {
+          req.session.user = user;
+          req.session.save((err) => {
+            if (err) {
+              console.log(err);
+            }
+            res.sendStatus(200);
+          })
+          console.log('Succesful session created for new user!');
         })
         .catch(function(err) {
           console.log(`Hash Error: ${err}`);
@@ -95,7 +102,6 @@ router.post('/login', function (req, res, next) {
 router.get('/dashboard', function(req, res, next) {
   if (req.session.user) {
     console.log(`Succesful session for ${req.session.user}`);
-    console.log(req.session);
     return res.sendStatus(200);
   }
 });
