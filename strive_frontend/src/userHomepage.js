@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { Button } from 'react-bootstrap';
 import { BrowserRouter as Router, Link, Route, Switch, Redirect } from 'react-router-dom';
 import axios from 'axios';
+const Objectives = (React.lazy(() => import('./objectives.js')));
 
 
 const Center = styled.h1`
@@ -62,22 +63,17 @@ class UserHomePage extends React.Component {
     }
 
    componentDidMount() {
-        this.getQuote();
+       axios.get('/quote')
+           .then(({ data }) => {
+               this.setState({
+                   quote_text: data.quote_text,
+                   quote_author: data.quote_author
+               })
+           })
+           .catch((err) => {
+               console.log(err);
+           });
     }
-
-    getQuote() {
-        axios.get('/quote')
-            .then(({ data }) => {
-                this.setState({
-                    quote_text: data.quote_text,
-                    quote_author: data.quote_author
-                })
-            })
-            .catch((err) => {
-                console.log(err);
-            });
-    }
-
 
     handleClick() {
         this.props.logout();
@@ -85,7 +81,7 @@ class UserHomePage extends React.Component {
     
     render() {
         return (
-            <div>
+            <Router>
                 <Nav>
                     <NavLeft>
                         <Link to={'/home'}>
@@ -116,12 +112,25 @@ class UserHomePage extends React.Component {
                     </NavRight>
                 </Nav>
 
-                <Center>
-                    <div>{`${this.state.quote_text}`}</div>
-                    <br></br>
-                    <div>{`- ${this.state.quote_author}`}</div>
-                </Center>
-            </div>
+
+                <Suspense fallback={<div></div>}>
+                    <Switch>
+                        {/* USER HOMEPAGE ROUTES */}
+                        <Route exact={true} path={'/home'}>
+                            <Center>
+                                <div>{`${this.state.quote_text}`}</div>
+                                <br></br>
+                                <div>{`- ${this.state.quote_author}`}</div>
+                            </Center>
+                        </Route>
+
+                        {/* OBJECTIVES */}
+                        <Route exact={true} path={'/objectives'}>
+                            <Objectives/>
+                        </Route>
+                    </Switch>
+                </Suspense>               
+            </Router>
         );
     }
 }
