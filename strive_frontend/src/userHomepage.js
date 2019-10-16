@@ -5,14 +5,13 @@ import { BrowserRouter as Router, Link, Route, Switch, Redirect } from 'react-ro
 import axios from 'axios';
 
 
-
 const Center = styled.h1`
     width: 1000px; 
     margin: auto 0;
     padding: 60px;
     align: center;
     text-align: center;
-    font-size: 50px;
+    font-size: 40px;
     font-family: OCR A Std, monospace;
 `;
 
@@ -58,9 +57,14 @@ class UserHomePage extends React.Component {
         this.state = {
             quote: {}
         }
+        this.getQuotes = this.getQuotes.bind(this);
     }
 
-    componentDidMount() {
+   componentDidMount() {
+       this.getQuotes();
+   }
+
+    getQuotes() {
         axios.get('/quote')
             .then(({ data }) => {
                 console.log(data);
@@ -71,7 +75,12 @@ class UserHomePage extends React.Component {
                     }
                 })
             })
+            .catch((err) => {
+                console.log(err);
+            }); 
     }
+
+
 
 
     render() {

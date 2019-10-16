@@ -69,12 +69,29 @@ class RootHome extends React.Component {
         this.state = {
             redirectSuccess: false,
             redirectFailure: false,
-            loggedIn: false
+            sessionOpen: false
         }
 
         this.handleRegister = this.handleRegister.bind(this);
         this.handleLogin = this.handleLogin.bind(this);
+        this.loggedIn = this.loggedIn.bind(this);
     }
+
+    loggedIn() {
+        axios.get('/dashboard')
+            .then((response) => {
+                if (response.status === 200) {
+                    console.log('Login set by dashboard!');
+                    this.setState({
+                        sessionOpen: true
+                    })
+                }
+            })
+            .catch((err) => {
+                console.log(err);
+            });
+    }
+
 
     handleRegister(email, first_name, last_name, username, password) {
         axios.post('/register', {
@@ -85,7 +102,7 @@ class RootHome extends React.Component {
             password: password,
         })
             .then((response) => {
-                if (response.data == 'OK') {
+                if (response.status === 200) {
                     console.log(response.data);
                     this.setState({
                         redirectSuccess: true,
@@ -111,13 +128,8 @@ class RootHome extends React.Component {
             username: username,
             password: password
         })
-        .then((response) => {
-            console.log(response);
-            if (response.data == "Logged In") {
-                this.setState({
-                    loggedIn: true
-                })
-            }
+        .then(() => {
+            this.loggedIn();
         })
         .catch(function (error) {
             console.log(error);
@@ -125,16 +137,15 @@ class RootHome extends React.Component {
     }
 
 
-
     render() {
         const { redirectSuccess } = this.state;
         const { redirectFailure } = this.state;
-        const { loggedIn } = this.state;
+        const { sessionOpen } = this.state;
         return (
             <Router>
                 {/* REACT ROUTES */}
                 <Suspense fallback={<div> </div>}>
-                {loggedIn ? 
+                {sessionOpen ? 
                     <UserHomePage/> :
                     <Nav>
                         <NavLeft>
@@ -159,7 +170,7 @@ class RootHome extends React.Component {
                             </Link>
                         </NavRight>
                     </Nav>}
-                    
+
                     <Switch>
                         {/* HOME PAGE AND LOGOUT */}
                         <Route exact={true} path={'/'}>
@@ -191,7 +202,7 @@ class RootHome extends React.Component {
                         {/* LOGIN */}
                         <Route exact={true} path={'/login'}>
                             <Login handleLogin={this.handleLogin} />
-                            {loggedIn && (<Redirect to={'/home'} />)}
+                            {sessionOpen && (<Redirect to={'/home'} />)}
                         </Route>
                     </Switch>
                 </Suspense>
