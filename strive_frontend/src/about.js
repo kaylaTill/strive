@@ -48,7 +48,7 @@ const AboutPage = (props) => {
                 <Link to={'/register'}>
                     <Button variant="outline-secondary">
                         Get Started.
-                </Button>
+                    </Button>
                 </Link>
             </div>
         </About>
