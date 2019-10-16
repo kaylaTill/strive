@@ -55,31 +55,30 @@ class UserHomePage extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            quote: {}
+            quote_author: "",
+            quote_text: ""
         }
-        this.getQuotes = this.getQuotes.bind(this);
         this.handleClick = this.handleClick.bind(this);
     }
 
    componentDidMount() {
-       this.getQuotes();
-   }
+       this.getQuote();
+    }
 
-    getQuotes() {
+    getQuote() {
         axios.get('/quote')
             .then(({ data }) => {
-                console.log(data);
                 this.setState({
-                    quote: {
-                        quote_text: data.quote_text,
-                        quote_author: data.quote_author
-                    }
+                    quote_text: data.quote_text,
+                    quote_author: data.quote_author
                 })
             })
             .catch((err) => {
                 console.log(err);
-            }); 
+            });
     }
+
+
     handleClick() {
         this.props.logout();
     }
@@ -109,14 +108,18 @@ class UserHomePage extends React.Component {
                             <NavItem> Progress </NavItem>
                         </Link>
                         <NavItem>|</NavItem>
-                        <NavItem onClick={this.handleClick}> Logout </NavItem>
+
+                        <Link to={'/'}>
+                            <NavItem onClick={this.handleClick}> Logout </NavItem>
+                        </Link>
+
                     </NavRight>
                 </Nav>
 
                 <Center>
-                    <div>{`${this.state.quote.quote_text}`}</div>
+                    <div>{`${this.state.quote_text}`}</div>
                     <br></br>
-                    <div>{`- ${this.state.quote.quote_author}`}</div>
+                    <div>{`- ${this.state.quote_author}`}</div>
                 </Center>
             </div>
         );

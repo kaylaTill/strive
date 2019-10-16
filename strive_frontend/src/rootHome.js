@@ -59,13 +59,9 @@ const NavItem = styled.div`
 `;
 
 
-
 class RootHome extends React.Component {
     constructor(props) {
         super(props);
-            // save state => session
-            // login 
-            // password
         this.state = {
             redirectSuccess: false,
             redirectFailure: false,
@@ -81,22 +77,6 @@ class RootHome extends React.Component {
 
     componentDidMount() {
         this.loggedIn();
-    }
-
-
-    loggedIn() {
-        axios.get('/dashboard')
-            .then((response) => {
-                if (response.status === 200) {
-                    console.log('Login set by dashboard!');
-                    this.setState({
-                        sessionOpen: true
-                    })
-                }
-            })
-            .catch((err) => {
-                console.log(err);
-            });
     }
 
 
@@ -130,8 +110,22 @@ class RootHome extends React.Component {
     }
 
 
+    loggedIn() {
+        axios.get('/dashboard')
+            .then((response) => {
+                if (response.status === 200) {
+                    console.log('Login set by dashboard!');
+                    this.setState({
+                        sessionOpen: true
+                    })
+                }
+            })
+            .catch((err) => {
+                console.log(err);
+            });
+    }
+
     handleLogin(username, password) {
-        // axios post call => /login 
         axios.post('/login', {
             username: username,
             password: password

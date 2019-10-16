@@ -75,7 +75,6 @@ class Login extends React.Component {
                     />
                 </FormGroup>
                 <br></br>
-
                 <Button type="submit">Log in</Button>
             </StyledForm>
         );
