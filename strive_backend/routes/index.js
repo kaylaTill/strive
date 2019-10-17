@@ -13,14 +13,9 @@ router.get('/', function(req, res, next) {
   res.sendFile(path.resolve(__dirname, '../../strive_frontend/dist/index.html'));
 });
 
-router.get('/home/', function(req, res, next) {
+router.get('/home', function(req, res, next) {
   res.sendFile(path.resolve(__dirname, '../../strive_frontend/dist/index.html'));
 });
-
-router.get('/objectives', function(req, res, next) {
-  res.sendFile(path.resolve(__dirname, '../../strive_frontend/dist/index.html'));
-});
-
 
 
 //GET a single quote each time we login
@@ -110,10 +105,12 @@ router.post('/login', function (req, res, next) {
 
 
 // testing cookie connection
-router.get('/dashboard', function(req, res, next) {
+router.get('/loggedIn', function(req, res, next) {
   if (req.session.user) {
     console.log(`Succesful session for ${req.session.user}`);
     return res.sendStatus(200);
+  } else {
+    res.sendStatus(404);
   }
 });
 
@@ -122,7 +119,7 @@ router.get('/logout', (req, res, next) => {
     if (err) {
       console.log(err);
     }
-    console.log('byebye from /logout')
+    console.log('byebye from /logout');
   })
 })
 

@@ -27,9 +27,11 @@ app.use('/', indexRouter);
 app.use('/about', indexRouter);
 app.use('/register', indexRouter);
 app.use('/login', indexRouter);
+app.use('/logout', indexRouter);
+app.use('/loggedIn', indexRouter);
 app.use('/quote', indexRouter);
 app.use('/home', indexRouter);
-app.use('/objectives', indexRouter);
+app.use('/objectives',indexRouter);
 
 
 

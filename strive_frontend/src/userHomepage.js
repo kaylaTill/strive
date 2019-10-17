@@ -6,7 +6,7 @@ import axios from 'axios';
 const PrivateNav = (React.lazy(() => import('./privateNav.js')));
 const Objectives = (React.lazy(() => import('./objectives.js')));
 const NewObjective = (React.lazy(() => import('./newObj.js')));
-
+import { createBrowserHistory } from 'history';
 
 const Center = styled.h1`
     width: 1000px; 
@@ -18,7 +18,40 @@ const Center = styled.h1`
     font-family: OCR A Std, monospace;
 `;
 
+const Nav = styled.div`
+    max-width: 1010px;
+    padding: 26px 20px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    margin: 0 auto;
+    background-color: #fff;
+`;
+const NavLeft = styled.div`
+    width: 7%;
+    text-align: left;
+    color: rgba(0, 0, 0, 1);
+    font-family: OCR A Std, monospace; 
+    text-decoration: none; 
+`;
 
+const NavRight = styled.div`
+    width: 70%;
+    text-align: right;
+    position: relative;
+    left: 45%;
+    svg {
+        margin-right: 50px;
+    }
+`;
+const NavItem = styled.div`
+    color: rgba(0, 0, 0, 1);
+    float: left;
+    padding: 12px;
+    text-align: right; 
+    font-size: 15px;
+    font-family: OCR A Std, monospace;
+`;
 
 class UserHomePage extends React.Component {
     constructor(props) {
@@ -26,9 +59,9 @@ class UserHomePage extends React.Component {
         this.state = {
             quote_author: "",
             quote_text: "",
-            sessionStatus: this.props.sessionStatus
+            sessionStatus: true
         }
-        this.handleClick = this.handleClick.bind(this);
+        this.handleLogout = this.handleLogout.bind(this);
     }
 
    componentDidMount() {
@@ -42,30 +75,89 @@ class UserHomePage extends React.Component {
            .catch((err) => {
                console.log(err);
            });
+        axios.get('/loggedIn')
+           .then((res) => {
+                this.setState({
+                    sessionStatus: true
+                })
+           })
+           .catch(() => {
+               this.setState({
+                   sessionStatus: false
+               })
+           })
     }
 
-    handleClick() {
-        this.props.logout();
+    handleLogout() {
+        axios.get('/logout')
+            .then((response) => {
+                this.setState({
+                    sessionStatus: false
+                })
+                console.log('byebye, session destroyed by logout.');
+            })
+            .catch((err) => {
+                console.log(err);
+            });
     }
-    
+
+
+
     render() {
+        const {sessionStatus} = this.state;
         return (
-            <div>
+
+            <Router>
+                <Nav>
+                    <NavLeft>
+                        <Link to={'/'}>
+                            <NavItem> Strive </NavItem>
+                        </Link>
+                    </NavLeft>
+
+                    <NavRight>
+                        <Link to={'/objectives'}>
+                            <NavItem onClick={this.handlePageShift}> Objectives </NavItem>
+                        </Link>
+                        <NavItem>|</NavItem>
+
+                        <Link to={'/keyResults'}>
+                            <NavItem> Key Results </NavItem>
+                        </Link>
+                        <NavItem>|</NavItem>
+
+                        <Link to={'/progress'}>
+                            <NavItem> Progress </NavItem>
+                        </Link>
+                        <NavItem>|</NavItem>
+
+                        <Link to={'/'}>
+                            <NavItem onClick={this.handleLogout}> Logout</NavItem>
+                        </Link>
+                    </NavRight>
+                </Nav>
                 <Suspense fallback={<div></div>}>
-                    {/* DYNAMIC DASHBOARD ROUTES */}
+                    {!sessionStatus && <Redirect to={'/'}/>}
                     <Switch>
-                        {/* ORIGINAL HOME PAGE */}
-                        <Route exact={true} path={'/home'}>
-                            <PrivateNav/>
+                        < Route exact={true} path={'/'}>
                             <Center>
                                 <div>{`${this.state.quote_text}`}</div>
                                 <br></br>
                                 <div>{`- ${this.state.quote_author}`}</div>
                             </Center>
                         </Route>
+
+                        <Route exact={true} path={'/objectives'}>
+                            <Objectives />
+                        </Route>
+
+                        {/* NEW OBJECTIVE */}
+                        <Route exact={true} path={'/newObjective'}>
+                            <NewObjective />
+                        </Route>
                     </Switch>
-                </Suspense>               
-            </div>
+                </Suspense>  
+            </Router>             
         );
     }
 }

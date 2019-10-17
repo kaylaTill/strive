@@ -9,7 +9,7 @@ const RegisterSuccess = (React.lazy(() => import('./registrationSuccess.js')));
 const RegisterFailure = (React.lazy(() => import('./registrationFailed.js')));
 const LoginFailure = (React.lazy(() => import('./loginFailed.js')));
 const PublicNav = (React.lazy(() => import('./publicNav.js')));
-const PrivateNav = (React.lazy(() => import('./privateNav.js')));
+// const PrivateNav = (React.lazy(() => import('./privateNav.js')));
 const Objectives = (React.lazy(() => import('./objectives.js')));
 const NewObjective = (React.lazy(() => import('./newObj.js')));
 import axios from 'axios';
@@ -36,24 +36,25 @@ class RootHome extends React.Component {
 
         this.handleRegister = this.handleRegister.bind(this);
         this.handleLogin = this.handleLogin.bind(this);
-        this.handleLogout = this.handleLogout.bind(this);
     }
 
 
-    componentDidMount() {
-        axios.get('/dashboard')
-            .then((response) => {
-                if (response.status === 200) {
-                    console.log('Login set by dashboard!');
-                    this.setState({
-                        sessionOpen: true
-                    })
-                }
-            })
-            .catch((err) => {
-                console.log(err);
-            });
-    }
+    // componentDidMount() {
+    //     axios.get('/loggedIn')
+    //         .then((response) => {
+    //             if (response.status === 200) {
+    //                 console.log('Login set by dashboard!');
+    //                 this.setState({
+    //                     sessionOpen: true
+    //                 })
+    //             }
+    //         })
+    //         .catch((err) => {
+    //             this.setState({
+    //                 sessionOpen: false
+    //             })
+    //         });
+    // }
 
 
     handleRegister(email, first_name, last_name, username, password) {
@@ -100,20 +101,6 @@ class RootHome extends React.Component {
     }
 
 
-    handleLogout() {
-        axios.get('/logout')
-            .then(() => {
-                this.setState({
-                    sessionOpen: false
-                })
-                console.log('byebye, session destroyed by logout.');
-            })
-            .catch((err) => {
-                console.log(err);
-            });
-    }
-
-
     render() {
         const { redirectSuccess } = this.state;
         const { redirectFailure } = this.state;
@@ -123,65 +110,46 @@ class RootHome extends React.Component {
             <Router>
                 {/* REACT ROUTES */}
                 <Suspense fallback={<div></div>}>
-                    {!sessionOpen ? 
-                        // USER NOT LOGGED IN => ROUTES FOR PUBLIC PAGE
-                        <Switch>
-                            {/* HOME PAGE AND LOGOUT  */}
-                            <Route exact={true} path={'/'}>
-                                <PublicNav/>
-                                <Center>"Not your average to-do list"</Center>
-                            </Route>
+                    {sessionOpen && <Redirect to={'/'}/>}
 
-                            {/* ABOUT  */}
-                            <Route exact={true} path={'/about'}>
-                               <PublicNav/>
-                                <AboutPage />
-                            </Route>
+                     <Switch>
+                        <Route exact={true} path={'/'}>
+                            <PublicNav />
+                            <Center>"Not your average to-do list"</Center>
+                        </Route>
 
-                            {/* REGISTER AND LOG INCONFIRMATION */}
-                            <Route exact={true} path={'/registrationSuccess'}>
-                                <RegisterSuccess />
-                            </Route>
-                            <Route exact={true} path={'/registrationFailure'}>
-                                <RegisterFailure />
-                            </Route>
-                            <Route exact={true} path={'/failedLogin'}>
-                                <LoginFailure />
-                            </Route>
+                        {/* ABOUT  */}
+                        <Route exact={true} path={'/about'}>
+                            <PublicNav />
+                            <AboutPage />
+                        </Route>
 
+                        {/* REGISTER AND LOG INCONFIRMATION */}
+                        <Route exact={true} path={'/registrationSuccess'}>
+                            <RegisterSuccess />
+                        </Route>
+                        <Route exact={true} path={'/registrationFailure'}>
+                            <RegisterFailure />
+                        </Route>
+                        <Route exact={true} path={'/failedLogin'}>
+                            <LoginFailure />
+                        </Route>
 
-                            {/* REGISTER */}
-                            <Route exact={true} path={'/register'}>
-                               <PublicNav/>
-                                <Register handleRegister={this.handleRegister} />
-                                {(redirectSuccess && !redirectFailure) && (<Redirect to={'/registrationSuccess'} />)}
-                                {(!redirectSuccess && redirectFailure) && (<Redirect to={'/registrationFailure'} />)}
-                            </Route>
+                        {/* REGISTER */}
+                        <Route exact={true} path={'/register'}>
+                            <PublicNav />
+                            <Register handleRegister={this.handleRegister} />
+                            {(redirectSuccess && !redirectFailure) && (<Redirect to={'/registrationSuccess'} />)}
+                            {(!redirectSuccess && redirectFailure) && (<Redirect to={'/registrationFailure'} />)}
+                        </Route>
 
-                            {/* LOGIN */}
-                            <Route exact={true} path={'/login'}>
-                                <PublicNav/>
-                                <Login handleLogin={this.handleLogin} />
-                                {loginFailed && (<Redirect to={'/failedLogin'} />)}
-                            </Route> 
-                        </Switch> 
-                            :  <Redirect to={'/home'}/>}
-
-                    {/* HOME PAGE ROUTES*/ }
-                    <Route path={'/home'}>
-                        <UserHomePage logout={this.handleLogout} sessionStatus={this.state.sessionOpen} />
-                    </Route>
-
-                    <Route exact={true} path={'/objectives'}>
-                        <PrivateNav />
-                        <Objectives />
-                    </Route>
-
-                    {/* NEW OBJECTIVE */}
-                    <Route exact={true} path={'/newObjective'}>
-                        <PrivateNav />
-                        <NewObjective />
-                    </Route>
+                        {/* LOGIN */}
+                        <Route exact={true} path={'/login'}>
+                            <PublicNav />
+                            <Login handleLogin={this.handleLogin} />
+                            {loginFailed && (<Redirect to={'/failedLogin'} />)}
+                        </Route>
+                    </Switch>
                 </Suspense>
             </Router>
         );
