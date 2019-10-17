@@ -75,6 +75,7 @@ class UserHomePage extends React.Component {
            .catch((err) => {
                console.log(err);
            });
+
         axios.get('/loggedIn')
            .then((res) => {
                 this.setState({
@@ -85,16 +86,20 @@ class UserHomePage extends React.Component {
                this.setState({
                    sessionStatus: false
                })
-           })
-    }
-
-    handleLogout() {
-        axios.get('/logout')
+               this.forceUpdate() 
+               window.location.reload(false)
+            });
+        }
+        
+        handleLogout() {
+            axios.get('/logout')
             .then((response) => {
                 this.setState({
                     sessionStatus: false
                 })
                 console.log('byebye, session destroyed by logout.');
+                this.forceUpdate() 
+                window.location.reload(false)
             })
             .catch((err) => {
                 console.log(err);
@@ -106,7 +111,6 @@ class UserHomePage extends React.Component {
     render() {
         const {sessionStatus} = this.state;
         return (
-
             <Router>
                 <Nav>
                     <NavLeft>
@@ -137,7 +141,6 @@ class UserHomePage extends React.Component {
                     </NavRight>
                 </Nav>
                 <Suspense fallback={<div></div>}>
-                    {!sessionStatus && <Redirect to={'/'}/>}
                     <Switch>
                         < Route exact={true} path={'/'}>
                             <Center>

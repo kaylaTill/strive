@@ -93,6 +93,9 @@ class RootHome extends React.Component {
                 sessionOpen: true
             })
         })
+        .then(() => {
+            window.location.reload(false);
+        })
         .catch((error) => {
             this.setState({
                 loginFailed: true
@@ -108,10 +111,9 @@ class RootHome extends React.Component {
         const { loginFailed } = this.state;
         return (
             <Router>
+                {/* {sessionOpen && this.forceUpdate()} */}
                 {/* REACT ROUTES */}
                 <Suspense fallback={<div></div>}>
-                    {sessionOpen && <Redirect to={'/'}/>}
-
                      <Switch>
                         <Route exact={true} path={'/'}>
                             <PublicNav />
