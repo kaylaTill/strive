@@ -4,6 +4,7 @@ var path = require('path');
 const Sequelize = require('sequelize');
 const quotes = require('../models/quotes.js');
 const users = require('../models/users.js');
+const objectives = require('../models/objectives');
 var session = require('express-session');
 const bcrypt = require('bcrypt');
 const saltRounds = 10;
@@ -125,13 +126,12 @@ router.get('/logout', (req, res, next) => {
 
 
 
-// router.post('/newObjective', (req, res, next) => {
-//   //set user to user_id => foreign key
-//   req.session.user 
+router.post('/addObjective', (req, res, next) => {
+  //set user to user_id => foreign key
+  // req.session.user 
 
 
-
-// })
+})
 
 
 module.exports = router;
