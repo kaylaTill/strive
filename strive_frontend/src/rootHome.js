@@ -39,23 +39,6 @@ class RootHome extends React.Component {
     }
 
 
-    // componentDidMount() {
-    //     axios.get('/loggedIn')
-    //         .then((response) => {
-    //             if (response.status === 200) {
-    //                 console.log('Login set by dashboard!');
-    //                 this.setState({
-    //                     sessionOpen: true
-    //                 })
-    //             }
-    //         })
-    //         .catch((err) => {
-    //             this.setState({
-    //                 sessionOpen: false
-    //             })
-    //         });
-    // }
-
 
     handleRegister(email, first_name, last_name, username, password) {
         axios.post('/register', {

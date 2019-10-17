@@ -2,7 +2,7 @@ import React, {Suspense} from 'react';
 import styled from 'styled-components';
 import { Form, Button, Overlay } from 'react-bootstrap';
 import { BrowserRouter as Router, Link, Route, Switch, Redirect, useParams, useRouteMatch  } from 'react-router-dom';
-
+const NewObjective = (React.lazy(() => import('./newObj.js')));
 
 
 const StyledDiv = styled.div`
@@ -30,13 +30,9 @@ const ObjectiveOverlay = styled.div`
     transition: .5s ease;
 `
 const Container = styled.div`
-    position: relative;
-    width: 50%;
-    background-color: black;
-    ${ObjectiveOverlay}:hover & {
-        bottom: 0;
-        height: 100%;
-    }
+    width: 1500px;
+    height: 400px;
+    border-style: solid;
 `;
 const Objective = styled.div`
     display: block;
@@ -50,14 +46,6 @@ const Description = styled.div`
     font-family: OCR A Std, monospace;
 `
 
-const StyledForm = styled.form`
-    font-size: 15px;
-    font-family: OCR A Std, monospace;
-    padding: 60px;
-    align: center;
-    text-align: center;
-`;
-
 
 class Objectives extends React.Component {
 
@@ -67,24 +55,33 @@ class Objectives extends React.Component {
     }
 
     render() {
-        // const { path, url } = useRouteMatch();
         return (
             <div>
-                {/* <Container>
-                    <Objective>
+                <Container>
+                    {/* <Objective>
                         <ObjectiveOverlay>
                             <Description>
                                 Example Objective
                             </Description>
                         </ObjectiveOverlay>
-                    </Objective>
-                </Container> */}
-                <div>Objectives</div>
-                <Link to={'/newObjectives'}>
+                    </Objective> */}
+                </Container>
+
+                <br></br>
+                <Link to={'/objectives'}>
                     <StyledDiv>
                         New Objective
                     </StyledDiv>
                 </Link>
+                <br></br>
+
+
+                <Suspense fallback={<div></div>}>
+                    <Route exact path={'/objectives'}>
+                        <br></br>
+                        <NewObjective/>
+                    </Route> 
+                </Suspense>
             </div>
         );
 

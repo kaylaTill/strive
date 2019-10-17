@@ -149,13 +149,8 @@ class UserHomePage extends React.Component {
                             </Center>
                         </Route>
 
-                        <Route exact={true} path={'/objectives'}>
+                        <Route path={'/objectives'}>
                             <Objectives/>
-                        </Route>
-
-                        {/* NEW OBJECTIVE */}
-                        <Route exact={true} path={'/newObjective'}>
-                            <NewObjective />
                         </Route>
                     </Switch>
                 </Suspense>  
