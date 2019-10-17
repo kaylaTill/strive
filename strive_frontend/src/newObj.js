@@ -6,7 +6,7 @@ import { BrowserRouter as Router, Link, Route, Switch } from 'react-router-dom';
 // import DatePicker from 'react-datepicker2';
 
 const StyledForm = styled.form`
-    position: fixed;
+    position: static
     left: 200px;
     botton: 100%;
     align: center;

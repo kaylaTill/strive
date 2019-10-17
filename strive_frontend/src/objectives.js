@@ -15,6 +15,9 @@ const StyledDiv = styled.div`
     text-align: center;
     font-family: OCR A Std, monospace;
     border-style: solid;
+    flex: 1,
+    alignItems: 'center',
+    paddingTop: 50
 `
 
 const ObjectiveOverlay = styled.div`
@@ -45,7 +48,9 @@ const Description = styled.div`
     font-size: 15px;
     font-family: OCR A Std, monospace;
 `
-
+const Page = styled.div`
+    flex: 1
+`
 
 class Objectives extends React.Component {
 
