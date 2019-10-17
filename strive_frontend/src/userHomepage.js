@@ -104,30 +104,22 @@ class UserHomePage extends React.Component {
 
     handleSubmit(name, timeSpan, keyResults1, keyResults2, keyResults3, keyResults4, keyResults5) {
         
-        axios.post('/addObjective');
-        // name: name,
-        // timeSpan: timeSpan,
-        // keyResults1: keyResults1,
-        // keyResults2: keyResults2,
-        // keyResults3: keyResults3,
-        // keyResults4: keyResults4,
-        // keyResults5: keyResults5,
-        // .then((response) => {
-            //     if (response.status == 200) {
-            //         console.log(response.data);
-            //         this.setState({
-            //             redirectSuccess: true,
-            //             redirectFailure: false,
-            //             sessionOpen: true
-            //         })
-            //     }
-            // })
-            // .catch((error) => {
-            //     this.setState({
-            //         redirectSuccess: false,
-            //         redirectFailure: true
-            //     })
-            // });
+        axios.post('/addObjective', {
+            name: name,
+            timeSpan: timeSpan,
+            keyResults1: keyResults1,
+            keyResults2: keyResults2,
+            keyResults3: keyResults3,
+            keyResults4: keyResults4,
+            keyResults5: keyResults5
+        })
+            .then((response) => {
+                console.log(response);
+                    
+            })
+            .catch((error) => {
+                console.log(error);
+            });
     }
 
 

@@ -133,13 +133,23 @@ router.post('/addObjective', (req, res, next) => {
     }
   })
   .then((result) => {
-    console.log(result.id);
+    objectives.Objective.create({
+      name: req.body.name,
+      timeSpan: req.body.timeSpan,
+      keyResult1: req.body.keyResult1,
+      keyResult2: req.body.keyResult2,
+      keyResult3: req.body.keyResult3,
+      keyResult4: req.body.keyResult4,
+      keyResult5: req.body.keyResult5,
+      user_id: result
+    });
+    console.log('Objective Created!');
+    res.json('Objective Created');
   })
-  // objectives.Objective
-
-
-
-
+  .catch((err) => {
+    console.log(err);
+    res.sendStatus(404);
+  })
 })
 
 

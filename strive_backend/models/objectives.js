@@ -2,7 +2,7 @@
 var Sequelize = require("sequelize");
 // connect to db 
 const sequelize = new Sequelize('mysql://root@localhost:3306/strive');
-const User = require('./users.js');
+const user = require('./users.js');
 const Objective = sequelize.define('objective', {
     // objectives collumns
     name: {
@@ -32,16 +32,10 @@ const Objective = sequelize.define('objective', {
     keyResult5: {
         type: Sequelize.STRING,
         allowNull: false
+    },
+    user_id: {
+        type: Sequelize.INTEGER
     }
-    // },
-    // user_id: {
-    //     type: Sequelize.INTEGER,
-    //     references: {
-    //         model: User.User,
-    //         key: 'id'
-    //     },
-    //     allowNull: false
-    // }
 }, {
     sequelize,
     modelName: 'objective'
@@ -62,23 +56,7 @@ sequelize
 // sync model
 Objective.sync({ force: false }).then(() => {
     // sync obj model
-    Objective.create({
-        name: 'Test Objectives',
-        timeSpan: '6 Months',
-        keyResult1:'KR',
-        keyResult2: 'KR',
-        keyResult3: 'KR',
-        keyResult4: 'KR',
-        keyResult5: 'KR',
-        userID: {
-            type: Sequelize.INTEGER,
-            references: {
-                model: 'User',
-                key: 'id'
-            }
-        }
-    })
-    console.log('Synced to user table');
+    console.log('Synced to objective table');
 });
 
 
