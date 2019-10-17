@@ -96,6 +96,7 @@ class NewObjective extends React.Component {
                                 name="timeSpan"
                                 value={this.state.timeSpan}
                                 onChange={this.handleChange} >
+                                <option>Select a TimeSpan for your OKR</option>
                                 <option>3 Month Objective</option>
                                 <option>6 Month Objective</option>
                                 <option>9 Month Objective</option>

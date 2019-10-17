@@ -135,7 +135,7 @@ class UserHomePage extends React.Component {
 
                     <NavRight>
                         <Link to={'/objectives'}>
-                            <NavItem onClick={this.handlePageShift}> Objectives </NavItem>
+                            <NavItem > Objectives </NavItem>
                         </Link>
                         <NavItem>|</NavItem>
 
@@ -148,8 +148,9 @@ class UserHomePage extends React.Component {
                             <NavItem> Progress </NavItem>
                         </Link>
                         <NavItem>|</NavItem>
-
-                        <NavItem onClick={this.handleLogout}> Logout</NavItem>
+                        <Link to={'/'}>
+                            <NavItem onClick={this.handleLogout}> Logout</NavItem>
+                        </Link>
                     </NavRight>
                 </Nav>
 
@@ -172,7 +173,7 @@ class UserHomePage extends React.Component {
                         </Route>
 
                         <Route path={'/objectives'}>
-                            <Objectives handleSubmit={this.handleSubmit}/>
+                            <Objectives/>
                         </Route>
 
                         <Route path={'/newObjective'}>
