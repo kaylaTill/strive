@@ -62,6 +62,7 @@ class UserHomePage extends React.Component {
             sessionStatus: true
         }
         this.handleLogout = this.handleLogout.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
     }
 
    componentDidMount() {
@@ -99,6 +100,34 @@ class UserHomePage extends React.Component {
                 console.log(err);
             });
         }
+
+
+    handleSubmit(name, timeSpan, keyResults1, keyResults2, keyResults3, keyResults4, keyResults5) {
+        console.log(name + ',' + timeSpan + ',' + keyResults1 + ',' + keyResults2 + ',' + keyResults3 + ',' + keyResults4 + ',' + keyResults5)
+        // .then((response) => {
+            //     if (response.status == 200) {
+                // name: name,
+                // timeSpan: timeSpan,
+                // keyResults1: keyResults1,
+                // keyResults2: keyResults2,
+                // keyResults3: keyResults3,
+                // keyResults4: keyResults4,
+                // keyResults5: keyResults5,
+            //         console.log(response.data);
+            //         this.setState({
+            //             redirectSuccess: true,
+            //             redirectFailure: false,
+            //             sessionOpen: true
+            //         })
+            //     }
+            // })
+            // .catch((error) => {
+            //     this.setState({
+            //         redirectSuccess: false,
+            //         redirectFailure: true
+            //     })
+            // });
+    }
 
 
     render() {
@@ -150,7 +179,11 @@ class UserHomePage extends React.Component {
                         </Route>
 
                         <Route path={'/objectives'}>
-                            <Objectives/>
+                            <Objectives handleSubmit={this.handleSubmit}/>
+                        </Route>
+
+                        <Route path={'/newObjective'}>
+                            <NewObjective handleSubmit={this.handleSubmit}/>
                         </Route>
                     </Switch>
                 </Suspense>  

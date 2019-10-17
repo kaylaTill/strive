@@ -1,9 +1,10 @@
-import React, {Suspense} from 'react';
+import React, { Suspense, createRef} from 'react';
 import styled from 'styled-components';
 import { Form, Button, Overlay } from 'react-bootstrap';
 import { BrowserRouter as Router, Link, Route, Switch, Redirect, useParams, useRouteMatch  } from 'react-router-dom';
 const NewObjective = (React.lazy(() => import('./newObj.js')));
 
+export 
 
 const StyledDiv = styled.div`
     height:40px; 
@@ -19,18 +20,6 @@ const StyledDiv = styled.div`
     paddingTop: 50px;
 `
 
-const ObjectiveOverlay = styled.div`
-    position: absolute;
-    bottom: 100%;
-    left: 0;
-    right: 0;
-    background-color: #grey;
-    overflow: hidden;
-    color: white;
-    width: 100%;
-    height:0;
-    transition: .5s ease;
-`
 const Container = styled.div`
     width: 1150px;
     height: 400px;
@@ -55,8 +44,13 @@ class Objectives extends React.Component {
 
     constructor(props) {
         super(props);
-
+        // this.showForm = this.showForm.bind(this);
+        // this.handleSubmit = this.handleSubmit.bind(this);
     }
+
+
+    
+
 
     render() {
         return (
@@ -72,7 +66,7 @@ class Objectives extends React.Component {
                 </Container>
 
                 <br></br>
-                <Link to={'/objectives'}>
+                <Link to={'/newObjective'}>
                     <StyledDiv>
                         New Objective
                     </StyledDiv>
@@ -81,7 +75,7 @@ class Objectives extends React.Component {
 
 
                 <Suspense fallback={<div></div>}>
-                    <Route exact path={'/objectives'}>
+                    <Route exact path={'/newObjective'}>
                         <br></br>
                         <NewObjective/>
                     </Route> 

@@ -125,7 +125,13 @@ router.get('/logout', (req, res, next) => {
 
 
 
+// router.post('/newObjective', (req, res, next) => {
+//   //set user to user_id => foreign key
+//   req.session.user 
 
+
+
+// })
 
 
 module.exports = router;

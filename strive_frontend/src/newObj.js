@@ -17,79 +17,165 @@ const StyledForm = styled.form`
     text-align: center;
 `;
 
-const NewObjective = ((props) => {
-    return (
-        <StyledForm>
-            <Form.Row>
-                <Form.Group >
-                    <Form.Label>Objective Name</Form.Label>
+class NewObjective extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            name: "",
+            timeSpan: "",
+            keyResult1: "",
+            keyResult2: "",
+            keyResult3: "",
+            keyResult4: "",
+            keyResult5: ""
+        }
+        this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleChange = this.handleChange.bind(this);
+        this.validForm = this.validForm.bind(this);
+
+    }
+
+    validForm() {
+        return (
+            this.state.name.length > 0 &&
+            this.state.timeSpan.length > 0 &&
+            this.state.keyResult1.length > 0 &&
+            this.state.keyResult2.length > 0 &&
+            this.state.keyResult3.length > 0 &&
+            this.state.keyResult4.length > 0 &&
+            this.state.keyResult5.length > 0
+        );
+    }
+
+
+    async handleSubmit(event) {
+        event.preventDefault();
+        if (!this.validForm()) {
+            alert('Sorry not a valid form!')
+        } else {
+            this.props.handleSubmit(
+                this.state.name,
+                this.state.timeSpan,
+                this.state.keyResult1,
+                this.state.keyResult2,
+                this.state.keyResult3,
+                this.state.keyResult4,
+                this.state.keyResult5
+            )
+        }
+
+    }
+
+    handleChange(event) {
+        this.setState({ [event.target.name]: event.target.value });
+    }
+
+
+    render() {
+        return (
+            <StyledForm onSubmit={this.handleSubmit}>
+                <Form>
+                    <Form.Row>
+                        <Form.Group >
+                            <Form.Label>Objective Name</Form.Label>
+                            <br></br>
+                            <Form.Control 
+                                type="text"
+                                placeholder="Objective Name"
+                                name="name"
+                                value={this.state.name}
+                                onChange={this.handleChange} />
+                        </Form.Group>
+    
+    
+                        <br></br>
+                        <Form.Group >
+                            <Form.Label>Time Span</Form.Label>
+                            <br></br>
+                            <Form.Control as="select" 
+                                name="timeSpan"
+                                value={this.state.timeSpan}
+                                onChange={this.handleChange} >
+                                <option>3 Month Objective</option>
+                                <option>6 Month Objective</option>
+                                <option>9 Month Objective</option>
+                                <option>12 Month Objective</option>
+                            </Form.Control >
+                        </Form.Group>
+                    </Form.Row>
+    
+    
                     <br></br>
-                    <Form.Control type="text" placeholder="Objective Name" />
-                </Form.Group>
-
-
-                <br></br>
-                <Form.Group >
-                    <Form.Label>Time Span</Form.Label>
+                    <div>Key Results</div>
                     <br></br>
-                    <Form.Control as="select">
-                        <option>3 Month Objective</option>
-                        <option>6 Month Objective</option>
-                        <option>9 Month Objective</option>
-                        <option>12 Month Objective</option>
-                    </Form.Control>
-                </Form.Group>
-            </Form.Row>
-
-
-            <br></br>
-            <div>Key Results</div>
-            <br></br>
-            <Form.Group >
-                <Form.Label>Key Result One</Form.Label>
-                <br></br>
-                <Form.Control placeholder="First Priority" />
-            </Form.Group>
-
-            <br></br>
-            <Form.Group >
-                <Form.Label>Key Result Two</Form.Label>
-                <br></br>
-                <Form.Control placeholder="Second Priority" />
-                {/* <Form.Label>Key Result Two Deadline</Form.Label> */}
-                {/* <DatePicker
-            value={this.state.value}
-            onChange={value => this.setState({ value })}
-        /> */}
-            </Form.Group>
-            <br></br>
-            <Form.Group >
-                <Form.Label>Key Result Two</Form.Label>
-                <br></br>
-                <Form.Control placeholder="Third Priority" />
-            </Form.Group>
-
-            <br></br>
-            <Form.Group >
-                <Form.Label>Key Result Four</Form.Label>
-                <br></br>
-                <Form.Control placeholder="Fourth Priority" />
-            </Form.Group>
-
-            <br></br>
-            <Form.Group >
-                <Form.Label>Key Result Five</Form.Label>
-                <br></br>
-                <Form.Control placeholder="Fifth Priority" />
-            </Form.Group>
-
-            <br></br>
-            <Button variant="primary" type="submit">
-                Submit
-            </Button>
-        </StyledForm>
-    );
-
-})
+                    <Form.Group >
+                        <Form.Label>Key Result One</Form.Label>
+                        <br></br>
+                        <Form.Control placeholder="First Priority" 
+                            name="keyResult1"
+                            value={this.state.keyResult1}
+                            onChange={this.handleChange} />
+                    </Form.Group>
+    
+                    <br></br>
+                    <Form.Group >
+                        <Form.Label>Key Result Two</Form.Label>
+                        <br></br>
+                        <Form.Control 
+                            placeholder="Second Priority"
+                            name="keyResult2"
+                            value={this.state.keyResult2}
+                            onChange={this.handleChange}
+                         />
+                        {/* <Form.Label>Key Result Two Deadline</Form.Label> */}
+                        {/* <DatePicker
+                    value={this.state.value}
+                    onChange={value => this.setState({ value })}
+                /> */}
+                    </Form.Group>
+                    <br></br>
+                    <Form.Group >
+                        <Form.Label>Key Result Two</Form.Label>
+                        <br></br>
+                        <Form.Control 
+                            placeholder="Third Priority" 
+                            name="keyResult3"
+                            value={this.state.keyResult3}
+                            onChange={this.handleChange}/>
+                    </Form.Group>
+    
+                    <br></br>
+                    <Form.Group >
+                        <Form.Label>Key Result Four</Form.Label>
+                        <br></br>
+                        <Form.Control 
+                            placeholder="Fourth Priority"
+                            name="keyResult4"
+                            value={this.state.keyResult4}
+                            onChange={this.handleChange} 
+                        />
+                    </Form.Group>
+    
+                    <br></br>
+                    <Form.Group >
+                        <Form.Label>Key Result Five</Form.Label>
+                        <br></br>
+                        <Form.Control 
+                            placeholder="Fifth Priority"
+                            name="keyResult5"
+                            value={this.state.keyResult5}
+                            onChange={this.handleChange} 
+                        />
+                    </Form.Group>
+    
+                    <br></br>
+                    <Button variant="primary" type="submit">
+                        Submit
+                    </Button>
+                </Form>
+            </StyledForm>
+        );
+    }
+};
 
 export default NewObjective;
