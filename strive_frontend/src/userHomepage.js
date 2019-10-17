@@ -65,46 +65,43 @@ class UserHomePage extends React.Component {
     }
 
    componentDidMount() {
-       axios.get('/quote')
-           .then(({ data }) => {
-               this.setState({
-                   quote_text: data.quote_text,
-                   quote_author: data.quote_author
-               })
-           })
-           .catch((err) => {
-               console.log(err);
-           });
+       axios.get('/loggedIn')
+       .then((res) => {
+           this.setState({
+               sessionStatus: true
+            })
+        })
+        .catch(() => {
+            this.setState({
+                sessionStatus: false
+            })
+            // window.location.reload(false)
+        });
 
-        axios.get('/loggedIn')
-           .then((res) => {
+        axios.get('/quote')
+            .then(({ data }) => {
                 this.setState({
-                    sessionStatus: true
+                    quote_text: data.quote_text,
+                    quote_author: data.quote_author
                 })
-           })
-           .catch(() => {
-               this.setState({
-                   sessionStatus: false
-               })
-               window.location.reload(false)
+            })
+            .catch((err) => {
+                console.log(err);
             });
         }
         
         handleLogout() {
             axios.get('/logout')
-            .then((response) => {
-                console.log('byebye, session destroyed by logout.');
+            .then(() => {
                 window.location.reload(false)
             })
             .catch((err) => {
                 console.log(err);
             });
-    }
-
+        }
 
 
     render() {
-        const {sessionStatus} = this.state;
         return (
             <Router>
                 <Nav>
@@ -153,7 +150,7 @@ class UserHomePage extends React.Component {
                         </Route>
 
                         <Route exact={true} path={'/objectives'}>
-                            <Objectives />
+                            <Objectives/>
                         </Route>
 
                         {/* NEW OBJECTIVE */}

@@ -115,12 +115,12 @@ router.get('/loggedIn', function(req, res, next) {
 });
 
 router.get('/logout', (req, res, next) => {
-  req.session.destroy(function (err) {
+  req.session.destroy((success, err) => {
     if (err) {
-      console.log(err);
+      return res.sendStatus(404)
     }
-    console.log('byebye from /logout');
   })
+  return res.sendStatus(200);
 })
 
 
