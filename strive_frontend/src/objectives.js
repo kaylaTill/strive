@@ -8,7 +8,6 @@ const NewObjective = (React.lazy(() => import('./newObj.js')));
 const StyledDiv = styled.div`
     height:40px; 
     width:200px; 
-    margin: -20px -50px; 
     position:relative;
     top:50%; 
     left: 45%;
@@ -17,7 +16,7 @@ const StyledDiv = styled.div`
     border-style: solid;
     flex: 1,
     alignItems: 'center',
-    paddingTop: 50
+    paddingTop: 50px;
 `
 
 const ObjectiveOverlay = styled.div`
@@ -33,7 +32,7 @@ const ObjectiveOverlay = styled.div`
     transition: .5s ease;
 `
 const Container = styled.div`
-    width: 1500px;
+    width: 1150px;
     height: 400px;
     border-style: solid;
 `;

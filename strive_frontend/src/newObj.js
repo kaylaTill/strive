@@ -6,90 +6,84 @@ import { BrowserRouter as Router, Link, Route, Switch } from 'react-router-dom';
 // import DatePicker from 'react-datepicker2';
 
 const StyledForm = styled.form`
-    position: static
-    left: 200px;
-    botton: 100%;
+    position: relative;
+    left: 5%
+    botton: 900%;
     align: center;
     text-align: center;
-    width: 960px;
     font-size: 20px;
     font-family: OCR A Std, monospace;
     align: center;
     text-align: center;
-    display: inline-block;
 `;
-
-const StyledInputs = styled.div`
-    width: 600px;
-    position: relative;
-    
-`
 
 const NewObjective = ((props) => {
     return (
         <StyledForm>
             <Form.Row>
-                <Form.Group as={Col} >
+                <Form.Group >
                     <Form.Label>Objective Name</Form.Label>
-                    <StyledInputs>
-                        <Form.Control type="text" placeholder="Objective Name" />
-                    </StyledInputs>
+                    <br></br>
+                    <Form.Control type="text" placeholder="Objective Name" />
                 </Form.Group>
 
-                <Form.Group as={Col} >
+
+                <br></br>
+                <Form.Group >
                     <Form.Label>Time Span</Form.Label>
-                    <StyledInputs>
-                        <Form.Control as="select">
+                    <br></br>
+                    <Form.Control as="select">
                         <option>3 Month Objective</option>
                         <option>6 Month Objective</option>
                         <option>9 Month Objective</option>
                         <option>12 Month Objective</option>
-                        </Form.Control>
-                    </StyledInputs>
+                    </Form.Control>
                 </Form.Group>
             </Form.Row>
 
 
+            <br></br>
             <div>Key Results</div>
+            <br></br>
             <Form.Group >
                 <Form.Label>Key Result One</Form.Label>
-                <StyledInputs>
-                    <Form.Control placeholder="First Priority" />
-                </StyledInputs>
+                <br></br>
+                <Form.Control placeholder="First Priority" />
             </Form.Group>
 
+            <br></br>
             <Form.Group >
                 <Form.Label>Key Result Two</Form.Label>
-                <StyledInputs>
-                    <Form.Control placeholder="Second Priority" />
-                </StyledInputs>
+                <br></br>
+                <Form.Control placeholder="Second Priority" />
                 {/* <Form.Label>Key Result Two Deadline</Form.Label> */}
                 {/* <DatePicker
             value={this.state.value}
             onChange={value => this.setState({ value })}
         /> */}
             </Form.Group>
+            <br></br>
             <Form.Group >
                 <Form.Label>Key Result Two</Form.Label>
-                <StyledInputs>
-                    <Form.Control placeholder="Third Priority" />
-                </StyledInputs>
+                <br></br>
+                <Form.Control placeholder="Third Priority" />
             </Form.Group>
 
+            <br></br>
             <Form.Group >
                 <Form.Label>Key Result Four</Form.Label>
-                <StyledInputs>
-                    <Form.Control placeholder="Fourth Priority" />
-                </StyledInputs>
+                <br></br>
+                <Form.Control placeholder="Fourth Priority" />
             </Form.Group>
 
+            <br></br>
             <Form.Group >
                 <Form.Label>Key Result Five</Form.Label>
-                <StyledInputs>
-                    <Form.Control placeholder="Fifth Priority" />
-                </StyledInputs>
+                <br></br>
+                <Form.Control placeholder="Fifth Priority" />
             </Form.Group>
 
+            <br></br>
             <Button variant="primary" type="submit">
                 Submit
             </Button>
