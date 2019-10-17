@@ -127,6 +127,7 @@ router.get('/quote', function (req, res, next) {
 router.post('/addObjective', (req, res, next) => {
   //set user to user_id => foreign key
   var user = req.session.user.username;
+  var requestData = req.body;
   users.User.findOne({
     where: {
       username: user
@@ -134,22 +135,24 @@ router.post('/addObjective', (req, res, next) => {
   })
   .then((result) => {
     objectives.Objective.create({
-      name: req.body.name,
-      timeSpan: req.body.timeSpan,
-      keyResult1: req.body.keyResult1,
-      keyResult2: req.body.keyResult2,
-      keyResult3: req.body.keyResult3,
-      keyResult4: req.body.keyResult4,
-      keyResult5: req.body.keyResult5,
+      name: requestData.name,
+      timeSpan: requestData.timeSpan,
+      keyResult1: requestData.keyResult1,
+      keyResult2: requestData.keyResult2,
+      keyResult3: requestData.keyResult3,
+      keyResult4: requestData.keyResult4,
+      keyResult5: requestData.keyResult5,
       user_id: result
-    });
-    console.log('Objective Created!');
-    res.json('Objective Created');
+    })
+  })
+  .then(() => {
+    res.json('Succesfull Addition');
+    console.log('successs');
   })
   .catch((err) => {
     console.log(err);
     res.sendStatus(404);
-  })
+  });
 })
 
 
