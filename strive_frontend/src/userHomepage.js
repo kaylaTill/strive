@@ -86,7 +86,6 @@ class UserHomePage extends React.Component {
                this.setState({
                    sessionStatus: false
                })
-               this.forceUpdate() 
                window.location.reload(false)
             });
         }
@@ -94,11 +93,7 @@ class UserHomePage extends React.Component {
         handleLogout() {
             axios.get('/logout')
             .then((response) => {
-                this.setState({
-                    sessionStatus: false
-                })
                 console.log('byebye, session destroyed by logout.');
-                this.forceUpdate() 
                 window.location.reload(false)
             })
             .catch((err) => {
@@ -135,14 +130,21 @@ class UserHomePage extends React.Component {
                         </Link>
                         <NavItem>|</NavItem>
 
-                        <Link to={'/'}>
-                            <NavItem onClick={this.handleLogout}> Logout</NavItem>
-                        </Link>
+                        <NavItem onClick={this.handleLogout}> Logout</NavItem>
                     </NavRight>
                 </Nav>
+
                 <Suspense fallback={<div></div>}>
                     <Switch>
-                        < Route exact={true} path={'/'}>
+                        <Route exact={true} path={'/'}>
+                            <Center>
+                                <div>{`${this.state.quote_text}`}</div>
+                                <br></br>
+                                <div>{`- ${this.state.quote_author}`}</div>
+                            </Center>
+                        </Route>
+
+                        <Route exact={true} path={'/login'}>
                             <Center>
                                 <div>{`${this.state.quote_text}`}</div>
                                 <br></br>

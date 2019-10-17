@@ -89,11 +89,6 @@ class RootHome extends React.Component {
             password: password
         })
         .then(() => {
-            this.setState({
-                sessionOpen: true
-            })
-        })
-        .then(() => {
             window.location.reload(false);
         })
         .catch((error) => {
