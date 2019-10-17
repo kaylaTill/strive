@@ -126,11 +126,15 @@ router.get('/quote', function (req, res, next) {
 
 router.post('/addObjective', (req, res, next) => {
   //set user to user_id => foreign key
-  var user = req.session.user;
-  console.log(user);
-  // users.User.findOne({
-  //   e
-  // })
+  var user = req.session.user.username;
+  users.User.findOne({
+    where: {
+      username: user
+    }
+  })
+  .then((result) => {
+    console.log(result.id);
+  })
   // objectives.Objective
 
 
