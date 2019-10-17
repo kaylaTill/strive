@@ -1,5 +1,5 @@
 import React from "react";
-import { FormGroup, FormControl, Form, Button} from "react-bootstrap";
+import {Form, Button} from "react-bootstrap";
 import styled from 'styled-components';
 import { BrowserRouter as Router, Link, Route, Switch } from 'react-router-dom';
 
@@ -21,8 +21,10 @@ class Register extends React.Component {
             last_name: "",
             username: "",
             password: "",
-            confirmPassword: ""
+            confirmPassword: "",
+            validated: true
         }
+
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleChange = this.handleChange.bind(this);
         this.validForm = this.validForm.bind(this);
@@ -40,20 +42,13 @@ class Register extends React.Component {
     }
 
     async handleSubmit(event) {
-        event.preventDefault();
-
-        if (!this.validForm()) {
-            alert('Sorry not a valid form!')
-        } else {
-            this.props.handleRegister(
-                this.state.email,
-                this.state.first_name,
-                this.state.last_name,
-                this.state.username,
-                this.state.password
-            )
-        }
-
+        this.props.handleRegister(
+            this.state.email,
+            this.state.first_name,
+            this.state.last_name,
+            this.state.username,
+            this.state.password
+        )
     }
 
 
@@ -64,74 +59,88 @@ class Register extends React.Component {
 
     render() {
         return (
-            <StyledForm onSubmit={this.handleSubmit} >
-                <FormGroup controlId="email">
-                    <Form.Label>Email</Form.Label>
-                    <br></br>
-                    <FormControl
-                        type="email"
-                        name="email"
-                        value={this.state.email}
-                        onChange={this.handleChange}
+            <StyledForm>
+                <Form onSubmit={this.handleSubmit}>
+                    <Form.Group md="4" controlId="email">
+                        <Form.Label>Email</Form.Label>
+                        <br></br>
+                        <Form.Control
+                            controlId="validationCustom01"
+                            type="email"
+                            name="email"
+                            required
+                            value={this.state.email}
+                            onChange={this.handleChange}
+                            />
+                    </Form.Group>
+
+                    <Form.Group md="4"controlId="validationCustom02">
+                        <Form.Label>First Name</Form.Label>
+                        <br></br>
+                        <Form.Control
+                            type="first_name"
+                            name="first_name"
+                            required
+                            value={this.state.first_name}
+                            onChange={this.handleChange}
+                            />
+                    </Form.Group>
+
+                    <Form.Group md="4"controlId="validationCustom03">
+                        <Form.Label>Last Name</Form.Label>
+                        <br></br>
+                        <Form.Control
+                            md="4" 
+                            type="last_name"
+                            name="last_name"
+                            required
+                            value={this.state.last_name}
+                            onChange={this.handleChange}
                         />
-                </FormGroup>
+                       
+                    </Form.Group>
 
-                <FormGroup controlId="first_name">
-                    <Form.Label>First Name</Form.Label>
-                    <br></br>
-                    <FormControl
-                        type="first_name"
-                        name="first_name"
-                        value={this.state.first_name}
-                        onChange={this.handleChange}
+                    <Form.Group md="4"  controlId="validationCustomUsername">
+                        <Form.Label>Username</Form.Label>
+                        <br></br>
+                        <Form.Control
+                            controlId="validationCustom03"
+                            type="username"
+                            name="username"
+                            required
+                            value={this.state.username}
+                            onChange={this.handleChange}
                         />
-                </FormGroup>
+                     
+                    </Form.Group>
 
-                <FormGroup controlId="last_name">
-                    <Form.Label>Last Name</Form.Label>
-                    <br></br>
-                    <FormControl
-                        type="last_name"
-                        name="last_name"
-                        value={this.state.last_name}
-                        onChange={this.handleChange}
-                    />
-                </FormGroup>
+                    <Form.Group md="4" controlId="validationCustom04">
+                        <Form.Label>Password</Form.Label>
+                        <br></br>
+                        <Form.Control
+                            type="password"
+                            name="password"
+                            required
+                            value={this.state.password}
+                            onChange={this.handleChange}
+                        />
+                       
+                    </Form.Group>
 
-                <FormGroup controlId="username">
-                    <Form.Label>Username</Form.Label>
+                    <Form.Group md="4" controlId="validationCustom05">
+                        <Form.Label>Confirm Password</Form.Label>
+                        <br></br>
+                        <Form.Control
+                            type="password"
+                            name="confirmPassword"
+                            required
+                            value={this.state.confirmPassword}
+                            onChange={this.handleChange}
+                        />
+                    </Form.Group>
                     <br></br>
-                    <FormControl
-                        type="username"
-                        name="username"
-                        value={this.state.username}
-                        onChange={this.handleChange}
-                    />
-                </FormGroup>
-
-                <FormGroup controlId="password">
-                    <Form.Label>Password</Form.Label>
-                    <br></br>
-                    <FormControl
-                        type="password"
-                        name="password"
-                        value={this.state.password}
-                        onChange={this.handleChange}
-                    />
-                </FormGroup>
-
-                <FormGroup controlId="confirmPassword">
-                    <Form.Label>Confirm Password</Form.Label>
-                    <br></br>
-                    <FormControl
-                        type="password"
-                        name="confirmPassword"
-                        value={this.state.confirmPassword}
-                        onChange={this.handleChange}
-                    />
-                </FormGroup>
-                <br></br>
-                <Button type="submit">Sign Up</Button>
+                    <Button type="submit">Sign Up</Button>
+                </Form>
             </StyledForm> 
         );
     }

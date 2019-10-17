@@ -58,6 +58,7 @@ class Login extends React.Component {
                     <FormControl
                         type="username"
                         name="username"
+                        required
                         value={this.state.username}
                         onChange={this.handleChange}
                     />
@@ -69,6 +70,7 @@ class Login extends React.Component {
                     <FormControl
                         type="password"
                         name="password"
+                        required
                         value={this.state.password}
                         onChange={this.handleChange}
                     />
