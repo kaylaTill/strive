@@ -4,7 +4,7 @@ var path = require('path');
 const Sequelize = require('sequelize');
 const quotes = require('../models/quotes.js');
 const users = require('../models/users.js');
-const objectives = require('../models/objectives');
+const objectives = require('../models/objectives.js');
 var session = require('express-session');
 const bcrypt = require('bcrypt');
 const saltRounds = 10;
@@ -14,18 +14,6 @@ router.get('/', function(req, res, next) {
   res.sendFile(path.resolve(__dirname, '../../strive_frontend/dist/index.html'));
 });
 
-router.get('/home', function(req, res, next) {
-  res.sendFile(path.resolve(__dirname, '../../strive_frontend/dist/index.html'));
-});
-
-
-//GET a single quote each time we login
-router.get('/quote', function (req, res, next) {
-  var rand_id = Math.floor(Math.random() * 51) + 1;
-  quotes.Quote.findOne({ where: { id: rand_id } }).then(quote => {
-    res.json(quote);
-  })
-});
 
 
 //register=> post new user
@@ -125,13 +113,32 @@ router.get('/logout', (req, res, next) => {
 })
 
 
+// USER HOME ROUTES
+
+//GET a single quote each time we login
+router.get('/quote', function (req, res, next) {
+  var rand_id = Math.floor(Math.random() * 51) + 1;
+  quotes.Quote.findOne({ where: { id: rand_id } }).then(quote => {
+    res.json(quote);
+  })
+});
+
 
 router.post('/addObjective', (req, res, next) => {
   //set user to user_id => foreign key
-  // req.session.user 
+  var user = req.session.user;
+  console.log(user);
+  // users.User.findOne({
+  //   e
+  // })
+  // objectives.Objective
+
+
 
 
 })
+
+
 
 
 module.exports = router;
