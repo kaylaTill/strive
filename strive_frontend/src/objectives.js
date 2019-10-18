@@ -26,7 +26,7 @@ const Container = styled.div`
 const Objective = styled.div`
     display: block;
     width: 30%;
-    height: 30%;
+    height: 40%;
     outline-style: solid;
     font-size: 20px;
 `
