@@ -22,6 +22,7 @@ class NewObjective extends React.Component {
         this.state = {
             name: "",
             timeSpan: "",
+            description: "",
             keyResult1: "",
             keyResult2: "",
             keyResult3: "",
@@ -54,6 +55,7 @@ class NewObjective extends React.Component {
         } else {
             this.props.handleSubmit(
                 this.state.name,
+                this.state.description,
                 this.state.timeSpan,
                 this.state.keyResult1,
                 this.state.keyResult2,
@@ -84,6 +86,18 @@ class NewObjective extends React.Component {
                                 name="name"
                                 required
                                 value={this.state.name}
+                                onChange={this.handleChange} />
+                        </Form.Group>
+    
+                        <Form.Group >
+                            <Form.Label>Objective Description</Form.Label>
+                            <br></br>
+                            <Form.Control 
+                                type="text"
+                                placeholder="Objective Description"
+                                name="description"
+                                required
+                                value={this.state.description}
                                 onChange={this.handleChange} />
                         </Form.Group>
     

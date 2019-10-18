@@ -101,11 +101,12 @@ class UserHomePage extends React.Component {
         }
 
 
-    handleSubmit(name, timeSpan, keyResult1, keyResult2, keyResult3, keyResult4, keyResult5) {
+    handleSubmit(name, description, timeSpan, keyResult1, keyResult2, keyResult3, keyResult4, keyResult5) {
 
         axios.post('/addObjective', {
             name: name,
             timeSpan: timeSpan,
+            description: description,
             keyResult1: keyResult1,
             keyResult2: keyResult2,
             keyResult3: keyResult3,

@@ -25,8 +25,10 @@ const Container = styled.div`
 `;
 const Objective = styled.div`
     display: block;
-    width: 100 %;
-    height: auto;
+    width: 30%;
+    height: 30%;
+    outline-style: solid;
+    font-size: 20px;
 `
 
 const Description = styled.div`
@@ -42,14 +44,31 @@ class Objectives extends React.Component {
 
     constructor(props) {
         super(props);
-        // this.showForm = this.showForm.bind(this);
-        // this.handleSubmit = this.handleSubmit.bind(this);
+        this.state = {
+            name: '',
+            timeSpan: '',
+            description: '',
+            keyResult1: '',
+            keyResult2: '',
+            keyResult3: '',
+            keyResult4: '',
+            keyResult5: ''
+        }
     }
 
     componentDidMount() {
         axios.get('/getUserObjectives')
         .then(({data}) => {
-            console.log(data);
+            this.setState({
+                name: data.name,
+                description: data.description,
+                timeSpan: data.timeSpan,
+                keyResult1: data.keyResult1,
+                keyResult2: data.keyResult2,
+                keyResult3: data.keyResult3,
+                keyResult4: data.keyResult4,
+                keyResult5: data.keyResult5
+            })
         })
         .catch((err) => {
             console.log(err);
@@ -64,13 +83,15 @@ class Objectives extends React.Component {
         return (
             <div>
                 <Container>
-                    {/* <Objective>
-                        <ObjectiveOverlay>
+                    <Objective>
+                        {this.state.name}
+                        {this.state.description}
+                        {/* <ObjectiveOverlay>
                             <Description>
                                 Example Objective
                             </Description>
-                        </ObjectiveOverlay>
-                    </Objective> */}
+                        </ObjectiveOverlay> */}
+                    </Objective>
                 </Container>
 
                 <br></br>
