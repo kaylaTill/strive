@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Link, Route, Switch, Redirect, useParams, useR
 import axios from 'axios';
 const Objectives = (React.lazy(() => import('./objectives.js')));
 const NewObjective = (React.lazy(() => import('./newObj.js')));
+const MoreObjectives = (React.lazy(() => import('./moreObjectives.js')));
 
 const Center = styled.h1`
     width: 1000px; 
@@ -56,6 +57,7 @@ class UserHomePage extends React.Component {
         this.state = {
             quote_author: "",
             quote_text: "",
+            objectives: [],
             sessionStatus: true
         }
         this.handleLogout = this.handleLogout.bind(this);
@@ -75,6 +77,16 @@ class UserHomePage extends React.Component {
             })
         });
 
+       axios.get('/getUserObjectives')
+           .then(({ data }) => {
+               this.setState({
+                   objectives: data
+               })
+           })
+           .catch((err) => {
+               console.log(err);
+           })
+
         axios.get('/quote')
             .then(({ data }) => {
                 this.setState({
@@ -85,6 +97,7 @@ class UserHomePage extends React.Component {
             .catch((err) => {
                 console.log(err);
             });
+        
     }
         
         handleLogout() {
@@ -99,7 +112,6 @@ class UserHomePage extends React.Component {
 
 
     handleSubmit(name, description, timeSpan, keyResult1, keyResult2, keyResult3, keyResult4, keyResult5) {
-
         axios.post('/addObjective', {
             name: name,
             timeSpan: timeSpan,
@@ -178,11 +190,15 @@ class UserHomePage extends React.Component {
                         </Route>
 
                         <Route path={'/objectives'}>
-                            <Objectives/>
+                            <Objectives objectives={this.state.objectives}/>
                         </Route>
 
                         <Route path={'/newObjective'}>
                             <NewObjective handleSubmit={this.handleSubmit}/>
+                        </Route>
+
+                        <Route path={'/moreObjectives'}>
+                            <MoreObjectives objectives={this.state.objectives}/>
                         </Route>
                     </Switch>
                 </Suspense>  
