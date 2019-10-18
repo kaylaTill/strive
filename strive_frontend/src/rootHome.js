@@ -14,7 +14,7 @@ const Objectives = (React.lazy(() => import('./objectives.js')));
 const NewObjective = (React.lazy(() => import('./newObj.js')));
 import axios from 'axios';
 
-const Center = styled.h1`
+const Center = styled.div`
     width: 1000px; 
     margin: auto 0;
     padding: 60px;

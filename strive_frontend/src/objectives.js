@@ -1,22 +1,22 @@
 import React, { Suspense, createRef} from 'react';
 import styled from 'styled-components';
 import axios from 'axios';
-import { Form, Button, Overlay } from 'react-bootstrap';
+import { Card } from 'react-bootstrap';
 import { BrowserRouter as Router, Link, Route, Switch, Redirect, useParams, useRouteMatch  } from 'react-router-dom';
-const NewObjective = (React.lazy(() => import('./newObj.js')));
+import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 
 const StyledDiv = styled.div`
     height:40px; 
     width:200px; 
     position:relative;
     top:50%; 
-    left: 45%;
+    left: 40%;
     text-align: center;
     font-family: OCR A Std, monospace;
     border-style: solid;
-    flex: 1,
-    alignItems: 'center',
+    alignItems: 'center';
     paddingTop: 50px;
+    color: black;
 `
 
 const Container = styled.div`
@@ -36,9 +36,7 @@ const Description = styled.div`
     font-size: 15px;
     font-family: OCR A Std, monospace;
 `
-const Page = styled.div`
-    flex: 1
-`
+
 
 class Objectives extends React.Component {
 
@@ -53,7 +51,8 @@ class Objectives extends React.Component {
             // keyResult3: '',
             // keyResult4: '',
             // keyResult5: ''
-            objectives: []
+            objectives: [],
+            isVisible: false
         }
     }
 
@@ -87,14 +86,18 @@ class Objectives extends React.Component {
         return (
             <div>
                 <Container>
-                    {this.state.objectives.map((obj) =>
-                        (<div>
-                            <Objective>{obj.name}</Objective>
-                            <Objective>{obj.description}</Objective>
-                        </div>)
-                    )}
-                </Container>
-
+                    {this.state.objectives.map((obj) =>(
+                        <div>
+                            <Card style={{ width: '20rem', height: '20rem', float: 'left'}}>
+                                <Card.Body style={{ color: '#000000', fontFamily: 'OCR A Std, monospace', textAlign: 'center'}}>
+                                    <Card.Title>{obj.name}</Card.Title>
+                                    <Card.Text>{obj.description}</Card.Text>
+                                    <Card.Link href="/keyResults" style={{color: '#000000'}}>Key Results</Card.Link>
+                                </Card.Body>
+                            </Card>
+                        </div>
+                    ))}
+                    </Container>
                 <br></br>
                 <Link to={'/newObjective'}>
                     <StyledDiv>
