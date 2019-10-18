@@ -90,7 +90,7 @@ class UserHomePage extends React.Component {
         handleLogout() {
             axios.get('/logout')
             .then(() => {
-                window.location.reload(false)
+                window.location.reload(false);
             })
             .catch((err) => {
                 console.log(err);
@@ -111,8 +111,7 @@ class UserHomePage extends React.Component {
             keyResult5: keyResult5
         })
             .then((response) => {
-                console.log(response);
-                  
+                window.location.reload(false);
             })
             .catch((error) => {
                 console.log(error);

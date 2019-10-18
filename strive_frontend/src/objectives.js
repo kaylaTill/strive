@@ -5,36 +5,15 @@ import { Card, Button } from 'react-bootstrap';
 import { BrowserRouter as Router, Link, Route, Switch, Redirect, useParams, useRouteMatch  } from 'react-router-dom';
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 
-const StyledDiv = styled.div`
-    height:40px; 
-    width:200px; 
-    position:relative;
-    top:50%; 
-    left: 40%;
-    text-align: center;
-    font-family: OCR A Std, monospace;
-    border-style: solid;
-    alignItems: 'center';
-    paddingTop: 50px;
-    color: black;
-`
 
 const Container = styled.div`
     width: 1150px;
     height: 400px;
 `;
-const Objective = styled.div`
-    display: block;
-    width: 30%;
-    height: 40%;
-    outline-style: solid;
-    font-size: 20px;
-`
-
-const Description = styled.div`
-    text-align: right; 
-    font-size: 15px;
-    font-family: OCR A Std, monospace;
+const hoverLink = styled.a`
+    :hover {
+		color: #202020;
+	}
 `
 
 
@@ -88,7 +67,7 @@ class Objectives extends React.Component {
                 <Container>
                     {this.state.objectives.map((obj) =>(
                         <div>
-                            <Card variant="outline-dark" style={{ width: '20rem', height: '20rem', float: 'left', marginRight: '5rem'}}>
+                            <Card variant="outline-dark" style={{ width: '20rem', height: '20rem', float: 'left', marginRight: '3rem', overflowX: ' hidden'}}>
                                 <Card.Body style={{ color: '#000000', fontFamily: 'OCR A Std, monospace', textAlign: 'center'}}>
                                     <Card.Title>{obj.name}</Card.Title>
                                     <Card.Text>{obj.description}</Card.Text>
@@ -97,11 +76,11 @@ class Objectives extends React.Component {
                             </Card>
                         </div>
                     ))}
-                    </Container>
+                </Container>
                 <br></br>
                 {/* <Link to={'/newObjective'}> */}
                 <Button href={'/newObjective'} variant="outline-dark" size="lg" block 
-                    style={{width: '60rem', position: 'relative', left: '6rem', }}>
+                    style={{width: '60rem', bottom: '0px',position: 'relative', left: '6rem', }}>
                     New Objective
                 </Button>
                 {/* </Link> */}
