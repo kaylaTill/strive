@@ -78,7 +78,8 @@ class UserHomePage extends React.Component {
         });
 
        axios.get('/getUserObjectives')
-           .then(({ data }) => {
+           .then(({data}) => {
+               console.log(data);
                this.setState({
                    objectives: data
                })
@@ -100,15 +101,15 @@ class UserHomePage extends React.Component {
         
     }
         
-        handleLogout() {
-            axios.get('/logout')
-            .then(() => {
-                window.location.reload(false);
-            })
-            .catch((err) => {
-                console.log(err);
-            });
-        }
+    handleLogout() {
+        axios.get('/logout')
+        .then(() => {
+            window.location.reload(false);
+        })
+        .catch((err) => {
+            console.log(err);
+        });
+    }
 
 
     handleSubmit(name, description, timeSpan, keyResult1, keyResult2, keyResult3, keyResult4, keyResult5) {

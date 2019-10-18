@@ -38,21 +38,16 @@ class NewObjective extends React.Component {
 
     async handleSubmit(event) {
         event.preventDefault();
-        if (!this.validForm()) {
-            alert('Sorry not a valid form!')
-        } else {
-            this.props.handleSubmit(
-                this.state.name,
-                this.state.description,
-                this.state.timeSpan,
-                this.state.keyResult1,
-                this.state.keyResult2,
-                this.state.keyResult3,
-                this.state.keyResult4,
-                this.state.keyResult5
-            )
-        }
-
+        this.props.handleSubmit(
+            this.state.name,
+            this.state.description,
+            this.state.timeSpan,
+            this.state.keyResult1,
+            this.state.keyResult2,
+            this.state.keyResult3,
+            this.state.keyResult4,
+            this.state.keyResult5
+        )
     }
 
     handleChange(event) {
