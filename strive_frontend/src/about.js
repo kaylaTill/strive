@@ -34,7 +34,7 @@ const AboutPage = (props) => {
             <br />
             <div>
                 <Intro>
-                    Strive is an online goal setting management system inspired by Google OKR's.
+                    Strive is an online goal setting management system inspired by OKR's.
                     We aim to help companies and indivisuals achieve their goals by setting
                     objectives, key results, and by providing visual progress trackers.
                 </Intro>
