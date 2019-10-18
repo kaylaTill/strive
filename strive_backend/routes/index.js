@@ -124,6 +124,7 @@ router.get('/quote', function (req, res, next) {
 });
 
 
+
 router.post('/addObjective', (req, res, next) => {
   //set user to user_id => foreign key
   var user = req.session.user.username;
@@ -144,16 +145,13 @@ router.post('/addObjective', (req, res, next) => {
       keyResult5: requestData.keyResult5,
       user_id: result.id
     })
-    .then(() => {
+    .then((res) => {
       console.log('addded');
+      res.send(200);
     })
     .catch((error) => {
       console.log(error);
     })
-  })
-  .then(() => {
-    res.json('Succesfull Addition');
-    console.log('successs');
   })
   .catch((err) => {
     console.log(err);
@@ -161,6 +159,29 @@ router.post('/addObjective', (req, res, next) => {
   });
 })
 
+router.get('/getUserObjectives', (req, res, next) => {
+  var user = req.session.user.username;
+  users.User.findOne({
+    where: {
+      username: user
+    }
+  })
+  .then((result) => {
+    objectives.Objective.findOne({
+      where: {
+        user_id: result.id
+      }
+    })
+    .then((result) => {
+      console.log(result);
+      console.log('found user objectives');
+    })
+    .catch((error) => {
+      console.log(error);
+    })
+  })
+
+}) 
 
 
 

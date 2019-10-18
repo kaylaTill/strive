@@ -1,10 +1,9 @@
 import React, { Suspense, createRef} from 'react';
 import styled from 'styled-components';
+import axios from 'axios';
 import { Form, Button, Overlay } from 'react-bootstrap';
 import { BrowserRouter as Router, Link, Route, Switch, Redirect, useParams, useRouteMatch  } from 'react-router-dom';
 const NewObjective = (React.lazy(() => import('./newObj.js')));
-
-export 
 
 const StyledDiv = styled.div`
     height:40px; 
@@ -45,6 +44,12 @@ class Objectives extends React.Component {
         super(props);
         // this.showForm = this.showForm.bind(this);
         // this.handleSubmit = this.handleSubmit.bind(this);
+    }
+    componentDidMount() {
+        axios.get('/getUserObjectives')
+        .then((response) => {
+            console.log(response);
+        })
     }
 
 

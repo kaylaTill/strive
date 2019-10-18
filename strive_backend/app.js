@@ -33,7 +33,7 @@ app.use('/quote', indexRouter);
 app.use('/objectives',indexRouter);
 app.use('/newObjective', indexRouter);
 app.use('/addObjective', indexRouter);
-
+app.use('/getUserObjectives', indexRouter);
 
 
 
