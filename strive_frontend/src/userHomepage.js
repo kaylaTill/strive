@@ -1,12 +1,9 @@
 import React, { Suspense } from 'react';
 import styled from 'styled-components';
-import { Button } from 'react-bootstrap';
 import { BrowserRouter as Router, Link, Route, Switch, Redirect, useParams, useRouteMatch} from 'react-router-dom';
 import axios from 'axios';
-const PrivateNav = (React.lazy(() => import('./privateNav.js')));
 const Objectives = (React.lazy(() => import('./objectives.js')));
 const NewObjective = (React.lazy(() => import('./newObj.js')));
-import { createBrowserHistory } from 'history';
 
 const Center = styled.h1`
     width: 1000px; 

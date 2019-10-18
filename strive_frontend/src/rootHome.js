@@ -9,12 +9,9 @@ const RegisterSuccess = (React.lazy(() => import('./registrationSuccess.js')));
 const RegisterFailure = (React.lazy(() => import('./registrationFailed.js')));
 const LoginFailure = (React.lazy(() => import('./loginFailed.js')));
 const PublicNav = (React.lazy(() => import('./publicNav.js')));
-// const PrivateNav = (React.lazy(() => import('./privateNav.js')));
-const Objectives = (React.lazy(() => import('./objectives.js')));
-const NewObjective = (React.lazy(() => import('./newObj.js')));
 import axios from 'axios';
 
-const Center = styled.div`
+const Center = styled.h1`
     width: 1000px; 
     margin: auto 0;
     padding: 60px;

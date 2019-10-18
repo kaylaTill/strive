@@ -1,7 +1,7 @@
 import React, { Suspense, createRef} from 'react';
 import styled from 'styled-components';
 import axios from 'axios';
-import { Card } from 'react-bootstrap';
+import { Card, Button } from 'react-bootstrap';
 import { BrowserRouter as Router, Link, Route, Switch, Redirect, useParams, useRouteMatch  } from 'react-router-dom';
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 
@@ -88,7 +88,7 @@ class Objectives extends React.Component {
                 <Container>
                     {this.state.objectives.map((obj) =>(
                         <div>
-                            <Card style={{ width: '20rem', height: '20rem', float: 'left'}}>
+                            <Card variant="outline-dark" style={{ width: '20rem', height: '20rem', float: 'left', marginRight: '5rem'}}>
                                 <Card.Body style={{ color: '#000000', fontFamily: 'OCR A Std, monospace', textAlign: 'center'}}>
                                     <Card.Title>{obj.name}</Card.Title>
                                     <Card.Text>{obj.description}</Card.Text>
@@ -99,11 +99,12 @@ class Objectives extends React.Component {
                     ))}
                     </Container>
                 <br></br>
-                <Link to={'/newObjective'}>
-                    <StyledDiv>
-                        New Objective
-                    </StyledDiv>
-                </Link>
+                {/* <Link to={'/newObjective'}> */}
+                <Button href={'/newObjective'} variant="outline-dark" size="lg" block 
+                    style={{width: '60rem', position: 'relative', left: '6rem', }}>
+                    New Objective
+                </Button>
+                {/* </Link> */}
             </div>
         );
 
