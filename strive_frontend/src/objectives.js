@@ -23,7 +23,6 @@ const StyledDiv = styled.div`
 const Container = styled.div`
     width: 1150px;
     height: 400px;
-    border-style: solid;
 `;
 const Objective = styled.div`
     display: block;
@@ -71,15 +70,6 @@ class Objectives extends React.Component {
                         New Objective
                     </StyledDiv>
                 </Link>
-                <br></br>
-
-
-                <Suspense fallback={<div></div>}>
-                    <Route exact path={'/newObjective'}>
-                        <br></br>
-                        <NewObjective/>
-                    </Route> 
-                </Suspense>
             </div>
         );
 

@@ -7,7 +7,6 @@ import { BrowserRouter as Router, Link, Route, Switch } from 'react-router-dom';
 
 const StyledForm = styled.form`
     position: relative;
-    left: 5%
     botton: 900%;
     align: center;
     text-align: center;
@@ -140,7 +139,7 @@ class NewObjective extends React.Component {
                     </Form.Group>
                     <br></br>
                     <Form.Group >
-                        <Form.Label>Key Result Two</Form.Label>
+                        <Form.Label>Key Result Three</Form.Label>
                         <br></br>
                         <Form.Control 
                             placeholder="Third Priority" 

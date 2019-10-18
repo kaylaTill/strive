@@ -101,16 +101,16 @@ class UserHomePage extends React.Component {
         }
 
 
-    handleSubmit(name, timeSpan, keyResults1, keyResults2, keyResults3, keyResults4, keyResults5) {
+    handleSubmit(name, timeSpan, keyResult1, keyResult2, keyResult3, keyResult4, keyResult5) {
 
         axios.post('/addObjective', {
             name: name,
             timeSpan: timeSpan,
-            keyResults1: keyResults1,
-            keyResults2: keyResults2,
-            keyResults3: keyResults3,
-            keyResults4: keyResults4,
-            keyResults5: keyResults5
+            keyResult1: keyResult1,
+            keyResult2: keyResult2,
+            keyResult3: keyResult3,
+            keyResult4: keyResult4,
+            keyResult5: keyResult5
         })
             .then((response) => {
                 console.log(response);
@@ -155,6 +155,8 @@ class UserHomePage extends React.Component {
 
                 <Suspense fallback={<div></div>}>
                     <Switch>
+
+                        {/* HOME */}
                         <Route exact={true} path={'/'}>
                             <Center>
                                 <div>{`${this.state.quote_text}`}</div>
@@ -162,7 +164,7 @@ class UserHomePage extends React.Component {
                                 <div>{`- ${this.state.quote_author}`}</div>
                             </Center>
                         </Route>
-
+                        {/* REDIRECTS ON LOGIN AND REGISTER */}
                         <Route exact={true} path={'/login'}>
                             <Center>
                                 <div>{`${this.state.quote_text}`}</div>

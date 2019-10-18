@@ -142,7 +142,13 @@ router.post('/addObjective', (req, res, next) => {
       keyResult3: requestData.keyResult3,
       keyResult4: requestData.keyResult4,
       keyResult5: requestData.keyResult5,
-      user_id: result
+      user_id: result.id
+    })
+    .then(() => {
+      console.log('addded');
+    })
+    .catch((error) => {
+      console.log(error);
     })
   })
   .then(() => {
