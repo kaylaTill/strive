@@ -45,10 +45,14 @@ class Objectives extends React.Component {
         // this.showForm = this.showForm.bind(this);
         // this.handleSubmit = this.handleSubmit.bind(this);
     }
+
     componentDidMount() {
         axios.get('/getUserObjectives')
-        .then((response) => {
-            console.log(response);
+        .then(({data}) => {
+            console.log(data);
+        })
+        .catch((err) => {
+            console.log(err);
         })
     }
 

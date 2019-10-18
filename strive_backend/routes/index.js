@@ -173,7 +173,7 @@ router.get('/getUserObjectives', (req, res, next) => {
       }
     })
     .then((result) => {
-      console.log(result);
+      res.send(result);
       console.log('found user objectives');
     })
     .catch((error) => {
