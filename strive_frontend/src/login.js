@@ -35,16 +35,11 @@ class Login extends React.Component {
 
     async handleSubmit(event) {
         event.preventDefault();
-
-        if (!this.validForm()) {
-            alert('Sorry not a valid form!');
-            return;
-        } else {
-            this.props.handleLogin(
-                this.state.username,
-                this.state.password
-            )
-        }
+        this.props.handleLogin(
+            this.state.username,
+            this.state.password
+        )
+        
 
     }
 

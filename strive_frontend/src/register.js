@@ -42,6 +42,7 @@ class Register extends React.Component {
     }
 
     async handleSubmit(event) {
+        event.preventDefault();
         this.props.handleRegister(
             this.state.email,
             this.state.first_name,

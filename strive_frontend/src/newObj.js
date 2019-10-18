@@ -83,6 +83,7 @@ class NewObjective extends React.Component {
                                 type="text"
                                 placeholder="Objective Name"
                                 name="name"
+                                required
                                 value={this.state.name}
                                 onChange={this.handleChange} />
                         </Form.Group>
@@ -94,6 +95,7 @@ class NewObjective extends React.Component {
                             <br></br>
                             <Form.Control as="select" 
                                 name="timeSpan"
+                                required
                                 value={this.state.timeSpan}
                                 onChange={this.handleChange} >
                                 <option>Select a TimeSpan for your OKR</option>
@@ -114,6 +116,7 @@ class NewObjective extends React.Component {
                         <br></br>
                         <Form.Control placeholder="First Priority" 
                             name="keyResult1"
+                            required
                             value={this.state.keyResult1}
                             onChange={this.handleChange} />
                     </Form.Group>
@@ -125,6 +128,7 @@ class NewObjective extends React.Component {
                         <Form.Control 
                             placeholder="Second Priority"
                             name="keyResult2"
+                            required
                             value={this.state.keyResult2}
                             onChange={this.handleChange}
                          />
@@ -140,6 +144,7 @@ class NewObjective extends React.Component {
                         <br></br>
                         <Form.Control 
                             placeholder="Third Priority" 
+                            required
                             name="keyResult3"
                             value={this.state.keyResult3}
                             onChange={this.handleChange}/>
@@ -152,6 +157,7 @@ class NewObjective extends React.Component {
                         <Form.Control 
                             placeholder="Fourth Priority"
                             name="keyResult4"
+                            required
                             value={this.state.keyResult4}
                             onChange={this.handleChange} 
                         />
@@ -164,6 +170,7 @@ class NewObjective extends React.Component {
                         <Form.Control 
                             placeholder="Fifth Priority"
                             name="keyResult5"
+                            required
                             value={this.state.keyResult5}
                             onChange={this.handleChange} 
                         />

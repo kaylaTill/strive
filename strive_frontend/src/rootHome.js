@@ -48,15 +48,8 @@ class RootHome extends React.Component {
             username: username,
             password: password,
         })
-            .then((response) => {
-                if (response.status == 200) {
-                    console.log(response.data);
-                    this.setState({
-                        redirectSuccess: true,
-                        redirectFailure: false,
-                        sessionOpen: true
-                    })
-                } 
+            .then(() => {
+                window.location.reload(false)
             })
             .catch((error) => {
                 this.setState({

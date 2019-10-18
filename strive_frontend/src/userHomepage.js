@@ -76,7 +76,6 @@ class UserHomePage extends React.Component {
             this.setState({
                 sessionStatus: false
             })
-            // window.location.reload(false)
         });
 
         axios.get('/quote')
@@ -89,7 +88,7 @@ class UserHomePage extends React.Component {
             .catch((err) => {
                 console.log(err);
             });
-        }
+    }
         
         handleLogout() {
             axios.get('/logout')
@@ -103,7 +102,7 @@ class UserHomePage extends React.Component {
 
 
     handleSubmit(name, timeSpan, keyResults1, keyResults2, keyResults3, keyResults4, keyResults5) {
-        
+
         axios.post('/addObjective', {
             name: name,
             timeSpan: timeSpan,
@@ -165,6 +164,13 @@ class UserHomePage extends React.Component {
                         </Route>
 
                         <Route exact={true} path={'/login'}>
+                            <Center>
+                                <div>{`${this.state.quote_text}`}</div>
+                                <br></br>
+                                <div>{`- ${this.state.quote_author}`}</div>
+                            </Center>
+                        </Route>
+                        <Route exact={true} path={'/register'}>
                             <Center>
                                 <div>{`${this.state.quote_text}`}</div>
                                 <br></br>
