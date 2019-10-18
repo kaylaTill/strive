@@ -153,9 +153,6 @@ router.post('/addObjective', (req, res, next) => {
       console.log(error);
     })
   })
-  .then(() => {
-    res.sendStatus(200);
-  })
   .catch((err) => {
     console.log(err);
     res.sendStatus(404);
@@ -176,13 +173,16 @@ router.get('/getUserObjectives', (req, res, next) => {
       }
     })
     .then((result) => {
-      //limiting request to only send back 3
-      res.send(result);  
+      res.send(result);
       console.log('found user objectives');
     })
     .catch((error) => {
       console.log(error);
     })
+  })
+  .catch((err) => {
+    console.log(err);
+    res.sendStatus(404);
   })
 
 }) 

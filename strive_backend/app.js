@@ -34,7 +34,8 @@ app.use('/objectives',indexRouter);
 app.use('/newObjective', indexRouter);
 app.use('/addObjective', indexRouter);
 app.use('/getUserObjectives', indexRouter);
-
+app.use('/moreObjectives', indexRouter);
+app.use('/keyResults', indexRouter);
 
 
 app.listen(3000)

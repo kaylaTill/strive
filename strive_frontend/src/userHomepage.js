@@ -5,6 +5,7 @@ import axios from 'axios';
 const Objectives = (React.lazy(() => import('./objectives.js')));
 const NewObjective = (React.lazy(() => import('./newObj.js')));
 const MoreObjectives = (React.lazy(() => import('./moreObjectives.js')));
+const KeyResults = (React.lazy(() => import('./keyResults.js')));
 
 const Center = styled.h1`
     width: 1000px; 
@@ -200,6 +201,9 @@ class UserHomePage extends React.Component {
 
                         <Route path={'/moreObjectives'}>
                             <MoreObjectives objectives={this.state.objectives}/>
+                        </Route>
+                        <Route path={'/keyResults'}>
+                            <KeyResults objectives={this.state.objectives}/>
                         </Route>
                     </Switch>
                 </Suspense>  

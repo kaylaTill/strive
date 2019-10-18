@@ -4,7 +4,6 @@ import { BrowserRouter as Router, Link, Route, Switch, Redirect } from 'react-ro
 const Register = (React.lazy(() => import('./register.js')));
 const Login = (React.lazy(() => import('./login.js')));
 const AboutPage = (React.lazy(() => import('./about.js')));
-const UserHomePage = (React.lazy(() => import('./userHomepage.js')));
 const RegisterSuccess = (React.lazy(() => import('./registrationSuccess.js')));
 const RegisterFailure = (React.lazy(() => import('./registrationFailed.js')));
 const LoginFailure = (React.lazy(() => import('./loginFailed.js')));
