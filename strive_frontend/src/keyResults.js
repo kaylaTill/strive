@@ -15,7 +15,7 @@ const KeyResults = ((props) => {
             <Container>
                 {objectives.map((obj) => (
                     <div>
-                        <Card border="dark" style={{ height: '10rem', marginTop: '3rem' }}>
+                        <Card border="none" style={{ height: '10rem', marginTop: '3rem' }}>
                             <Card.Body style={{ color: '#000000', fontFamily: 'OCR A Std, monospace', textAlign: 'center' }}>
                                 <Card.Title>{obj.name}</Card.Title>
                                 <Card.Text>{obj.description}</Card.Text>
