@@ -137,6 +137,7 @@ router.post('/addObjective', (req, res, next) => {
   .then((result) => {
     objectives.Objective.create({
       name: requestData.name,
+      description: requestData.description,
       timeSpan: requestData.timeSpan,
       keyResult1: requestData.keyResult1,
       keyResult2: requestData.keyResult2,
@@ -145,13 +146,15 @@ router.post('/addObjective', (req, res, next) => {
       keyResult5: requestData.keyResult5,
       user_id: result.id
     })
-    .then((res) => {
+    .then(() => {
       console.log('addded');
-      res.send(200);
     })
     .catch((error) => {
       console.log(error);
     })
+  })
+  .then(() => {
+    res.sendStatus(200);
   })
   .catch((err) => {
     console.log(err);

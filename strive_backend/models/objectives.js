@@ -9,6 +9,9 @@ const Objective = sequelize.define('objective', {
         type: Sequelize.STRING,
         allowNull: false
     },
+    description: {
+        type: Sequelize.STRING,
+    },
     timeSpan: {
         type: Sequelize.STRING,
         allowNull: false
