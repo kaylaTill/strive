@@ -6,6 +6,8 @@ const Objectives = (React.lazy(() => import('./objectives.js')));
 const NewObjective = (React.lazy(() => import('./newObj.js')));
 const MoreObjectives = (React.lazy(() => import('./moreObjectives.js')));
 const KeyResults = (React.lazy(() => import('./keyResults.js')));
+const Progress = (React.lazy(() => import('./progress.js')));
+
 
 const Center = styled.h1`
     width: 1000px; 
@@ -63,6 +65,7 @@ class UserHomePage extends React.Component {
         }
         this.handleLogout = this.handleLogout.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
+        
     }
 
    componentDidMount() {
@@ -76,11 +79,11 @@ class UserHomePage extends React.Component {
             this.setState({
                 sessionStatus: false
             })
+            window.location.reload(false);
         });
 
        axios.get('/getUserObjectives')
            .then(({data}) => {
-               console.log(data);
                this.setState({
                    objectives: data
                })
@@ -99,7 +102,6 @@ class UserHomePage extends React.Component {
             .catch((err) => {
                 console.log(err);
             });
-        
     }
         
     handleLogout() {
@@ -133,19 +135,20 @@ class UserHomePage extends React.Component {
     }
 
 
+
     render() {
         return (
             <Router>
                 <Nav>
                     <NavLeft>
                         <Link to={'/'}>
-                            <NavItem> Strive </NavItem>
+                            <NavItem onClick={this.back}> Strive </NavItem>
                         </Link>
                     </NavLeft>
 
                     <NavRight>
                         <Link to={'/objectives'}>
-                            <NavItem > Objectives </NavItem>
+                            <NavItem> Objectives </NavItem>
                         </Link>
                         <NavItem>|</NavItem>
 
@@ -157,7 +160,9 @@ class UserHomePage extends React.Component {
                         <Link to={'/progress'}>
                             <NavItem> Progress </NavItem>
                         </Link>
+
                         <NavItem>|</NavItem>
+
                         <Link to={'/'}>
                             <NavItem onClick={this.handleLogout}> Logout</NavItem>
                         </Link>
@@ -170,24 +175,24 @@ class UserHomePage extends React.Component {
                         {/* HOME */}
                         <Route exact={true} path={'/'}>
                             <Center>
-                                <div>{`${this.state.quote_text}`}</div>
+                                {`${this.state.quote_text}`}
                                 <br></br>
-                                <div>{`- ${this.state.quote_author}`}</div>
+                                {`- ${this.state.quote_author}`}
                             </Center>
                         </Route>
                         {/* REDIRECTS ON LOGIN AND REGISTER */}
                         <Route exact={true} path={'/login'}>
                             <Center>
-                                <div>{`${this.state.quote_text}`}</div>
+                                {`${this.state.quote_text}`}
                                 <br></br>
-                                <div>{`- ${this.state.quote_author}`}</div>
+                                {`- ${this.state.quote_author}`}
                             </Center>
                         </Route>
                         <Route exact={true} path={'/register'}>
                             <Center>
-                                <div>{`${this.state.quote_text}`}</div>
+                                {`${this.state.quote_text}`}
                                 <br></br>
-                                <div>{`- ${this.state.quote_author}`}</div>
+                                {`- ${this.state.quote_author}`}
                             </Center>
                         </Route>
 
@@ -204,6 +209,10 @@ class UserHomePage extends React.Component {
                         </Route>
                         <Route path={'/keyResults'}>
                             <KeyResults objectives={this.state.objectives}/>
+                        </Route>
+                        
+                        <Route path={'/progress'}>
+                            <Progress objectives={this.state.objectives}/>
                         </Route>
                     </Switch>
                 </Suspense>  

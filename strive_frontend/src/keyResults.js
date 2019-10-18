@@ -27,7 +27,8 @@ const KeyResults = ((props) => {
                             color: '#000000',
                             fontFamily: 'OCR A Std, monospace',
                             marginTop: '3rem',
-                            textAlign: 'center'}}>Key Results</div>
+                            textAlign: 'center',
+                            fontSize: '20px'}}>Key Results</div>
                         <ListGroup border="dark" variant="flush">
                             <ListGroup.Item action border="dark" variant="light">I. {obj.keyResult1}</ListGroup.Item>
                             <ListGroup.Item action border="dark" variant="light">II. {obj.keyResult2}</ListGroup.Item>
