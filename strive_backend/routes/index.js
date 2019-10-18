@@ -170,7 +170,7 @@ router.get('/getUserObjectives', (req, res, next) => {
     }
   })
   .then((result) => {
-    objectives.Objective.findOne({
+    objectives.Objective.findAll({
       where: {
         user_id: result.id
       }
