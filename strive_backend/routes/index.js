@@ -176,7 +176,8 @@ router.get('/getUserObjectives', (req, res, next) => {
       }
     })
     .then((result) => {
-      res.send(result);
+      //limiting request to only send back 3
+      res.send(result);  
       console.log('found user objectives');
     })
     .catch((error) => {

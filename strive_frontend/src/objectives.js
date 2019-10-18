@@ -41,16 +41,6 @@ class Objectives extends React.Component {
             this.setState({
                 objectives: data
             })
-            // this.setState({
-            //     name: data.name,
-            //     description: data.description,
-            //     timeSpan: data.timeSpan,
-            //     keyResult1: data.keyResult1,
-            //     keyResult2: data.keyResult2,
-            //     keyResult3: data.keyResult3,
-            //     keyResult4: data.keyResult4,
-            //     keyResult5: data.keyResult5
-            // })
         })
         .catch((err) => {
             console.log(err);
@@ -58,14 +48,16 @@ class Objectives extends React.Component {
     }
 
 
+
     
 
 
     render() {
+        const limitedObjectives = this.state.objectives.slice(0, 3);
         return (
             <div>
                 <Container>
-                    {this.state.objectives.map((obj) =>(
+                    {limitedObjectives.map((obj) =>(
                         <div>
                             <Card variant="outline-dark" style={{ width: '20rem', height: '20rem', float: 'left', marginRight: '3rem', overflowX: ' hidden'}}>
                                 <Card.Body style={{ color: '#000000', fontFamily: 'OCR A Std, monospace', textAlign: 'center'}}>
