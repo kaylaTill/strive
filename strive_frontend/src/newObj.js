@@ -17,7 +17,7 @@ class NewObjective extends React.Component {
             keyResult4: "",
             keyResult5: ""
         }
-        this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleOBJ = this.handleOBJ.bind(this);
         this.handleChange = this.handleChange.bind(this);
         this.validForm = this.validForm.bind(this);
 
@@ -36,7 +36,7 @@ class NewObjective extends React.Component {
     }
 
 
-    async handleSubmit(event) {
+    async handleOBJ(event) {
         event.preventDefault();
         this.props.handleSubmit(
             this.state.name,
@@ -48,6 +48,7 @@ class NewObjective extends React.Component {
             this.state.keyResult4,
             this.state.keyResult5
         )
+        window.location.href = '/objectives';
     }
 
     handleChange(event) {
@@ -57,7 +58,8 @@ class NewObjective extends React.Component {
 
     render() {
         return (
-        <Form onSubmit={this.handleSubmit} style={{
+        <div>
+        <Form onSubmit={this.handleOBJ} style={{
             position: 'relative',
             left: '17rem',
             align: 'center',
@@ -188,11 +190,14 @@ class NewObjective extends React.Component {
             </Form.Row>
 
             <br></br>
-            <Button type="submit" variant="outline-dark" size="lg" block 
+            <Button type="submit" 
+                variant="outline-dark" 
+                size="lg" block
                 style={{ width: '40rem', position: 'relative', marginBottom: '2rem' }}>
                 Submit
             </Button>
         </Form>
+        </div>
         );
     }
 };

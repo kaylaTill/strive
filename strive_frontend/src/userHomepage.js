@@ -63,7 +63,8 @@ class UserHomePage extends React.Component {
             quote_text: "",
             objectives: [],
             sessionStatus: true,
-            searchTerm: null
+            searchTerm: null,
+            objSubmitted: false
         }
         this.handleLogout = this.handleLogout.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -130,8 +131,8 @@ class UserHomePage extends React.Component {
             keyResult4: keyResult4,
             keyResult5: keyResult5
         })
-        .then((response) => {
-            window.location.reload(false)
+        .then(() => {
+           console.log('created!')
         })
         .catch((error) => {
             console.log(error);
