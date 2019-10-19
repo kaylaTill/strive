@@ -166,6 +166,8 @@ class UserHomePage extends React.Component {
 
 
 
+
+
     render() {
         const objectives = this.filterBySearchedTerm();
         return (
