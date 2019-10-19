@@ -2,6 +2,7 @@ import React, { Suspense } from 'react';
 import styled from 'styled-components';
 import { BrowserRouter as Router, Link, Route, Switch, Redirect, useParams, useRouteMatch} from 'react-router-dom';
 import axios from 'axios';
+import { Card } from 'react-bootstrap';
 const Objectives = (React.lazy(() => import('./objectives.js')));
 const NewObjective = (React.lazy(() => import('./newObj.js')));
 const MoreObjectives = (React.lazy(() => import('./moreObjectives.js')));
@@ -61,10 +62,13 @@ class UserHomePage extends React.Component {
             quote_author: "",
             quote_text: "",
             objectives: [],
-            sessionStatus: true
+            sessionStatus: true,
+            searchTerm: null
         }
         this.handleLogout = this.handleLogout.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleSearch = this.handleSearch.bind(this);
+        this.filterBySearchedTerm = this.filterBySearchedTerm.bind(this);
         
     }
 
@@ -134,9 +138,26 @@ class UserHomePage extends React.Component {
             });
     }
 
+    handleSearch(searchTerm) {
+        this.setState({ searchTerm: searchTerm })
+        
+    }
+
+    filterBySearchedTerm() {
+        console.log(this.state.searchTerm)
+        if (this.state.searchTerm) {
+           return this.state.objectives.filter(obj => obj.name.toLowerCase() === this.state.searchTerm.toLowerCase())
+        } else {
+            return this.state.objectives;
+        }
+    }
+
+
 
 
     render() {
+        const objectives = this.filterBySearchedTerm();
+        console.log(objectives);
         return (
             <Router>
                 <Nav>
@@ -196,6 +217,7 @@ class UserHomePage extends React.Component {
                             </Center>
                         </Route>
 
+
                         <Route path={'/objectives'}>
                             <Objectives objectives={this.state.objectives}/>
                         </Route>
@@ -208,7 +230,7 @@ class UserHomePage extends React.Component {
                             <MoreObjectives objectives={this.state.objectives}/>
                         </Route>
                         <Route path={'/keyResults'}>
-                            <KeyResults objectives={this.state.objectives}/>
+                            <KeyResults handleSearch={this.handleSearch} objectives={objectives}/>
                         </Route>
                         
                         <Route path={'/progress'}>

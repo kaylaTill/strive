@@ -1,45 +1,87 @@
 import React, { Suspense, createRef } from 'react';
 import styled from 'styled-components';
-import { Card, Button, ListGroup } from 'react-bootstrap';
+import { Card, Button, ListGroup, Form } from 'react-bootstrap';
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
+import _ from 'underscore';
+
 
 const Container = styled.div`
     width: 1150px;
 `;
 
-const KeyResults = ((props) => {
-    const objectives = props.objectives;
-    return (
-        <div>
-            <Container>
-                {objectives.map((obj) => (
-                    <div>
-                        <Card border="none" style={{ height: '10rem', marginTop: '3rem' }}>
-                            <Card.Body style={{ color: '#000000', fontFamily: 'OCR A Std, monospace', textAlign: 'center' }}>
-                                <Card.Title>{obj.name}</Card.Title>
-                                <Card.Text>{obj.description}</Card.Text>
-                                <Card.Text>{obj.timeSpan}</Card.Text>
-                            </Card.Body>
-                        </Card>
+class KeyResults extends React.Component {
+    constructor(props) {
+        super(props)
+        this.state = {
+            value: ""
+        }
+        this.handleChange = this.handleChange.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
+        
+    }
 
-                        <div style={{
-                            color: '#000000',
-                            fontFamily: 'OCR A Std, monospace',
-                            marginTop: '3rem',
-                            textAlign: 'center',
-                            fontSize: '20px'}}>Key Results</div>
-                        <ListGroup border="dark" variant="flush">
-                            <ListGroup.Item action border="dark" variant="light">I. {obj.keyResult1}</ListGroup.Item>
-                            <ListGroup.Item action border="dark" variant="light">II. {obj.keyResult2}</ListGroup.Item>
-                            <ListGroup.Item action border="dark" variant="light">III. {obj.keyResult3}</ListGroup.Item>
-                            <ListGroup.Item action border="dark" variant="light">IV. {obj.keyResult4}</ListGroup.Item>
-                            <ListGroup.Item action border="dark" variant="light">V. {obj.keyResult5}</ListGroup.Item>
-                        </ListGroup>
-                    </div>
-                ))}
-            </Container>
-        </div>
-    )
-});
+    handleChange(event) {
+        this.setState({ value: event.target.value });
+    }
+
+    handleSubmit(event) {
+        event.preventDefault();
+        this.props.handleSearch(this.state.value);
+    }
+
+   
+
+    render() {
+        const objectives = this.props.objectives
+        return (
+            <div>
+                <Form onSubmit={this.handleSubmit}>
+                    <Form.Group style={{ marginTop: '2rem' }} >
+                        <Form.Control
+                            name="value"
+                            required
+                            placeholder="Search.."
+                            value={this.state.value}
+                            onChange={this.handleChange}
+                            style={{
+                                width: '40rem', height: '3rem',
+                                fontSize: '1rem', position: 'relative'
+                            }} />
+                    </Form.Group>
+                </Form>
+                <Container>
+                    {objectives.map((obj) => (
+                        <div>
+                            <Card border="none" style={{ height: '10rem', marginTop: '3rem' }}>
+                                <Card.Body style={{ color: '#000000', fontFamily: 'OCR A Std, monospace', textAlign: 'center' }}>
+                                    <Card.Title>{obj.name}</Card.Title>
+                                    <Card.Text>{obj.description}</Card.Text>
+                                    <Card.Text>{obj.timeSpan}</Card.Text>
+                                </Card.Body>
+                            </Card>
+
+                            <div style={{
+                                color: '#000000',
+                                fontFamily: 'OCR A Std, monospace',
+                                marginTop: '3rem',
+                                textAlign: 'center',
+                                fontSize: '20px'
+                            }}>Key Results</div>
+                            <ListGroup border="dark" variant="flush">
+                                <ListGroup.Item action border="dark" variant="light">I. {obj.keyResult1}</ListGroup.Item>
+                                <ListGroup.Item action border="dark" variant="light">II. {obj.keyResult2}</ListGroup.Item>
+                                <ListGroup.Item action border="dark" variant="light">III. {obj.keyResult3}</ListGroup.Item>
+                                <ListGroup.Item action border="dark" variant="light">IV. {obj.keyResult4}</ListGroup.Item>
+                                <ListGroup.Item action border="dark" variant="light">V. {obj.keyResult5}</ListGroup.Item>
+                            </ListGroup>
+                        </div>
+                    ))}
+                </Container>
+            </div>
+        )
+
+    }
+   
+};
 
 export default KeyResults;

@@ -14,6 +14,7 @@ const Container = styled.div`
 
 const Objectives = ((props) => {
     const limitedObjectives = props.objectives.slice(0, 3);
+    
     return (
         <div>
             <Container>
@@ -23,20 +24,20 @@ const Objectives = ((props) => {
                             <Card.Body style={{ color: '#000000', fontFamily: 'OCR A Std, monospace', textAlign: 'center'}}>
                                 <Card.Title>{obj.name}</Card.Title>
                                 <Card.Text>{obj.description}</Card.Text>
-                                <Card.Link href="/keyResults" style={{color: '#000000'}}>Key Results</Card.Link>
+                                <Card.Link href={`/${limitedObjectives.indexOf(obj)}`}style={{color: '#000000'}}>Key Results</Card.Link>
                             </Card.Body>
                         </Card>
                     </div>
                 ))}
             </Container>
-            {/* <Link to={'/newObjective'}> */}
+
             <Button href={'/newObjective'} variant="outline-dark" size="lg" block 
                 style={{width: '60rem', position: 'relative', left: '6rem'}}>
                 New Objective
             </Button>
             <Button href={'/moreObjectives'} variant="outline-dark" size="lg" block 
                 style={{width: '60rem', position: 'relative', left: '6rem', marginBottom: '3rem' }}>
-                More Objectives
+                Show All Objectives
             </Button>
         </div>
     )
