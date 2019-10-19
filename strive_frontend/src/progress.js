@@ -1,33 +1,34 @@
-import React from 'react';
-import styled from 'styled-components';
+import React, { Component } from 'react';
 import { CircularProgressbar, buildStyles } from 'react-circular-progressbar';
-
-
-const Container = styled.div`
-  width: 10px,
-  height: 10px,
-  position: relative,
-  left: 10rem,
-  align: center,
-  textAlign: center,
-  fontSize: 20px,
-  fontFamily: OCR A Std, monospace
-`;
-
-
-
+import _ from 'underscore';
 
 const Progress = ((props) => {
-  const percentage = 25;
+  const { objectives } = props;
   return (
-    <div style={{width: '10rem',height: '10rem'}}>
-      <CircularProgressbar value={percentage} text={`${percentage}%`} 
-      styles={
-        buildStyles({
-          pathColor:'black',
-          textColor: '#000000',
-          trailColor: '#cccccc',
-          backgroundColor: ' #000000'})}/>
+    <div>
+      {objectives.map((obj) => {
+        const percentage = Math.floor(Math.random() * 100)
+          return(
+            <div style={{ width: '15rem', 
+            position: 'relative', left: '5rem', height: '15rem',
+            textAlign: 'center', float: 'left', marginRight: '6rem', 
+            marginTop: '3rem',
+            marginBottom: '3rem'
+            }}>
+              <CircularProgressbar value={percentage}  
+                styles={
+                  buildStyles({
+                    pathColor:'black',
+                    textColor: '#000000',
+                    trailColor: '#cccccc',
+                    backgroundColor: '#000000'})
+                  }/>
+                <div style={{ fontSize: '15px', fontFamily: 'OCR A Std, monospace' }}>{obj.name}</div>
+                <br></br>
+                <div style={{ fontSize: '15px', fontFamily: 'OCR A Std, monospace' }}>{`${percentage}% Completed`}</div>
+            </div>
+          )
+      })}
     </div>
   )
 });
