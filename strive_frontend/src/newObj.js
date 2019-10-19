@@ -59,7 +59,7 @@ class NewObjective extends React.Component {
         return (
         <Form onSubmit={this.handleSubmit} style={{
             position: 'relative',
-            left: '10rem',
+            left: '17rem',
             align: 'center',
             textAlign: 'center',
             fontSize: '20px',
@@ -67,7 +67,7 @@ class NewObjective extends React.Component {
         }}> 
             <Form.Row>
                 <Form.Group style={{ marginTop: '2rem' }} >
-                    <Form.Label style={{ fontSize: '2rem' }} >Objective Name</Form.Label>
+                    <Form.Label style={{ fontSize: '20px' }} >Objective Name</Form.Label>
                     <br></br>
                     <Form.Control 
                         type="text"
@@ -76,13 +76,13 @@ class NewObjective extends React.Component {
                         required
                         value={this.state.name}
                         onChange={this.handleChange} 
-                        style={{ width: '50rem', height: '3rem'
+                        style={{ width: '40rem', height: '3rem'
                         , fontSize: '1rem', position: 'relative' }}
                     />
                 </Form.Group>
 
                 <Form.Group style={{ marginTop: '2rem' }}>
-                    <Form.Label style={{ fontSize: '2rem' }}>Objective Description</Form.Label>
+                    <Form.Label style={{ fontSize: '20px' }}>Objective Description</Form.Label>
                     <br></br>
                     <Form.Control 
                         type="text"
@@ -92,20 +92,20 @@ class NewObjective extends React.Component {
                         value={this.state.description}
                         onChange={this.handleChange} 
                         variant="outline-dark" size="lg" block
-                        style={{ width: '50rem', height: '3rem', fontSize: '1rem',position: 'relative' }} />
+                        style={{ width: '40rem', height: '3rem', fontSize: '1rem',position: 'relative' }} />
                 </Form.Group>
 
 
-                <br></br>
+        
                 <Form.Group style={{ marginTop: '2rem' }} >
-                    <Form.Label style={{ fontSize: '2rem' }}>Time Span</Form.Label>
+                    <Form.Label style={{ fontSize: '20px' }}>Time Span</Form.Label>
                     <br></br>
                     <Form.Control as="select" 
                         name="timeSpan"
                         required
                         value={this.state.timeSpan}
                         onChange={this.handleChange} 
-                        style={{ width: '50rem', height: '3rem',
+                        style={{ width: '40rem', height: '3rem',
                         fontSize: '1rem', position: 'relative' }}
                         >
                         <option>Select a TimeSpan for your OKR</option>
@@ -115,22 +115,22 @@ class NewObjective extends React.Component {
                         <option>12 Month Objective</option>
                     </Form.Control >
                 </Form.Group>
-                <br></br>
+        
                 <Form.Group style={{ marginTop: '2rem' }} >
-                    <Form.Label style={{ fontSize: '2rem' }}>Key Result One</Form.Label>
+                    <Form.Label style={{ fontSize: '20px' }}>Key Result One</Form.Label>
                     <br></br>
                     <Form.Control placeholder="First Priority" 
                         name="keyResult1"
                         required
                         value={this.state.keyResult1}
                         onChange={this.handleChange} 
-                        style={{ width: '50rem', height: '3rem',
+                        style={{ width: '40rem', height: '3rem',
                         fontSize: '1rem', position: 'relative' }}/>
                 </Form.Group>
 
-                <br></br>
+        
                 <Form.Group style={{ marginTop: '2rem' }} >
-                    <Form.Label style={{ fontSize: '2rem' }}>Key Result Two</Form.Label>
+                    <Form.Label style={{ fontSize: '20px' }}>Key Result Two</Form.Label>
                     <br></br>
                     <Form.Control 
                         placeholder="Second Priority"
@@ -138,18 +138,18 @@ class NewObjective extends React.Component {
                         required
                         value={this.state.keyResult2}
                         onChange={this.handleChange}
-                        style={{ width: '50rem', height: '3rem', 
+                        style={{ width: '40rem', height: '3rem', 
                         fontSize: '1rem', position: 'relative' }}
                         />
-                    {/* <Form.Label style={{ fontSize: '2rem' }}>Key Result Two Deadline</Form.Label> */}
+                    {/* <Form.style=Label {{ fontSize: '20px' }}>Key Result Two Deadline</Form.Label> */}
                     {/* <DatePicker
                 value={this.state.value}
                 onChange={value => this.setState({ value })}
             /> */}
                 </Form.Group>
-                <br></br>
+        
                 <Form.Group style={{ marginTop: '2rem' }} >
-                    <Form.Label style={{ fontSize: '2rem' }}>Key Result Three</Form.Label>
+                    <Form.Label style={{ fontSize: '20px' }}>Key Result Three</Form.Label>
                     <br></br>
                     <Form.Control 
                         placeholder="Third Priority" 
@@ -157,13 +157,13 @@ class NewObjective extends React.Component {
                         name="keyResult3"
                         value={this.state.keyResult3}
                         onChange={this.handleChange}
-                        style={{ width: '50rem', height: '3rem', 
+                        style={{ width: '40rem', height: '3rem', 
                         fontSize: '1rem', position: 'relative' }}/>
                 </Form.Group>
 
-                <br></br>
+        
                 <Form.Group style={{ marginTop: '2rem' }} >
-                    <Form.Label style={{ fontSize: '2rem' }}>Key Result Four</Form.Label>
+                    <Form.Label style={{ fontSize: '20px' }}>Key Result Four</Form.Label>
                     <br></br>
                     <Form.Control 
                         placeholder="Fourth Priority"
@@ -171,14 +171,14 @@ class NewObjective extends React.Component {
                         required
                         value={this.state.keyResult4}
                         onChange={this.handleChange} 
-                        style={{ width: '50rem', height: '3rem', 
+                        style={{ width: '40rem', height: '3rem', 
                         fontSize: '1rem', position: 'relative' }}
                     />
                 </Form.Group>
 
-                <br></br>
+        
                 <Form.Group style={{ marginTop: '2rem' }} >
-                    <Form.Label style={{ fontSize: '2rem' }}>Key Result Five</Form.Label>
+                    <Form.Label style={{ fontSize: '20px' }}>Key Result Five</Form.Label>
                     <br></br>
                     <Form.Control 
                         placeholder="Fifth Priority"
@@ -186,15 +186,15 @@ class NewObjective extends React.Component {
                         required
                         value={this.state.keyResult5}
                         onChange={this.handleChange} 
-                        style={{ width: '50rem', height: '3rem', 
+                        style={{ width: '40rem', height: '3rem', 
                         fontSize: '1rem', position: 'relative' }}
                     />
                 </Form.Group>
             </Form.Row>
 
             <br></br>
-            <Button variant="outline-dark" size="lg" block type="submit"
-                style={{ width: '60rem', position: 'relative', right: '3rem' }}>
+            <Button type="submit" variant="outline-dark" size="lg" block 
+                style={{ width: '40rem', position: 'relative', marginBottom: '2rem' }}>
                 Submit
             </Button>
         </Form>
