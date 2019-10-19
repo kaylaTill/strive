@@ -151,13 +151,18 @@ class UserHomePage extends React.Component {
             return this.state.objectives;
         }
     }
+    
+    clearSearch(){
+        this.setState({
+            searchTerm: null
+        })
+    }
 
 
 
 
     render() {
         const objectives = this.filterBySearchedTerm();
-        console.log(objectives);
         return (
             <Router>
                 <Nav>

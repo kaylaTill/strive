@@ -1,6 +1,6 @@
 import React, { Suspense, createRef } from 'react';
 import styled from 'styled-components';
-import { Card, Button, ListGroup, Form } from 'react-bootstrap';
+import { Card, Button, ListGroup, Form, ButtonToolbar } from 'react-bootstrap';
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import _ from 'underscore';
 
@@ -35,20 +35,29 @@ class KeyResults extends React.Component {
         const objectives = this.props.objectives
         return (
             <div>
-                <Form onSubmit={this.handleSubmit}>
-                    <Form.Group style={{ marginTop: '2rem' }} >
-                        <Form.Control
-                            name="value"
-                            required
-                            placeholder="Search.."
-                            value={this.state.value}
-                            onChange={this.handleChange}
-                            style={{
-                                width: '40rem', height: '3rem',
-                                fontSize: '1rem', position: 'relative'
-                            }} />
-                    </Form.Group>
-                </Form>
+                <ButtonToolbar>
+                    <Form onSubmit={this.handleSubmit}>
+                        <Form.Group style={{ marginTop: '2rem' }} >
+                            <Form.Control
+                                name="value"
+                                placeholder="Search.."
+                                value={this.state.value}
+                                onChange={this.handleChange}
+                                style={{
+                                    width: '20rem', height: '3rem',
+                                    fontSize: '1rem', position: 'relative'
+                                }} />
+                        </Form.Group>
+                    </Form>
+                    <Button href={'/keyResults'} variant="outline-dark" size="sm" block
+                        style={{ width: '10rem', position: 'relative',
+                        height: '3rem', marginTop: '2rem', left: '40rem',
+                        fontSize: '1rem', paddingTop: '10px'
+                        }}>
+                        Show All
+                    </Button>
+                </ButtonToolbar>
+            
                 <Container>
                     {objectives.map((obj) => (
                         <div>

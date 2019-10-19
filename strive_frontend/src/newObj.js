@@ -141,11 +141,6 @@ class NewObjective extends React.Component {
                         style={{ width: '40rem', height: '3rem', 
                         fontSize: '1rem', position: 'relative' }}
                         />
-                    {/* <Form.style=Label {{ fontSize: '20px' }}>Key Result Two Deadline</Form.Label> */}
-                    {/* <DatePicker
-                value={this.state.value}
-                onChange={value => this.setState({ value })}
-            /> */}
                 </Form.Group>
         
                 <Form.Group style={{ marginTop: '2rem' }} >
