@@ -74,7 +74,6 @@ class RootHome extends React.Component {
     render() {
         const { redirectSuccess } = this.state;
         const { redirectFailure } = this.state;
-        const { sessionOpen } = this.state;
         const { loginFailed } = this.state;
         return (
             <Router>

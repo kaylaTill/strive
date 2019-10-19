@@ -45,9 +45,7 @@ const PublicNav = ((props) => {
     return (
         < Nav >
             <NavLeft>
-                <Link to={'/'}>
-                    <NavItem> Strive </NavItem>
-                </Link>
+                <NavItem onClick={(() => window.location.href = '/')}> Strive </NavItem>
             </NavLeft>
 
             <NavRight>
