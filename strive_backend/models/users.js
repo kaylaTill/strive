@@ -2,9 +2,10 @@
 var Sequelize = require("sequelize");
 // connect to db 
 const sequelize = new Sequelize('mysql://root@localhost:3306/strive');
-
+const Objective = require('./objectives.js');
 // user model definition
-const User = sequelize.define('user', {
+
+const User = sequelize.define('user',{
     // user collumns
     first_name: {
         type: Sequelize.STRING,
@@ -31,7 +32,9 @@ const User = sequelize.define('user', {
     modelName: 'user'
 });
 
+
 //test connection to db
+
 sequelize
     .authenticate()
     .then(() => {
@@ -43,19 +46,10 @@ sequelize
 
 
 // sync user model
-User.sync({ force: true }).then(() => {
+User.sync({ force: false }).then(() => {
     // Now the `users` table in the database corresponds to the model definition
-    return User.create({
-        first_name: 'Kayla',
-        last_name: 'Tillman',
-        email: 'kaylatillman70@gmail.com',
-        username: 'kay.Till',
-        password: 'password'
-    });
+    console.log('Synced to user table');
 });
-
-
-
 
 
 module.exports = {
