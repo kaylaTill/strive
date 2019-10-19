@@ -8,6 +8,8 @@ import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 const Container = styled.div`
     width: 1150px;
     height: 400px;
+    position: relative;
+    left: 3rem;
 `;
 const hoverLink = styled.a`
     :hover {
