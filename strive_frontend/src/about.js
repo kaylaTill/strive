@@ -10,7 +10,7 @@ const About = styled.div`
     margin: auto 0;
     padding: 60px;
     position: relative;
-    left: 6rem;
+    left: 5rem;
     align: center;
     text-align: center;
     font-size: 20px;

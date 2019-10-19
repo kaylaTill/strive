@@ -1,6 +1,7 @@
 import React from "react";
 import { FormGroup, FormControl, Form, Button } from "react-bootstrap";
 import styled from 'styled-components';
+import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 
 const StyledForm = styled.form`
     font-size: 15px;
@@ -52,6 +53,7 @@ class Login extends React.Component {
                     <FormControl
                         type="username"
                         name="username"
+                        placeholder="Username"
                         required
                         value={this.state.username}
                         onChange={this.handleChange}
@@ -64,13 +66,19 @@ class Login extends React.Component {
                     <FormControl
                         type="password"
                         name="password"
+                        placeholder="Password"
                         required
                         value={this.state.password}
                         onChange={this.handleChange}
                     />
                 </FormGroup>
                 <br></br>
-                <Button type="submit">Log in</Button>
+                <Button type="submit"
+                    variant="outline-dark" size="lg" block
+                    style={{ width: '30rem', bottom: '0px', 
+                    marginTop: '30px', position: 'relative', left: '17rem', }}>
+                    Log in
+                </Button>
             </StyledForm>
         );
     }
