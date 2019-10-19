@@ -63,10 +63,12 @@ class UserHomePage extends React.Component {
             quote_text: "",
             objectives: [],
             sessionStatus: true,
-            searchTerm: null
+            searchTerm: null,
+            objSubmitted: false
         }
         this.handleLogout = this.handleLogout.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.backToHome = this.backToHome.bind(this);
         this.handleSearch = this.handleSearch.bind(this);
         this.filterBySearchedTerm = this.filterBySearchedTerm.bind(this);
         
@@ -130,17 +132,16 @@ class UserHomePage extends React.Component {
             keyResult4: keyResult4,
             keyResult5: keyResult5
         })
-            .then((response) => {
-                window.location.reload(false);
-            })
-            .catch((error) => {
-                console.log(error);
-            });
+        .then(() => {
+           console.log('created!')
+        })
+        .catch((error) => {
+            console.log(error);
+        });
     }
 
     handleSearch(searchTerm) {
         this.setState({ searchTerm: searchTerm })
-        
     }
 
     filterBySearchedTerm() {
@@ -158,6 +159,12 @@ class UserHomePage extends React.Component {
         })
     }
 
+    backToHome() {
+       window.location.href = '/';   
+    }
+
+
+
 
 
 
@@ -168,7 +175,7 @@ class UserHomePage extends React.Component {
                 <Nav>
                     <NavLeft>
                         <Link to={'/'}>
-                            <NavItem onClick={this.back}> Strive </NavItem>
+                            <NavItem onClick={this.backToHome}> Strive </NavItem>
                         </Link>
                     </NavLeft>
 

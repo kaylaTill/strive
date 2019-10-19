@@ -27,6 +27,7 @@ class KeyResults extends React.Component {
     handleSubmit(event) {
         event.preventDefault();
         this.props.handleSearch(this.state.value);
+        window.location.reload(false)
     }
 
    
