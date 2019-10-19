@@ -113,7 +113,7 @@ class UserHomePage extends React.Component {
     handleLogout() {
         axios.get('/logout')
         .then(() => {
-            window.location.reload(false);
+            window.location.href = '/';
         })
         .catch((err) => {
             console.log(err);
@@ -172,9 +172,7 @@ class UserHomePage extends React.Component {
             <Router>
                 <Nav>
                     <NavLeft>
-                        {/* <Link to={'/'}> */}
                         <NavItem onClick={this.backToHome}> Strive </NavItem>
-                        {/* </Link> */}
                     </NavLeft>
 
                     <NavRight>
@@ -194,9 +192,9 @@ class UserHomePage extends React.Component {
 
                         <NavItem>|</NavItem>
 
-                        <Link to={'/'}>
-                            <NavItem onClick={this.handleLogout}> Logout</NavItem>
-                        </Link>
+                        {/* <Link to={'/'}> */}
+                        <NavItem onClick={this.handleLogout}> Logout</NavItem>
+                        {/* </Link> */}
                     </NavRight>
                 </Nav>
 
