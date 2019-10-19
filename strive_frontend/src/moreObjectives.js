@@ -9,6 +9,7 @@ const Container = styled.div`
     width: 1150px;
     height: 400px;
     position: relative;
+    left: 3rem;
 `;
 
 const MoreObjectives = ((props) => {

@@ -7,15 +7,10 @@ import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 
 const Container = styled.div`
     width: 1150px;
-    height: 400px;
+    height: 430px;
     position: relative;
     left: 3rem;
 `;
-const hoverLink = styled.a`
-    :hover {
-		color: #202020;
-	}
-`
 
 const Objectives = ((props) => {
     const limitedObjectives = props.objectives.slice(0, 3);
@@ -24,7 +19,7 @@ const Objectives = ((props) => {
             <Container>
                 {limitedObjectives.map((obj) =>(
                     <div>
-                        <Card variant="outline-dark" style={{ width: '20rem', height: '20rem', float: 'left', marginRight: '3rem', overflowX: ' hidden'}}>
+                        <Card variant="outline-dark" style={{ width: '20rem', height: '20rem', float: 'left', marginRight: '3rem'}}>
                             <Card.Body style={{ color: '#000000', fontFamily: 'OCR A Std, monospace', textAlign: 'center'}}>
                                 <Card.Title>{obj.name}</Card.Title>
                                 <Card.Text>{obj.description}</Card.Text>
@@ -34,14 +29,13 @@ const Objectives = ((props) => {
                     </div>
                 ))}
             </Container>
-            <br></br>
             {/* <Link to={'/newObjective'}> */}
             <Button href={'/newObjective'} variant="outline-dark" size="lg" block 
-                style={{width: '60rem', bottom: '0px',position: 'relative', left: '6rem', }}>
+                style={{width: '60rem', position: 'relative', left: '6rem'}}>
                 New Objective
             </Button>
             <Button href={'/moreObjectives'} variant="outline-dark" size="lg" block 
-                style={{width: '60rem', bottom: '0px',position: 'relative', left: '6rem', }}>
+                style={{width: '60rem', position: 'relative', left: '6rem', marginBottom: '3rem' }}>
                 More Objectives
             </Button>
         </div>
