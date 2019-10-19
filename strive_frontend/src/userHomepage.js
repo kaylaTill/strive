@@ -130,17 +130,16 @@ class UserHomePage extends React.Component {
             keyResult4: keyResult4,
             keyResult5: keyResult5
         })
-            .then((response) => {
-                window.location.reload(false);
-            })
-            .catch((error) => {
-                console.log(error);
-            });
+        .then((response) => {
+            window.location.reload(false)
+        })
+        .catch((error) => {
+            console.log(error);
+        });
     }
 
     handleSearch(searchTerm) {
         this.setState({ searchTerm: searchTerm })
-        
     }
 
     filterBySearchedTerm() {

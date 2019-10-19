@@ -24,7 +24,7 @@ const Objectives = ((props) => {
                             <Card.Body style={{ color: '#000000', fontFamily: 'OCR A Std, monospace', textAlign: 'center'}}>
                                 <Card.Title>{obj.name}</Card.Title>
                                 <Card.Text>{obj.description}</Card.Text>
-                                <Card.Link href={`/${limitedObjectives.indexOf(obj)}`}style={{color: '#000000'}}>Key Results</Card.Link>
+                                <Card.Link href={'/keyResults'}style={{color: '#000000'}}>Key Results</Card.Link>
                             </Card.Body>
                         </Card>
                     </div>

@@ -13,7 +13,7 @@ const Progress = ((props) => {
             position: 'relative', left: '5rem', height: '15rem',
             textAlign: 'center', float: 'left', marginRight: '6rem', 
             marginTop: '3rem',
-            marginBottom: '3rem'
+            marginBottom: '5rem'
             }}>
               <CircularProgressbar value={percentage}  
                 styles={
