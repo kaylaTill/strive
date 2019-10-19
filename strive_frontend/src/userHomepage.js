@@ -166,17 +166,15 @@ class UserHomePage extends React.Component {
 
 
 
-
-
     render() {
         const objectives = this.filterBySearchedTerm();
         return (
             <Router>
                 <Nav>
                     <NavLeft>
-                        <Link to={'/'}>
-                            <NavItem onClick={this.backToHome}> Strive </NavItem>
-                        </Link>
+                        {/* <Link to={'/'}> */}
+                        <NavItem onClick={this.backToHome}> Strive </NavItem>
+                        {/* </Link> */}
                     </NavLeft>
 
                     <NavRight>
