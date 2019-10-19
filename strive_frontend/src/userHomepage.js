@@ -68,6 +68,7 @@ class UserHomePage extends React.Component {
         }
         this.handleLogout = this.handleLogout.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.backToHome = this.backToHome.bind(this);
         this.handleSearch = this.handleSearch.bind(this);
         this.filterBySearchedTerm = this.filterBySearchedTerm.bind(this);
         
@@ -158,6 +159,10 @@ class UserHomePage extends React.Component {
         })
     }
 
+    backToHome() {
+       window.location.href = '/';   
+    }
+
 
 
 
@@ -168,7 +173,7 @@ class UserHomePage extends React.Component {
                 <Nav>
                     <NavLeft>
                         <Link to={'/'}>
-                            <NavItem onClick={this.back}> Strive </NavItem>
+                            <NavItem onClick={this.backToHome}> Strive </NavItem>
                         </Link>
                     </NavLeft>
 
