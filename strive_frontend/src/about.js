@@ -2,11 +2,15 @@ import React, {Component} from 'react';
 import { BrowserRouter as Router, Link, Route, Switch } from 'react-router-dom';
 import { Button } from 'react-bootstrap';
 import styled from 'styled-components';
+import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
+
 
 const About = styled.div`
-    width: 960px;
+    width: 1000px; 
     margin: auto 0;
     padding: 60px;
+    position: relative;
+    left: 6rem;
     align: center;
     text-align: center;
     font-size: 20px;
@@ -45,11 +49,10 @@ const AboutPage = (props) => {
 
                 <Quote>The future belongs to those who prepare for it today.</Quote>
                 <Quote>- Malcom X</Quote>
-                <Link to={'/register'}>
-                    <Button variant="outline-secondary">
-                        Get Started.
-                    </Button>
-                </Link>
+                <Button href={'/register'}variant="outline-dark" size="lg" block
+                    style={{ width: '30rem', bottom: '0px', marginTop: '30px', position: 'relative', left: '12rem', }}>
+                    Get Started.
+                </Button>
             </div>
         </About>
     );
