@@ -29,8 +29,7 @@ const Objective = sequelize.define('objective', {
         allowNull: false
     },
     keyResult4: {
-        type: Sequelize.STRING
-        
+        type: Sequelize.STRING 
     },
     keyResult5: {
         type: Sequelize.STRING
