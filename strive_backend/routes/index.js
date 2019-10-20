@@ -146,8 +146,9 @@ router.post('/addObjective', (req, res, next) => {
       keyResult5: requestData.keyResult5,
       user_id: result.id
     })
-    .then(() => {
-      console.log('addded');
+    .then((result) => {
+      console.log(result.id);
+      // create KR data model HERE
     })
     .catch((error) => {
       console.log(error);
