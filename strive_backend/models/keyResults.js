@@ -2,7 +2,6 @@
 var Sequelize = require("sequelize");
 // connect to db 
 const sequelize = new Sequelize('mysql://root@localhost:3306/strive');
-const objective = require('./objectives.js');
 const KeyResult = sequelize.define('keyResult', {
     // objectives collumns
     name: {
@@ -11,11 +10,13 @@ const KeyResult = sequelize.define('keyResult', {
     },
     task: {
         //Array of task, respond by adding to end of array, on post 
-
         //send task array on get 
+        type: Sequelize.JSON
+    },
+    completion_status: {
+        type: Sequelize.BOOLEAN
 
     },
-
     objective_id: {
         type: Sequelize.INTEGER
     }
@@ -29,7 +30,7 @@ const KeyResult = sequelize.define('keyResult', {
 sequelize
     .authenticate()
     .then(() => {
-        console.log('Objectives connection has been established successfully.');
+        console.log('Key Results connection has been established successfully.');
     })
     .catch(err => {
         console.error('Unable to connect to the database:', err);
@@ -37,9 +38,9 @@ sequelize
 
 
 // sync model
-Objective.sync({ force: false }).then(() => {
+KeyResult.sync({ force: false }).then(() => {
     // sync obj model
-    console.log('Synced to objective table');
+    console.log('Synced to key result table');
 });
 
 
@@ -47,5 +48,5 @@ Objective.sync({ force: false }).then(() => {
 module.exports = {
     sequelize: sequelize,
     Sequelize: Sequelize,
-    Objective: Objective
+    KeyResult : KeyResult 
 }
