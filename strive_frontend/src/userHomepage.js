@@ -191,10 +191,8 @@ class UserHomePage extends React.Component {
                         </Link>
 
                         <NavItem>|</NavItem>
-
-                        {/* <Link to={'/'}> */}
+                    
                         <NavItem onClick={this.handleLogout}> Logout</NavItem>
-                        {/* </Link> */}
                     </NavRight>
                 </Nav>
 

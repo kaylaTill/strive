@@ -29,12 +29,11 @@ const Objective = sequelize.define('objective', {
         allowNull: false
     },
     keyResult4: {
-        type: Sequelize.STRING,
-        allowNull: false
+        type: Sequelize.STRING
+        
     },
     keyResult5: {
-        type: Sequelize.STRING,
-        allowNull: false
+        type: Sequelize.STRING
     },
     user_id: {
         type: Sequelize.INTEGER
