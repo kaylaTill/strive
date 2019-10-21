@@ -7,11 +7,6 @@ const Task = sequelize.define('task', {
     task: {
         type: Sequelize.STRING
     },
-    task: {
-        //Array of task, respond by adding to end of array, on post 
-        //send task array on get 
-        type: Sequelize.STRING
-    },
     objective_id: {
         type: Sequelize.INTEGER
     },
