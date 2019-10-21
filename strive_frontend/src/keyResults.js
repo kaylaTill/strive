@@ -64,25 +64,27 @@ class KeyResults extends React.Component {
             
                 <Container>
                     {objectives.map((obj) => {
-                        <div> 
-                            <Card border="none" style={{ height: '10rem', marginTop: '3rem' }}>
-                                <Card.Body style={{ color: '#000000', fontFamily: 'OCR A Std, monospace', textAlign: 'center' }}>
-                                    <Card.Title>{obj.name}</Card.Title>
-                                    <Card.Text>{obj.description}</Card.Text>
-                                    <Card.Text>{obj.timeSpan}</Card.Text>
-                                </Card.Body>
-                            </Card>
-                            <div style={{
-                                color: '#000000',
-                                fontFamily: 'OCR A Std, monospace',
-                                marginTop: '3rem',
-                                textAlign: 'center',
-                                fontSize: '20px'
-                            }}>Key Results</div>
-                        </div>
+                        var displayKRS = []
+                        displayKRS.push(
+                            <div> 
+                                <Card border="none" style={{ height: '10rem', marginTop: '3rem' }}>
+                                    <Card.Body style={{ color: '#000000', fontFamily: 'OCR A Std, monospace', textAlign: 'center' }}>
+                                        <Card.Title>{obj.name}</Card.Title>
+                                        <Card.Text>{obj.description}</Card.Text>
+                                        <Card.Text>{obj.timeSpan}</Card.Text>
+                                    </Card.Body>
+                                </Card>
+                                <div style={{
+                                    color: '#000000',
+                                    fontFamily: 'OCR A Std, monospace',
+                                    marginTop: '3rem',
+                                    textAlign: 'center',
+                                    fontSize: '20px'
+                                }}>Key Results</div>
+                            </div>
+                        )
                         
                         var keyresults = obj.key_results;
-                        var displayKRS = []
                         for (let i = 1; i <= 5; i ++) {
                             displayKRS.push(<KeyResult keyresults={keyresults} index={i}/>)
                             console.log(keyresults[String(i)]);
