@@ -33,10 +33,14 @@ class KeyResults extends React.Component {
 
     render() {
         const objectives = this.props.objectives
-        {objectives.map((obj) => console.log(obj.key_results))}
+        console.log(objectives);
         return (
             <div>
                 <ButtonToolbar>
+                        {/* {objectives.map((obj) => {
+                            // GET ALL KR NAMES
+                            
+                        })} */}
                     <Form onSubmit={this.handleSubmit}>
                         <Form.Group style={{ marginTop: '2rem' }} >
                             <Form.Control
@@ -61,6 +65,28 @@ class KeyResults extends React.Component {
             
                 <Container>
                     {objectives.map((obj) => (
+                        // {
+                        //     var name1 = 
+                        //     var name2 = 
+                        //     var name3 = obj.key_results.keyResult3[0].name
+                        //     var name4 = obj.key_results.keyResult4[0].name
+                        //     var name5 = obj.key_results.keyResult5[0].name
+
+
+                        //     // GET ALL KR TASKS
+                        //     var task1 = obj.key_results.keyResult1[1].task
+                        //     var task2 = obj.key_results.keyResult1[1].task
+                        //     var task3 = obj.key_results.keyResult1[1].task
+                        //     var task4 = obj.key_results.keyResult1[1].task
+                        //     var task5 = obj.key_results.keyResult1[1].task
+
+                        //     // GET ALL KR STATUS
+                        //     var status1 = obj.key_results.keyResult1[2].status
+                        //     var status2 = obj.key_results.keyResult1[2].status
+                        //     var status3 = obj.key_results.keyResult1[2].status
+                        //     var status4 = obj.key_results.keyResult1[2].status
+                        //     var status5 = obj.key_results.keyResult1[2].status
+                        // }
                         <div>
                             <Card border="none" style={{ height: '10rem', marginTop: '3rem' }}>
                                 <Card.Body style={{ color: '#000000', fontFamily: 'OCR A Std, monospace', textAlign: 'center' }}>
@@ -78,11 +104,11 @@ class KeyResults extends React.Component {
                                 fontSize: '20px'
                             }}>Key Results</div>
                             <ListGroup border="dark" variant="flush">
-                                <ListGroup.Item action border="dark" variant="light">I. {obj.keyResult1}</ListGroup.Item>
-                                <ListGroup.Item action border="dark" variant="light">II. {obj.keyResult2}</ListGroup.Item>
-                                <ListGroup.Item action border="dark" variant="light">III. {obj.keyResult3}</ListGroup.Item>
-                                <ListGroup.Item action border="dark" variant="light">IV. {obj.keyResult4}</ListGroup.Item>
-                                <ListGroup.Item action border="dark" variant="light">V. {obj.keyResult5}</ListGroup.Item>
+                            <ListGroup.Item action border="dark" variant="light">I. {obj.key_results.keyResult1[0].name}</ListGroup.Item>
+                                <ListGroup.Item action border="dark" variant="light">II. {obj.key_results.keyResult2[0].name}</ListGroup.Item>
+                                <ListGroup.Item action border="dark" variant="light">III. {obj.key_results.keyResult3[0].name}</ListGroup.Item>
+                                <ListGroup.Item action border="dark" variant="light">IV. {obj.key_results.keyResult4[0].name}</ListGroup.Item>
+                                <ListGroup.Item action border="dark" variant="light">V. {obj.key_results.keyResult5[0].name}</ListGroup.Item>
                             </ListGroup>
                         </div>
                     ))}
