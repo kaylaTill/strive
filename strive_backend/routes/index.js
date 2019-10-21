@@ -5,6 +5,7 @@ const Sequelize = require('sequelize');
 const quotes = require('../models/quotes.js');
 const users = require('../models/users.js');
 const objectives = require('../models/objectives.js');
+const tasks = require('../models/task.js');
 var session = require('express-session');
 const bcrypt = require('bcrypt');
 const saltRounds = 10;
@@ -146,6 +147,7 @@ router.post('/addObjective', (req, res, next) => {
         "4": [{ "name": `${requestData.keyResult4}`}, {"task": []}, {"status": false}],
         "5": [{ "name": `${requestData.keyResult5}`}, {"task": []}, {"status": false}],
       },
+      progress: 0,
       user_id: result.id
     })
     .then((result) => {
@@ -164,13 +166,10 @@ router.post('/addObjective', (req, res, next) => {
 router.post('/addTask', (req, res, next) => {
   // objective id, KR id in the objective, task
   // { task: 'test task', KRindex: 1, objectiveId: 1 }
-  objectives.Objective.findOne(
-    { where: {id: req.body.objectiveId}}
-  )
-  .then((result) => {
-    // console.log(result.key_results[String(req.body.KRindex)][1].task)
-    // result.key_results[String(req.body.KRindex)][1].task.push(req.body.task)
-    result.update
+  tasks.Task.create({
+    task: req.body.task,
+    objective_id: req.body.objectiveId,
+    KR_id: req.body.KRindex
   })
   .then((result) => {
     console.log(result);
