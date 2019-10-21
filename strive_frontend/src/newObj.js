@@ -165,7 +165,6 @@ class NewObjective extends React.Component {
                     <Form.Control 
                         placeholder="Fourth Priority"
                         name="keyResult4"
-                        required
                         value={this.state.keyResult4}
                         onChange={this.handleChange} 
                         style={{ width: '40rem', height: '3rem', 
@@ -180,7 +179,6 @@ class NewObjective extends React.Component {
                     <Form.Control 
                         placeholder="Fifth Priority"
                         name="keyResult5"
-                        required
                         value={this.state.keyResult5}
                         onChange={this.handleChange} 
                         style={{ width: '40rem', height: '3rem', 

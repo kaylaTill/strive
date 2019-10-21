@@ -147,11 +147,6 @@ router.post('/addObjective', (req, res, next) => {
         "keyResult4": [{ "name": `${requestData.keyResult1}`}, {"task": []}, {"status": false}],
         "keyResult5": [{ "name": `${requestData.keyResult1}`}, {"task": []}, {"status": false}],
       },
-      // keyResult1: requestData.keyResult1,
-      // keyResult2: requestData.keyResult2,
-      // keyResult3: requestData.keyResult3,
-      // keyResult4: requestData.keyResult4,
-      // keyResult5: requestData.keyResult5,
       user_id: result.id
     })
     .then((result) => {
