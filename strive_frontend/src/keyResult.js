@@ -14,6 +14,7 @@ class KeyResult extends React.Component {
             value: "",
             taskVal: "",
             taskOpen: false,
+            taskData: [],
             open: false,
             KRindex: this.props.index,
             objectiveId: this.props.objectiveId + 1
@@ -27,8 +28,10 @@ class KeyResult extends React.Component {
             KRindex: this.state.KRindex,
             objectiveId: this.state.objectiveId
         })
-        .then((res) => {
-            console.log(res);
+        .then(({data}) => {
+            this.setState({
+                taskData: data
+            })
         })
     }
 
@@ -59,6 +62,11 @@ class KeyResult extends React.Component {
     render() {
         const { keyresults } = this.props;
         const i = this.state.KRindex;
+        this.state.taskData.map((task) => {
+            console.log(task.KR_id);
+            console.log(task.task);
+            console.log(task.objective_id);
+        })
         return(
             <div>
                 <ListGroup.Item
@@ -74,8 +82,8 @@ class KeyResult extends React.Component {
                         <div style={{ fontFamily: 'OCR A Std, monospace', fontSize: '20px', textAlign: 'center' }}>Tasks</div>
 
                         <ul>
-                            {keyresults[String(i)][1].task.map((item) => (
-                                <li style={{ fontSize: '12px', textAlign: 'center' }}>- {item}</li>
+                            {this.state.taskData.map((taskObj) => (
+                                <li style={{ fontSize: '12px', textAlign: 'center' }}>- {taskObj.task}</li>
                             ))}
                         </ul>
 
