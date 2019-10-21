@@ -59,7 +59,7 @@ class KeyResults extends React.Component {
                     <Button href={'/keyResults'} variant="outline-dark" size="sm" block
                         style={{ width: '10rem', position: 'relative',
                         height: '3rem', marginTop: '2rem', left: '40rem',
-                        fontSize: '1rem', paddingTop: '10px'
+                        fontSize: '1rem', paddingTop: '3px'
                         }}>
                         Show All
                     </Button>
@@ -97,7 +97,7 @@ class KeyResults extends React.Component {
                                     
                                     <Collapse in={this.state.kr1open}>
                                         <div id="keyresult-collapse-text">
-                                            <div style={{ fontFamily: 'OCR A Std, monospace', fontSize: '15px', textAlign: 'center'}}>Tasks</div> 
+                                            <div style={{ fontFamily: 'OCR A Std, monospace', fontSize: '20px', textAlign: 'center'}}>Tasks</div> 
 
                                             <div>{obj.key_results.keyResult1[1].task.map((item) => (
                                                 <div style={{fontSize: '12px', textAlign: 'center'}}>- {item}</div>
@@ -105,8 +105,8 @@ class KeyResults extends React.Component {
                                             <Button variant="outline-dark" size="lg" block
                                                 style={{
                                                     width: '10rem', position: 'relative',
-                                                    height: '3rem', marginTop: '2rem', left: '31rem',
-                                                    fontSize: '1rem', paddingTop: '10px'
+                                                    height: '2rem', marginTop: '2rem', left: '31rem',
+                                                    fontSize: '1rem', paddingTop: '3px'
                                                 }}>
                                             Add Task</Button>
 
@@ -126,7 +126,7 @@ class KeyResults extends React.Component {
 
                                     <Collapse in={this.state.kr2open}>
                                         <div id="keyresult-collapse-text">
-                                            <div style={{ fontFamily: 'OCR A Std, monospace', fontSize: '15px', textAlign: 'center'}}>Tasks</div>
+                                            <div style={{ fontFamily: 'OCR A Std, monospace', fontSize: '20px', textAlign: 'center'}}>Tasks</div>
 
                                             <div>{obj.key_results.keyResult2[1].task.map((item) => (
                                                 <div style={{fontSize: '12px', textAlign: 'center'}}>- {item}</div>
@@ -134,8 +134,8 @@ class KeyResults extends React.Component {
                                             <Button variant="outline-dark" size="lg" block
                                                 style={{
                                                     width: '10rem', position: 'relative',
-                                                    height: '3rem', marginTop: '2rem', left: '31rem',
-                                                    fontSize: '1rem', paddingTop: '10px'
+                                                    height: '2rem', marginTop: '2rem', left: '31rem',
+                                                    fontSize: '1rem', paddingTop: '3px'
                                                 }}>
                                             Add Task</Button>
 
@@ -156,7 +156,7 @@ class KeyResults extends React.Component {
 
                                     <Collapse in={this.state.kr3open}>
                                         <div id="keyresult-collapse-text">
-                                            <div style={{ fontFamily: 'OCR A Std, monospace', fontSize: '15px', textAlign: 'center'}}>Tasks</div>
+                                            <div style={{ fontFamily: 'OCR A Std, monospace', fontSize: '20px', textAlign: 'center'}}>Tasks</div>
 
                                             <div>{obj.key_results.keyResult3[1].task.map((item) => (
                                                 <div style={{fontSize: '12px', textAlign: 'center'}}>- {item}</div>
@@ -164,8 +164,8 @@ class KeyResults extends React.Component {
                                             <Button variant="outline-dark" size="lg" block
                                                 style={{
                                                     width: '10rem', position: 'relative',
-                                                    height: '3rem', marginTop: '2rem', left: '31rem',
-                                                    fontSize: '1rem', paddingTop: '10px'
+                                                    height: '2rem', marginTop: '2rem', left: '31rem',
+                                                    fontSize: '1rem', paddingTop: '3px'
                                                 }}>
                                                 Add Task</Button>
 
@@ -185,7 +185,7 @@ class KeyResults extends React.Component {
 
                                     <Collapse in={this.state.kr4open}>
                                         <div id="keyresult-collapse-text">
-                                            <div style={{ fontFamily: 'OCR A Std, monospace', fontSize: '15px', textAlign: 'center'}}>Tasks</div>
+                                            <div style={{ fontFamily: 'OCR A Std, monospace', fontSize: '20px', textAlign: 'center'}}>Tasks</div>
 
                                             <div>{obj.key_results.keyResult4[1].task.map((item) => (
                                                 <div style={{fontSize: '12px', textAlign: 'center'}}>- {item}</div>
@@ -193,8 +193,8 @@ class KeyResults extends React.Component {
                                             <Button variant="outline-dark" size="lg" block
                                                 style={{
                                                     width: '10rem', position: 'relative',
-                                                    height: '3rem', marginTop: '2rem', left: '31rem',
-                                                    fontSize: '1rem', paddingTop: '10px'
+                                                    height: '2rem', marginTop: '2rem', left: '31rem',
+                                                    fontSize: '1rem', paddingTop: '3px'
                                                 }}>
                                                 Add Task</Button>
 
@@ -215,7 +215,7 @@ class KeyResults extends React.Component {
 
                                     <Collapse in={this.state.kr5open}>
                                         <div id="keyresult-collapse-text">
-                                            <div style={{ fontFamily: 'OCR A Std, monospace', fontSize: '15px', textAlign: 'center'}}>Tasks</div>
+                                            <div style={{ fontFamily: 'OCR A Std, monospace', fontSize: '20px', textAlign: 'center'}}>Tasks</div>
 
                                             <div>{obj.key_results.keyResult5[1].task.map((item) => (
                                                 <div style={{ fontSize: '12px', textAlign: 'center'}}>- {item}</div>
@@ -224,7 +224,7 @@ class KeyResults extends React.Component {
                                                 style={{
                                                     width: '10rem', position: 'relative',
                                                     height: '3rem', marginTop: '2rem', left: '31rem',
-                                                    fontSize: '1rem', paddingTop: '10px'
+                                                    fontSize: '1rem', paddingTop: '3px'
                                                 }}
                                             > Add Task</Button>
                                             <div style={{ fontFamily: 'OCR A Std, monospace', fontSize: '15px', textAlign: 'center'}}>Completed: {String(obj.key_results.keyResult5[2].status)}</div>
