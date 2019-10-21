@@ -5,6 +5,7 @@ const Sequelize = require('sequelize');
 const quotes = require('../models/quotes.js');
 const users = require('../models/users.js');
 const objectives = require('../models/objectives.js');
+// const keyResults = require('../models/keyResults.js');
 var session = require('express-session');
 const bcrypt = require('bcrypt');
 const saltRounds = 10;
@@ -139,16 +140,23 @@ router.post('/addObjective', (req, res, next) => {
       name: requestData.name,
       description: requestData.description,
       timeSpan: requestData.timeSpan,
-      keyResult1: requestData.keyResult1,
-      keyResult2: requestData.keyResult2,
-      keyResult3: requestData.keyResult3,
-      keyResult4: requestData.keyResult4,
-      keyResult5: requestData.keyResult5,
+      key_results: { 
+        "keyResult1": [{ "name": `${requestData.keyResult1}`}, {"task": []}, {"status": false}],
+        "keyResult2": [{ "name": `${requestData.keyResult1}`}, {"task": []}, {"status": false}],
+        "keyResult3": [{ "name": `${requestData.keyResult1}`}, {"task": []}, {"status": false}],
+        "keyResult4": [{ "name": `${requestData.keyResult1}`}, {"task": []}, {"status": false}],
+        "keyResult5": [{ "name": `${requestData.keyResult1}`}, {"task": []}, {"status": false}],
+      },
+      // keyResult1: requestData.keyResult1,
+      // keyResult2: requestData.keyResult2,
+      // keyResult3: requestData.keyResult3,
+      // keyResult4: requestData.keyResult4,
+      // keyResult5: requestData.keyResult5,
       user_id: result.id
     })
     .then((result) => {
-      console.log(result.id);
-      // create KR data model HERE
+      console.log(result);
+      console.log('added');
     })
     .catch((error) => {
       console.log(error);

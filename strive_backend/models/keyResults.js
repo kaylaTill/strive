@@ -5,8 +5,7 @@ const sequelize = new Sequelize('mysql://root@localhost:3306/strive');
 const KeyResult = sequelize.define('keyResult', {
     // objectives collumns
     name: {
-        type: Sequelize.STRING,
-        allowNull: false
+        type: Sequelize.STRING
     },
     task: {
         //Array of task, respond by adding to end of array, on post 
