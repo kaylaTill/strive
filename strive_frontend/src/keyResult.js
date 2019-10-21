@@ -58,6 +58,10 @@ class KeyResult extends React.Component {
         })
     }
 
+    addProgress() {
+        
+    }
+
 
 
     render() {
@@ -81,7 +85,7 @@ class KeyResult extends React.Component {
 
                         <ListGroup>
                             {this.state.taskData.map((taskObj, index) => (
-                                <ListGroup.Item style={{ fontSize: '15px', textAlign: 'center' }}>{romanNumeral[String(index)]}.   {taskObj.task}</ListGroup.Item>
+                                <ListGroup.Item style={{ fontSize: '15px', textAlign: 'center' }}>{romanNumeral[String(index)]}.        {taskObj.task}</ListGroup.Item>
                             ))}
                         </ListGroup>
 
