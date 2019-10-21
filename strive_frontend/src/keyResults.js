@@ -33,6 +33,7 @@ class KeyResults extends React.Component {
 
     render() {
         const objectives = this.props.objectives
+        {objectives.map((obj) => console.log(obj.key_results))}
         return (
             <div>
                 <ButtonToolbar>

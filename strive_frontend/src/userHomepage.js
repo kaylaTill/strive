@@ -129,8 +129,8 @@ class UserHomePage extends React.Component {
             keyResult1: keyResult1,
             keyResult2: keyResult2,
             keyResult3: keyResult3,
-            keyResult4: keyResult4,
-            keyResult5: keyResult5
+            keyResult4: keyResult4 ? keyResult4 : null,
+            keyResult5: keyResult5 ? keyResult5: null
         })
         .then(() => {
            console.log('created!')
@@ -145,7 +145,6 @@ class UserHomePage extends React.Component {
     }
 
     filterBySearchedTerm() {
-        console.log(this.state.searchTerm)
         if (this.state.searchTerm) {
            return this.state.objectives.filter(obj => obj.name.toLowerCase() === this.state.searchTerm.toLowerCase())
         } else {
