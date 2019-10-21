@@ -144,6 +144,7 @@ class UserHomePage extends React.Component {
         this.setState({ searchTerm: searchTerm })
     }
 
+
     filterBySearchedTerm() {
         if (this.state.searchTerm) {
            return this.state.objectives.filter(obj => obj.name.toLowerCase() === this.state.searchTerm.toLowerCase())

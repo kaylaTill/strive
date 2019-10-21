@@ -1,6 +1,6 @@
 import React, { Suspense} from 'react';
 import styled from 'styled-components';
-import { Card, Button, ListGroup, Form, ButtonToolbar, Collapse } from 'react-bootstrap';
+import { Card, Button, ListGroup, Form, ButtonToolbar, Collapse, InputGroup } from 'react-bootstrap';
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import _ from 'underscore';
 import axios from 'axios';
@@ -14,6 +14,7 @@ class KeyResult extends React.Component {
             value: "",
             taskVal: "",
             taskOpen: false,
+            disable: false,
             taskData: [],
             open: false,
             KRindex: this.props.index,
@@ -21,6 +22,7 @@ class KeyResult extends React.Component {
         }
         this.handleChange = this.handleChange.bind(this);
         this.handleTaskAddition = this.handleTaskAddition.bind(this);
+        this.addProgress = this.addProgress.bind(this);
     }
 
     componentDidMount() {
@@ -59,7 +61,17 @@ class KeyResult extends React.Component {
     }
 
     addProgress() {
-        
+        axios.post('/addProgress',{
+            objectiveId: this.state.objectiveId,
+            currentProgress: this.props.objectiveProgress
+        })
+            .then(() => {
+                window.location.href = '/progress'
+            })
+            .catch((err) => {
+                console.log(err);
+            })
+
     }
 
 
@@ -112,7 +124,7 @@ class KeyResult extends React.Component {
                                             width: '20rem', height: '2rem',
                                             fontSize: '1rem', left: '27rem',
                                             marginTop: '4rem', position: 'relative',
-                                            textAlign: 'center'
+                                            textAlign: 'center', fontFamily: 'OCR A Std, monospace'
                                         }} />
 
                                     <Button variant="outline-dark" size="lg" block
@@ -120,14 +132,29 @@ class KeyResult extends React.Component {
                                         style={{
                                             width: '8rem', position: 'relative',
                                             height: '25px', marginTop: '10px', left: '33rem',
-                                            fontSize: '10px', paddingTop: '3px'
+                                            fontSize: '10px', paddingTop: '3px', fontFamily: 'OCR A Std, monospace'
                                         }}>
                                         Add
                                     </Button>
                                 </Form>
                             </div>
                         </Collapse>
-                        <div style={{ fontFamily: 'OCR A Std, monospace', fontSize: '15px', textAlign: 'center', paddingTop: '15px' }}>Mark as Complete: {String(keyresults[String(i)][2].status)}</div>
+                        <Form >
+                            <Form.Check
+                                style={{
+                                    width: '20rem', position: 'relative',
+                                    height: '2rem',
+                                    marginTop: '2rem',
+                                    marginBottom: '2rem',
+                                    fontFamily: 'OCR A Std, monospace',
+                                    fontSize: '1rem', left: '28.5rem',
+                                }}
+                                custom
+                                onClick={this.addProgress}
+                                id={`complete`}
+                                label={`Mark ${keyresults[String(i)][0].name} as Completed`}
+                            />
+                        </Form>
                     </div>
                 </Collapse>
             </div>

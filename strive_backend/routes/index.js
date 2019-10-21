@@ -189,7 +189,6 @@ router.post('/getTask', (req, res, next) => {
     }
   })
   .then((results) => {
-    console.log(results);
     res.send(results);
   })
   .catch((err) => {
@@ -197,9 +196,6 @@ router.post('/getTask', (req, res, next) => {
     res.sendStatus(404)
   })
 })
-
-
-
 
 
 router.get('/getUserObjectives', (req, res, next) => {
@@ -229,6 +225,21 @@ router.get('/getUserObjectives', (req, res, next) => {
   })
 
 }) 
+
+
+router.post('/addProgress', (req, res, next) => {
+  objectives.Objective.update(
+    { progress: req.body.currentProgress + 25 },
+    { where: { id: req.body.objectiveId } }
+  )
+    .then((result) => {
+      console.log('---Progress Updated by 25!');
+      res.sendStatus(200);
+    })
+    .catch((err) => {
+      console.log(err)
+    })
+})
 
 
 

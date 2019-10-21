@@ -77,8 +77,9 @@ class KeyResults extends React.Component {
                         )
                         var keyresults = obj.key_results;
                         var objIndex = objectives.indexOf(obj);
+                        var progress = obj.progress;
                         for (let i = 1; i <= 5; i ++) {
-                            displayKRS.push(<KeyResult keyresults={keyresults} index={i} objectiveId={objIndex}/>)
+                            displayKRS.push(<KeyResult keyresults={keyresults} index={i} objectiveId={objIndex} objectiveProgress={progress}/>)
                         }  
                         return displayKRS;
                     })}
