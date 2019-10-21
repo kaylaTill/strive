@@ -5,7 +5,6 @@ const Sequelize = require('sequelize');
 const quotes = require('../models/quotes.js');
 const users = require('../models/users.js');
 const objectives = require('../models/objectives.js');
-// const keyResults = require('../models/keyResults.js');
 var session = require('express-session');
 const bcrypt = require('bcrypt');
 const saltRounds = 10;
@@ -162,24 +161,26 @@ router.post('/addObjective', (req, res, next) => {
   });
 })
 
-// router.post('/addTask', (req, res, next) => {
-//   //objective id, KR id in the objective, task
-//   // { task: 'test task', KRindex: 1, objectiveId: 1 }
+router.post('/addTask', (req, res, next) => {
+  // objective id, KR id in the objective, task
+  // { task: 'test task', KRindex: 1, objectiveId: 1 }
+  objectives.Objective.findOne(
+    { where: {id: req.body.objectiveId}}
+  )
+  .then((result) => {
+    // console.log(result.key_results[String(req.body.KRindex)][1].task)
+    // result.key_results[String(req.body.KRindex)][1].task.push(req.body.task)
+    result.update
+  })
+  .then((result) => {
+    console.log(result);
+  })
+  .catch((err) => {
+    console.log(err);
+  })
 
+})
 
-
-//   objectives.Objective.update(
-//     { key_results: objectives.Objective.key_results[req.body.KRindex][1].task.push(req.body.task)},
-//     { where: {id: req.body.objectiveID}}
-//   )
-//   .then((res) => {
-//     console.log(res);
-//   })
-//   .catch((err) => {
-//     console.log(err);
-//   })
-
-// })
 
 
 

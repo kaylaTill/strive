@@ -19,6 +19,9 @@ const Objective = sequelize.define('objective', {
     key_results: {
         type: Sequelize.JSON
     },
+    progress: {
+        type: Sequelize.INTEGER
+    },
     user_id: {
         type: Sequelize.INTEGER
     }
