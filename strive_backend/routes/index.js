@@ -141,16 +141,15 @@ router.post('/addObjective', (req, res, next) => {
       description: requestData.description,
       timeSpan: requestData.timeSpan,
       key_results: { 
-        "keyResult1": [{ "name": `${requestData.keyResult1}`}, {"task": []}, {"status": false}],
-        "keyResult2": [{ "name": `${requestData.keyResult1}`}, {"task": []}, {"status": false}],
-        "keyResult3": [{ "name": `${requestData.keyResult1}`}, {"task": []}, {"status": false}],
-        "keyResult4": [{ "name": `${requestData.keyResult1}`}, {"task": []}, {"status": false}],
-        "keyResult5": [{ "name": `${requestData.keyResult1}`}, {"task": []}, {"status": false}],
+        "1": [{ "name": `${requestData.keyResult1}`}, {"task": []}, {"status": false}],
+        "2": [{ "name": `${requestData.keyResult2}`}, {"task": []}, {"status": false}],
+        "3": [{ "name": `${requestData.keyResult3}`}, {"task": []}, {"status": false}],
+        "4": [{ "name": `${requestData.keyResult4}`}, {"task": []}, {"status": false}],
+        "5": [{ "name": `${requestData.keyResult5}`}, {"task": []}, {"status": false}],
       },
       user_id: result.id
     })
     .then((result) => {
-      console.log(result);
       console.log('added');
     })
     .catch((error) => {
@@ -162,6 +161,16 @@ router.post('/addObjective', (req, res, next) => {
     res.sendStatus(404);
   });
 })
+
+router.post('/addTask', (req, res, next) => {
+  console.log(req.body);
+})
+
+
+
+
+
+
 
 router.get('/getUserObjectives', (req, res, next) => {
   var user = req.session.user.username;
@@ -190,5 +199,8 @@ router.get('/getUserObjectives', (req, res, next) => {
   })
 
 }) 
+
+
+
 
 module.exports = router;

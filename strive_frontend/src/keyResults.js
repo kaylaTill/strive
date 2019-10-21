@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { Card, Button, ListGroup, Form, ButtonToolbar, Collapse } from 'react-bootstrap';
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import _ from 'underscore';
+import axios from 'axios';
 
 const Container = styled.div`
     width: 1150px;
@@ -25,16 +26,18 @@ class KeyResults extends React.Component {
             kr2Taskopen: false,
             kr3Taskopen: false,
             kr4Taskopen: false,
-            kr5Taskopen: false,
-
+            kr5Taskopen: false
         }
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleTaskAddition = this.handleTaskAddition.bind(this);
         
     }
 
     handleChange(event) {
-        this.setState({ [event.target.name]: event.target.value });
+        this.setState({ 
+            [event.target.name]: event.target.value, 
+        });
     }
 
     handleSubmit(event) {
@@ -42,11 +45,14 @@ class KeyResults extends React.Component {
         this.props.handleSearch(this.state.value);
     }
 
+    handleTaskAddition(key) {
+        console.log(key);
+    }
+
    
 
     render() {
         const objectives = this.props.objectives
-        console.log(objectives[0].key_results.keyResult1[2].status)
         return (
             <div>
                 <ButtonToolbar>
@@ -145,11 +151,12 @@ class KeyResults extends React.Component {
                                                     height: '2rem', marginTop: '2rem', left: '31.5rem',
                                                     fontSize: '1rem', paddingTop: '3px'
                                                 }}>
-                                            Add Task</Button>
+                                                Add Task
+                                            </Button>
 
                                             <Collapse in={this.state.kr2Taskopen}>
                                                 <div id="task-collapse-text">
-                                                    <Form>
+                                                    <Form onSubmit={this.handleTaskAddition(2)}>
                                                         <Form.Control
                                                             name="taskVal"
                                                             placeholder="Task"
@@ -163,11 +170,11 @@ class KeyResults extends React.Component {
                                                             }}/>
 
                                                         <Button  variant="outline-dark" size="lg" block
+                                                            type="submit"
                                                             style={{
                                                                 width: '8rem', position: 'relative',
                                                                 height: '25px', marginTop: '10px', left: '32.5rem',
-                                                                fontSize: '10px', paddingTop: '3px'
-                                                            }}>
+                                                                fontSize: '10px', paddingTop: '3px'}}>
                                                             Add
                                                         </Button>
                                                     </Form>
