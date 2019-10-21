@@ -1,6 +1,6 @@
 import React, { Suspense, createRef } from 'react';
 import styled from 'styled-components';
-import { Card, Button, ListGroup, Form, ButtonToolbar } from 'react-bootstrap';
+import { Card, Button, ListGroup, Form, ButtonToolbar, Collapse } from 'react-bootstrap';
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import _ from 'underscore';
 
@@ -13,7 +13,8 @@ class KeyResults extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            value: ""
+            value: "",
+            open: false
         }
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -33,14 +34,9 @@ class KeyResults extends React.Component {
 
     render() {
         const objectives = this.props.objectives
-        console.log(objectives);
         return (
             <div>
                 <ButtonToolbar>
-                        {/* {objectives.map((obj) => {
-                            // GET ALL KR NAMES
-                            
-                        })} */}
                     <Form onSubmit={this.handleSubmit}>
                         <Form.Group style={{ marginTop: '2rem' }} >
                             <Form.Control
@@ -66,12 +62,6 @@ class KeyResults extends React.Component {
                 <Container>
                     {objectives.map((obj) => (
                         // {
-                        //     var name1 = 
-                        //     var name2 = 
-                        //     var name3 = obj.key_results.keyResult3[0].name
-                        //     var name4 = obj.key_results.keyResult4[0].name
-                        //     var name5 = obj.key_results.keyResult5[0].name
-
 
                         //     // GET ALL KR TASKS
                         //     var task1 = obj.key_results.keyResult1[1].task
@@ -104,7 +94,28 @@ class KeyResults extends React.Component {
                                 fontSize: '20px'
                             }}>Key Results</div>
                             <ListGroup border="dark" variant="flush">
-                            <ListGroup.Item action border="dark" variant="light">I. {obj.key_results.keyResult1[0].name}</ListGroup.Item>
+                                <div>
+                                    <ListGroup.Item 
+                                        onClick={(() => this.setState({ open: !this.state.open }))}
+                                        aria-controls="keyresult-collapse-text"
+                                        aria-expanded={this.state.open}
+                                        action border="dark" variant="light">
+                                            I. {obj.key_results.keyResult1[0].name}
+                                    </ListGroup.Item>
+                                    {/* <Button 
+                                        
+                                        Open    
+                                    </Button> */}
+
+                                    <Collapse in={this.state.open}>
+                                        <div id="keyresult-collapse-text">
+                                            Info on KR Here
+                                        </div>
+                                    </Collapse>
+                                </div>
+
+
+
                                 <ListGroup.Item action border="dark" variant="light">II. {obj.key_results.keyResult2[0].name}</ListGroup.Item>
                                 <ListGroup.Item action border="dark" variant="light">III. {obj.key_results.keyResult3[0].name}</ListGroup.Item>
                                 <ListGroup.Item action border="dark" variant="light">IV. {obj.key_results.keyResult4[0].name}</ListGroup.Item>
