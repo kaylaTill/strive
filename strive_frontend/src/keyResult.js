@@ -65,6 +65,7 @@ class KeyResult extends React.Component {
             objectiveId: this.state.objectiveId,
             currentProgress: this.props.objectiveProgress
         })
+
             .then(() => {
                 window.location.href = '/progress'
             })
@@ -139,7 +140,7 @@ class KeyResult extends React.Component {
                                 </Form>
                             </div>
                         </Collapse>
-                        <Form >
+                        <Form onClick={(() => this.setState({disable: true}))}>
                             <Form.Check
                                 style={{
                                     width: '20rem', position: 'relative',
@@ -149,7 +150,6 @@ class KeyResult extends React.Component {
                                     fontFamily: 'OCR A Std, monospace',
                                     fontSize: '1rem', left: '28.5rem',
                                 }}
-                                custom
                                 onClick={this.addProgress}
                                 id={`complete`}
                                 label={`Mark ${keyresults[String(i)][0].name} as Completed`}

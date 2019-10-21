@@ -24,6 +24,8 @@ const Objectives = ((props) => {
                                 <Card.Title>{obj.name}</Card.Title>
                                 <Card.Text>{obj.description}</Card.Text>
                                 <Card.Link href={'/keyResults'}style={{color: '#000000'}}>Key Results</Card.Link>
+                                <br></br>
+                                <Card.Link href={'/progress'}style={{color: '#000000'}}>Progress</Card.Link>
                             </Card.Body>
                         </Card>
                     </div>
