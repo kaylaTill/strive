@@ -63,11 +63,7 @@ class KeyResult extends React.Component {
     render() {
         const { keyresults } = this.props;
         const i = this.state.KRindex;
-        // this.state.taskData.map((task) => {
-        //     console.log(task.KR_id);
-        //     console.log(task.task);
-        //     console.log(task.objective_id);
-        // })
+        const romanNumeral = {'0': 'I', '1': 'II', '2': 'III', '3': 'IV', '4': 'V'}
         return(
             <div>
                 <ListGroup.Item
@@ -81,11 +77,11 @@ class KeyResult extends React.Component {
 
                 <Collapse in={this.state.open}>
                     <div id="keyresult-collapse-text">
-                        <div style={{ fontFamily: 'OCR A Std, monospace', height: '3rem', fontSize: '20px', textAlign: 'center' }}>Tasks</div>
+                        <div style={{ fontFamily: 'OCR A Std, monospace', height: '3rem', fontSize: '18px', textAlign: 'center' }}>Tasks</div>
 
                         <ListGroup>
-                            {this.state.taskData.map((taskObj) => (
-                                <ListGroup.Item style={{ fontSize: '15px', textAlign: 'center' }}>{taskObj.task}</ListGroup.Item>
+                            {this.state.taskData.map((taskObj, index) => (
+                                <ListGroup.Item style={{ fontSize: '15px', textAlign: 'center' }}>{romanNumeral[String(index)]}.   {taskObj.task}</ListGroup.Item>
                             ))}
                         </ListGroup>
 
