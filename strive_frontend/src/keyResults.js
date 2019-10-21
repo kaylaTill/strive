@@ -14,7 +14,11 @@ class KeyResults extends React.Component {
         super(props)
         this.state = {
             value: "",
-            open: false
+            kr1open: false,
+            kr2open: false,
+            kr3open: false,
+            kr4open: false,
+            kr5open: false
         }
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -96,29 +100,60 @@ class KeyResults extends React.Component {
                             <ListGroup border="dark" variant="flush">
                                 <div>
                                     <ListGroup.Item 
-                                        onMouseEnter={(() => this.setState({ open: !this.state.open }))}
-                                        onMouseLeave={(() => this.setState({ open: !this.state.open }))}
+                                        onMouseEnter={(() => this.setState({ kr1open: !this.state.kr1open }))}
+                                        onMouseLeave={(() => this.setState({ kr1open: !this.state.kr1open }))}
                                         aria-controls="keyresult-collapse-text"
-                                        aria-expanded={this.state.open}
+                                        aria-expanded={this.state.kr1open}
                                         action border="dark" variant="light">
                                             I. {obj.key_results.keyResult1[0].name}
                                     </ListGroup.Item>
-                                    {/* <Button 
-                                        
-                                        Open    
-                                    </Button> */}
-
-                                    <Collapse in={this.state.open}>
+                                    
+                                    <Collapse in={this.state.kr1open}>
                                         <div id="keyresult-collapse-text">
-                                            Info on KR Here
+                                            Info on KR1 Here
+                                        </div>
+                                    </Collapse>
+                                </div>
+
+                                <div>
+                                    <ListGroup.Item 
+                                        onMouseEnter={(() => this.setState({ kr2open: !this.state.kr2open }))}
+                                        onMouseLeave={(() => this.setState({ kr2open: !this.state.kr2open }))}
+                                        aria-controls="keyresult-collapse-text"
+                                        aria-expanded={this.state.kr2open}
+                                        action border="dark" variant="light">
+                                            I. {obj.key_results.keyResult2[0].name}
+                                    </ListGroup.Item>
+
+                                    <Collapse in={this.state.kr2open}>
+                                        <div id="keyresult-collapse-text">
+                                            Info on KR2 Here
                                         </div>
                                     </Collapse>
                                 </div>
 
 
+                                <div>
+                                    <ListGroup.Item 
+                                        onMouseEnter={(() => this.setState({ kr3open: !this.state.kr3open }))}
+                                        onMouseLeave={(() => this.setState({ kr3open: !this.state.kr3open }))}
+                                        aria-controls="keyresult-collapse-text"
+                                        aria-expanded={this.state.kr3open}
+                                        action border="dark" variant="light">
+                                            I. {obj.key_results.keyResult3[0].name}
+                                    </ListGroup.Item>
 
+                                    <Collapse in={this.state.kr3open}>
+                                        <div id="keyresult-collapse-text">
+                                            Info on KR3 Here
+                                        </div>
+                                    </Collapse>
+                                </div>
+
+
+{/* 
                                 <ListGroup.Item action border="dark" variant="light">II. {obj.key_results.keyResult2[0].name}</ListGroup.Item>
-                                <ListGroup.Item action border="dark" variant="light">III. {obj.key_results.keyResult3[0].name}</ListGroup.Item>
+                                <ListGroup.Item action border="dark" variant="light">III. {obj.key_results.keyResult3[0].name}</ListGroup.Item> */}
                                 <ListGroup.Item action border="dark" variant="light">IV. {obj.key_results.keyResult4[0].name}</ListGroup.Item>
                                 <ListGroup.Item action border="dark" variant="light">V. {obj.key_results.keyResult5[0].name}</ListGroup.Item>
                             </ListGroup>
