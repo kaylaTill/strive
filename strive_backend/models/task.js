@@ -2,26 +2,25 @@
 var Sequelize = require("sequelize");
 // connect to db 
 const sequelize = new Sequelize('mysql://root@localhost:3306/strive');
-const KeyResult = sequelize.define('keyResult', {
+const Task = sequelize.define('task', {
     // objectives collumns
-    name: {
+    task: {
         type: Sequelize.STRING
     },
     task: {
         //Array of task, respond by adding to end of array, on post 
         //send task array on get 
-        type: Sequelize.JSON
-    },
-    completion_status: {
-        type: Sequelize.BOOLEAN
-
+        type: Sequelize.STRING
     },
     objective_id: {
+        type: Sequelize.INTEGER
+    },
+    KR_id: {
         type: Sequelize.INTEGER
     }
 }, {
     sequelize,
-    modelName: 'keyResult'
+    modelName: 'task'
 });
 
 
@@ -29,7 +28,7 @@ const KeyResult = sequelize.define('keyResult', {
 sequelize
     .authenticate()
     .then(() => {
-        console.log('Key Results connection has been established successfully.');
+        console.log('Tasks connection has been established successfully.');
     })
     .catch(err => {
         console.error('Unable to connect to the database:', err);
@@ -37,9 +36,9 @@ sequelize
 
 
 // sync model
-KeyResult.sync({ force: false }).then(() => {
+Task.sync({ force: false }).then(() => {
     // sync obj model
-    console.log('Synced to key result table');
+    console.log('Synced to tasks table');
 });
 
 
@@ -47,5 +46,5 @@ KeyResult.sync({ force: false }).then(() => {
 module.exports = {
     sequelize: sequelize,
     Sequelize: Sequelize,
-    KeyResult : KeyResult 
+    Task : Task 
 }
