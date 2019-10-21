@@ -96,7 +96,8 @@ class KeyResults extends React.Component {
                             <ListGroup border="dark" variant="flush">
                                 <div>
                                     <ListGroup.Item 
-                                        onClick={(() => this.setState({ open: !this.state.open }))}
+                                        onMouseEnter={(() => this.setState({ open: !this.state.open }))}
+                                        onMouseLeave={(() => this.setState({ open: !this.state.open }))}
                                         aria-controls="keyresult-collapse-text"
                                         aria-expanded={this.state.open}
                                         action border="dark" variant="light">
