@@ -73,16 +73,8 @@ class KeyResults extends React.Component {
                                         <Card.Text>{obj.timeSpan}</Card.Text>
                                     </Card.Body>
                                 </Card>
-                                <div style={{
-                                    color: '#000000',
-                                    fontFamily: 'OCR A Std, monospace',
-                                    marginTop: '3rem',
-                                    textAlign: 'center',
-                                    fontSize: '20px'
-                                }}>Key Results</div>
                             </div>
                         )
-                        
                         var keyresults = obj.key_results;
                         var objIndex = objectives.indexOf(obj);
                         for (let i = 1; i <= 5; i ++) {

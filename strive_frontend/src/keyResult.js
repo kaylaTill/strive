@@ -51,7 +51,6 @@ class KeyResult extends React.Component {
         })
         .then((res) => {
             window.location.href ='/keyResults'
-            console.log(res);
 
         })
         .catch((err) => {
@@ -64,30 +63,31 @@ class KeyResult extends React.Component {
     render() {
         const { keyresults } = this.props;
         const i = this.state.KRindex;
-        this.state.taskData.map((task) => {
-            console.log(task.KR_id);
-            console.log(task.task);
-            console.log(task.objective_id);
-        })
+        // this.state.taskData.map((task) => {
+        //     console.log(task.KR_id);
+        //     console.log(task.task);
+        //     console.log(task.objective_id);
+        // })
         return(
             <div>
                 <ListGroup.Item
                     onClick={(() => this.setState({ open: !this.state.open }))}
                     aria-controls="keyresult-collapse-text"
                     aria-expanded={this.state.open}
-                    action border="dark" variant="light">
+                    action border="dark" variant="light"
+                    style={{textAlign: 'center'}}>
                     {keyresults[String(i)][0].name}
                 </ListGroup.Item>
 
                 <Collapse in={this.state.open}>
                     <div id="keyresult-collapse-text">
-                        <div style={{ fontFamily: 'OCR A Std, monospace', fontSize: '20px', textAlign: 'center' }}>Tasks</div>
+                        <div style={{ fontFamily: 'OCR A Std, monospace', height: '3rem', fontSize: '20px', textAlign: 'center' }}>Tasks</div>
 
-                        <ul>
+                        <ListGroup>
                             {this.state.taskData.map((taskObj) => (
-                                <li style={{ fontSize: '12px', textAlign: 'center' }}>- {taskObj.task}</li>
+                                <ListGroup.Item style={{ fontSize: '15px', textAlign: 'center' }}>{taskObj.task}</ListGroup.Item>
                             ))}
-                        </ul>
+                        </ListGroup>
 
                         <Button variant="outline-dark" size="lg" block
                             aria-controls="task-collapse-text"
@@ -110,7 +110,7 @@ class KeyResult extends React.Component {
                                         onChange={this.handleChange}
                                         style={{
                                             width: '20rem', height: '2rem',
-                                            fontSize: '1rem', left: '26.5rem',
+                                            fontSize: '1rem', left: '27rem',
                                             marginTop: '4rem', position: 'relative',
                                             textAlign: 'center'
                                         }} />
@@ -119,7 +119,7 @@ class KeyResult extends React.Component {
                                         type="submit"
                                         style={{
                                             width: '8rem', position: 'relative',
-                                            height: '25px', marginTop: '10px', left: '32.5rem',
+                                            height: '25px', marginTop: '10px', left: '33rem',
                                             fontSize: '10px', paddingTop: '3px'
                                         }}>
                                         Add
