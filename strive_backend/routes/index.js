@@ -151,7 +151,7 @@ router.post('/addObjective', (req, res, next) => {
       user_id: result.id
     })
     .then((result) => {
-      console.log('added');
+      console.log('------new objective added------');
     })
     .catch((error) => {
       console.log(error);
@@ -172,16 +172,31 @@ router.post('/addTask', (req, res, next) => {
     KR_id: req.body.KRindex
   })
   .then((result) => {
-    console.log(result);
+    console.log('------Task Created------');
+    res.sendStatus(200);
   })
   .catch((err) => {
     console.log(err);
-  })
-
+    res
+  })  
 })
 
-
-
+router.post('/getTask', (req, res, next) => {
+  tasks.Task.findAll({
+    where: {
+      objective_id: req.body.objectiveId,
+      KR_id: req.body.KRindex
+    }
+  })
+  .then((results) => {
+    console.log(results);
+    res.send(results);
+  })
+  .catch((err) => {
+    console.log(err);
+    res.sendStatus(404)
+  })
+})
 
 
 

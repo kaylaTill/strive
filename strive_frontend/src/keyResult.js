@@ -22,6 +22,16 @@ class KeyResult extends React.Component {
         this.handleTaskAddition = this.handleTaskAddition.bind(this);
     }
 
+    componentDidMount() {
+        axios.post('getTask', {
+            KRindex: this.state.KRindex,
+            objectiveId: this.state.objectiveId
+        })
+        .then((res) => {
+            console.log(res);
+        })
+    }
+
     handleChange(event) {
         this.setState({
             [event.target.name]: event.target.value,
@@ -43,6 +53,8 @@ class KeyResult extends React.Component {
             console.log(err);
         })
     }
+
+
 
     render() {
         const { keyresults } = this.props;
