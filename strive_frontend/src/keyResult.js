@@ -50,7 +50,9 @@ class KeyResult extends React.Component {
             objectiveId: this.state.objectiveId
         })
         .then((res) => {
+            window.location.href ='/keyResults'
             console.log(res);
+
         })
         .catch((err) => {
             console.log(err);
