@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { Card, Button, ListGroup, Form, ButtonToolbar, Collapse } from 'react-bootstrap';
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import _ from 'underscore';
+import { relative } from 'path';
 
 
 const Container = styled.div`
@@ -38,6 +39,7 @@ class KeyResults extends React.Component {
 
     render() {
         const objectives = this.props.objectives
+        console.log(objectives[0].key_results.keyResult1[2].status)
         return (
             <div>
                 <ButtonToolbar>
@@ -64,19 +66,21 @@ class KeyResults extends React.Component {
                 </ButtonToolbar>
             
                 <Container>
+
                     {objectives.map((obj) => (
+                         
                         // {
 
                         //     // GET ALL KR TASKS
-                        //     var task1 = obj.key_results.keyResult1[1].task
+                        //     var task1 = 
                         //     var task2 = obj.key_results.keyResult1[1].task
                         //     var task3 = obj.key_results.keyResult1[1].task
                         //     var task4 = obj.key_results.keyResult1[1].task
                         //     var task5 = obj.key_results.keyResult1[1].task
 
                         //     // GET ALL KR STATUS
-                        //     var status1 = obj.key_results.keyResult1[2].status
-                        //     var status2 = obj.key_results.keyResult1[2].status
+                        //     var status1 = 
+                        //     var status2 = 
                         //     var status3 = obj.key_results.keyResult1[2].status
                         //     var status4 = obj.key_results.keyResult1[2].status
                         //     var status5 = obj.key_results.keyResult1[2].status
@@ -110,7 +114,14 @@ class KeyResults extends React.Component {
                                     
                                     <Collapse in={this.state.kr1open}>
                                         <div id="keyresult-collapse-text">
-                                            Info on KR1 Here
+                                            <div>Tasks</div> 
+
+                                            <div>{obj.key_results.keyResult1[1].task.map((item) => (
+                                                <div>- {item}</div>
+                                            ))}</div>
+                                            <Button>Add Task</Button>
+
+                                            <div>Completed: {String(obj.key_results.keyResult1[2].status)}</div> 
                                         </div>
                                     </Collapse>
                                 </div>
@@ -127,7 +138,14 @@ class KeyResults extends React.Component {
 
                                     <Collapse in={this.state.kr2open}>
                                         <div id="keyresult-collapse-text">
-                                            Info on KR2 Here
+                                            <div>Tasks</div>
+
+                                            <div>{obj.key_results.keyResult2[1].task.map((item) => (
+                                                <div>- {item}</div>
+                                            ))}</div>
+                                            <Button>Add Task</Button>
+
+                                            <div>Completed: {String(obj.key_results.keyResult2[2].status)}</div>
                                         </div>
                                     </Collapse>
                                 </div>
@@ -145,17 +163,67 @@ class KeyResults extends React.Component {
 
                                     <Collapse in={this.state.kr3open}>
                                         <div id="keyresult-collapse-text">
-                                            Info on KR3 Here
+                                            <div>Tasks</div>
+
+                                            <div>{obj.key_results.keyResult3[1].task.map((item) => (
+                                                <div>- {item}</div>
+                                            ))}</div>
+                                            <Button>Add Task</Button>
+
+                                            <div>Completed: {String(obj.key_results.keyResult3[2].status)}</div>
+                                        </div>
+                                    </Collapse>
+                                </div>
+                                
+                                <div>
+                                    <ListGroup.Item 
+                                        onMouseEnter={(() => this.setState({ kr4open: !this.state.kr4open }))}
+                                        onMouseLeave={(() => this.setState({ kr4open: !this.state.kr4open }))}
+                                        aria-controls="keyresult-collapse-text"
+                                        aria-expanded={this.state.kr4open}
+                                        action border="dark" variant="light">
+                                            I. {obj.key_results.keyResult3[0].name}
+                                    </ListGroup.Item>
+
+                                    <Collapse in={this.state.kr4open}>
+                                        <div id="keyresult-collapse-text">
+                                            <div>Tasks</div>
+
+                                            <div>{obj.key_results.keyResult4[1].task.map((item) => (
+                                                <div>- {item}</div>
+                                            ))}</div>
+                                            <Button>Add Task</Button>
+
+                                            <div>Completed: {String(obj.key_results.keyResult4[2].status)}</div>
                                         </div>
                                     </Collapse>
                                 </div>
 
 
-{/* 
-                                <ListGroup.Item action border="dark" variant="light">II. {obj.key_results.keyResult2[0].name}</ListGroup.Item>
-                                <ListGroup.Item action border="dark" variant="light">III. {obj.key_results.keyResult3[0].name}</ListGroup.Item> */}
-                                <ListGroup.Item action border="dark" variant="light">IV. {obj.key_results.keyResult4[0].name}</ListGroup.Item>
-                                <ListGroup.Item action border="dark" variant="light">V. {obj.key_results.keyResult5[0].name}</ListGroup.Item>
+                                <div>
+                                    <ListGroup.Item 
+                                        onMouseEnter={(() => this.setState({ kr5open: !this.state.kr5open }))}
+                                        onMouseLeave={(() => this.setState({ kr5open: !this.state.kr5open }))}
+                                        aria-controls="keyresult-collapse-text"
+                                        aria-expanded={this.state.kr5open}
+                                        action border="dark" variant="light">
+                                            I. {obj.key_results.keyResult3[0].name}
+                                    </ListGroup.Item>
+
+                                    <Collapse in={this.state.kr5open}>
+                                        <div id="keyresult-collapse-text">
+                                            <div>Tasks</div>
+
+                                            <div>{obj.key_results.keyResult5[1].task.map((item) => (
+                                                <div>- {item}</div>
+                                            ))}</div>
+                                            <Button>Add Task</Button>
+
+                                            <div>Completed: {String(obj.key_results.keyResult5[2].status)}</div>
+                                        </div>
+                                    </Collapse>
+                                </div>
+
                             </ListGroup>
                         </div>
                     ))}
