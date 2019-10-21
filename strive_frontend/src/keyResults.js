@@ -1,9 +1,11 @@
 import React, { Suspense, createRef } from 'react';
 import styled from 'styled-components';
+import KeyResult from './keyResult.js';
 import { Card, Button, ListGroup, Form, ButtonToolbar, Collapse } from 'react-bootstrap';
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import _ from 'underscore';
 import axios from 'axios';
+
 
 const Container = styled.div`
     width: 1150px;
@@ -15,28 +17,15 @@ class KeyResults extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            value: "",
-            taskVal: "",
-            kr1open: false,
-            kr2open: false,
-            kr3open: false,
-            kr4open: false,
-            kr5open: false,
-            kr1Taskopen: false,
-            kr2Taskopen: false,
-            kr3Taskopen: false,
-            kr4Taskopen: false,
-            kr5Taskopen: false
+            value: ""
         }
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
-        this.handleTaskAddition = this.handleTaskAddition.bind(this);
-        
     }
 
     handleChange(event) {
-        this.setState({ 
-            [event.target.name]: event.target.value, 
+        this.setState({
+            [event.target.name]: event.target.value,
         });
     }
 
@@ -45,14 +34,9 @@ class KeyResults extends React.Component {
         this.props.handleSearch(this.state.value);
     }
 
-    handleTaskAddition(key) {
-        console.log(key);
-    }
-
-   
 
     render() {
-        const objectives = this.props.objectives
+        const objectives = this.props.objectives;
         return (
             <div>
                 <ButtonToolbar>
@@ -79,9 +63,8 @@ class KeyResults extends React.Component {
                 </ButtonToolbar>
             
                 <Container>
-
-                    {objectives.map((obj) => ( 
-                        <div>
+                    {objectives.map((obj) => {
+                        <div> 
                             <Card border="none" style={{ height: '10rem', marginTop: '3rem' }}>
                                 <Card.Body style={{ color: '#000000', fontFamily: 'OCR A Std, monospace', textAlign: 'center' }}>
                                     <Card.Title>{obj.name}</Card.Title>
@@ -89,7 +72,6 @@ class KeyResults extends React.Component {
                                     <Card.Text>{obj.timeSpan}</Card.Text>
                                 </Card.Body>
                             </Card>
-
                             <div style={{
                                 color: '#000000',
                                 fontFamily: 'OCR A Std, monospace',
@@ -97,6 +79,28 @@ class KeyResults extends React.Component {
                                 textAlign: 'center',
                                 fontSize: '20px'
                             }}>Key Results</div>
+                        </div>
+                        
+                        var keyresults = obj.key_results;
+                        var displayKRS = []
+                        for (let i = 1; i <= 5; i ++) {
+                            displayKRS.push(<KeyResult keyresults={keyresults} index={i}/>)
+                            console.log(keyresults[String(i)]);
+                        }  
+                        return displayKRS;
+                    })}
+                </Container>
+        </div>
+    )}
+
+                            /* <div style={{
+                                color: '#000000',
+                                fontFamily: 'OCR A Std, monospace',
+                                marginTop: '3rem',
+                                textAlign: 'center',
+                                fontSize: '20px'
+                            }}>Key Results</div>
+
                             <ListGroup border="dark" variant="flush">
                                 <div>
                                     <ListGroup.Item 
@@ -104,14 +108,14 @@ class KeyResults extends React.Component {
                                         aria-controls="keyresult-collapse-text"
                                         aria-expanded={this.state.kr1open}
                                         action border="dark" variant="light">
-                                            I. {obj.key_results.keyResult1[0].name}
+                                            I. {obj.key_results["0"][0].name}
                                     </ListGroup.Item>
                                     
                                     <Collapse in={this.state.kr1open}>
                                         <div id="keyresult-collapse-text">
                                             <div style={{ fontFamily: 'OCR A Std, monospace', fontSize: '20px', textAlign: 'center'}}>Tasks</div> 
 
-                                            <div>{obj.key_results.keyResult1[1].task.map((item) => (
+                                            <div>{obj.key_results["0"][1].task.map((item) => (
                                                 <div style={{fontSize: '12px', textAlign: 'center'}}>- {item}</div>
                                             ))}</div>
                                             <Button variant="outline-dark" size="lg" block
@@ -124,9 +128,9 @@ class KeyResults extends React.Component {
 
                                             <div style={{ fontFamily: 'OCR A Std, monospace', fontSize: '15px', textAlign: 'center'}}>Mark as Complete: {String(obj.key_results.keyResult1[2].status)}</div> 
                                         </div>
-                                    </Collapse>
-                                </div>
-
+                                    </Collapse> */}
+                                {/* </div> */}
+{/* 
                                 <div>
                                     <ListGroup.Item 
                                         onClick={(() => this.setState({ kr2open: !this.state.kr2open }))}
@@ -272,15 +276,15 @@ class KeyResults extends React.Component {
                                             <div style={{ fontFamily: 'OCR A Std, monospace', fontSize: '15px', textAlign: 'center', paddingTop: '15px'}}>Mark as Complete: {String(obj.key_results.keyResult5[2].status)}</div>
                                         </div>
                                     </Collapse>
-                                </div>
-                            </ListGroup>
+                                </div> */}
+                            {/* </ListGroup>
                         </div>
                     ))}
                 </Container>
             </div>
         )
 
-    }
+    } */
    
 };
 

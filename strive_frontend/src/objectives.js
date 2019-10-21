@@ -14,7 +14,6 @@ const Container = styled.div`
 
 const Objectives = ((props) => {
     const limitedObjectives = props.objectives.slice(0, 3);
-    
     return (
         <div>
             <Container>
