@@ -4,6 +4,7 @@ import { Card, Button, ListGroup, Form, ButtonToolbar, Collapse } from 'react-bo
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import _ from 'underscore';
 import axios from 'axios';
+import KeyResults from './keyResults';
 
 
 class KeyResult extends React.Component {
@@ -14,7 +15,8 @@ class KeyResult extends React.Component {
             taskVal: "",
             taskOpen: false,
             open: false,
-            index: this.props.index
+            KRindex: this.props.index,
+            objectiveId: this.props.objectiveId + 1
         }
         this.handleChange = this.handleChange.bind(this);
         this.handleTaskAddition = this.handleTaskAddition.bind(this);
@@ -27,14 +29,24 @@ class KeyResult extends React.Component {
     }
 
 
-    handleTaskAddition(key) {
-        console.log(key);
+    handleTaskAddition(event) {
+        event.preventDefault()
+        axios.post('/addTask', {
+            task: this.state.taskVal,
+            KRindex: this.state.KRindex,
+            objectiveId: this.state.objectiveId
+        })
+        .then((res) => {
+            console.log(res);
+        })
+        .catch((err) => {
+            console.log(err);
+        })
     }
 
     render() {
         const { keyresults } = this.props;
-        const i = this.state.index;
-
+        const i = this.state.KRindex;
         return(
             <div>
                 <ListGroup.Item

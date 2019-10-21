@@ -162,9 +162,24 @@ router.post('/addObjective', (req, res, next) => {
   });
 })
 
-router.post('/addTask', (req, res, next) => {
-  console.log(req.body);
-})
+// router.post('/addTask', (req, res, next) => {
+//   //objective id, KR id in the objective, task
+//   // { task: 'test task', KRindex: 1, objectiveId: 1 }
+
+
+
+//   objectives.Objective.update(
+//     { key_results: objectives.Objective.key_results[req.body.KRindex][1].task.push(req.body.task)},
+//     { where: {id: req.body.objectiveID}}
+//   )
+//   .then((res) => {
+//     console.log(res);
+//   })
+//   .catch((err) => {
+//     console.log(err);
+//   })
+
+// })
 
 
 
