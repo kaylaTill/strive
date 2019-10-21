@@ -15,11 +15,18 @@ class KeyResults extends React.Component {
         super(props)
         this.state = {
             value: "",
+            taskVal: "",
             kr1open: false,
             kr2open: false,
             kr3open: false,
             kr4open: false,
-            kr5open: false
+            kr5open: false,
+            kr1Taskopen: false,
+            kr2Taskopen: false,
+            kr3Taskopen: false,
+            kr4Taskopen: false,
+            kr5Taskopen: false,
+
         }
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -27,7 +34,7 @@ class KeyResults extends React.Component {
     }
 
     handleChange(event) {
-        this.setState({ value: event.target.value });
+        this.setState({ [event.target.name]: event.target.value });
     }
 
     handleSubmit(event) {
@@ -67,8 +74,7 @@ class KeyResults extends React.Component {
             
                 <Container>
 
-                    {objectives.map((obj) => (
-                         
+                    {objectives.map((obj) => ( 
                         <div>
                             <Card border="none" style={{ height: '10rem', marginTop: '3rem' }}>
                                 <Card.Body style={{ color: '#000000', fontFamily: 'OCR A Std, monospace', textAlign: 'center' }}>
@@ -110,7 +116,7 @@ class KeyResults extends React.Component {
                                                 }}>
                                             Add Task</Button>
 
-                                            <div style={{ fontFamily: 'OCR A Std, monospace', fontSize: '15px', textAlign: 'center'}}>Completed: {String(obj.key_results.keyResult1[2].status)}</div> 
+                                            <div style={{ fontFamily: 'OCR A Std, monospace', fontSize: '15px', textAlign: 'center'}}>Mark as Complete: {String(obj.key_results.keyResult1[2].status)}</div> 
                                         </div>
                                     </Collapse>
                                 </div>
@@ -132,14 +138,43 @@ class KeyResults extends React.Component {
                                                 <div style={{fontSize: '12px', textAlign: 'center'}}>- {item}</div>
                                             ))}</div>
                                             <Button variant="outline-dark" size="lg" block
+                                                aria-controls="task-collapse-text"
+                                                onClick={(() => this.setState({kr2Taskopen: !this.state.kr2Taskopen}))}
                                                 style={{
                                                     width: '10rem', position: 'relative',
-                                                    height: '2rem', marginTop: '2rem', left: '31rem',
+                                                    height: '2rem', marginTop: '2rem', left: '31.5rem',
                                                     fontSize: '1rem', paddingTop: '3px'
                                                 }}>
                                             Add Task</Button>
 
-                                            <div style={{ fontFamily: 'OCR A Std, monospace', fontSize: '15px', textAlign: 'center'}}>Completed: {String(obj.key_results.keyResult2[2].status)}</div>
+                                            <Collapse in={this.state.kr2Taskopen}>
+                                                <div id="task-collapse-text">
+                                                    <Form>
+                                                        <Form.Control
+                                                            name="taskVal"
+                                                            placeholder="Task"
+                                                            value={this.state.taskVal}
+                                                            onChange={this.handleChange}
+                                                            style={{
+                                                                width: '20rem', height: '2rem',
+                                                                fontSize: '1rem', left: '26.5rem',
+                                                                marginTop: '4rem', position: 'relative', 
+                                                                textAlign: 'center'
+                                                            }}/>
+
+                                                        <Button  variant="outline-dark" size="lg" block
+                                                            style={{
+                                                                width: '8rem', position: 'relative',
+                                                                height: '25px', marginTop: '10px', left: '32.5rem',
+                                                                fontSize: '10px', paddingTop: '3px'
+                                                            }}>
+                                                            Add
+                                                        </Button>
+                                                    </Form>
+                                                </div>
+                                            </Collapse>
+
+                                            <div style={{ fontFamily: 'OCR A Std, monospace', fontSize: '15px', textAlign: 'center', paddingTop: '15px'}}>Mark as Complete: {String(obj.key_results.keyResult2[2].status)}</div>
                                         </div>
                                     </Collapse>
                                 </div>
@@ -169,7 +204,7 @@ class KeyResults extends React.Component {
                                                 }}>
                                                 Add Task</Button>
 
-                                            <div style={{ fontFamily: 'OCR A Std, monospace', fontSize: '15px', textAlign: 'center'}}>Completed: {String(obj.key_results.keyResult3[2].status)}</div>
+                                            <div style={{ fontFamily: 'OCR A Std, monospace', fontSize: '15px', textAlign: 'center', paddingTop: '15px'}}>Mark as Complete: {String(obj.key_results.keyResult3[2].status)}</div>
                                         </div>
                                     </Collapse>
                                 </div>
@@ -198,7 +233,7 @@ class KeyResults extends React.Component {
                                                 }}>
                                                 Add Task</Button>
 
-                                            <div style={{ fontFamily: 'OCR A Std, monospace', fontSize: '15px', textAlign: 'center'}}>Completed: {String(obj.key_results.keyResult4[2].status)}</div>
+                                            <div style={{ fontFamily: 'OCR A Std, monospace', fontSize: '15px', textAlign: 'center', paddingTop: '15px'}}>Mark as Complete: {String(obj.key_results.keyResult4[2].status)}</div>
                                         </div>
                                     </Collapse>
                                 </div>
@@ -227,7 +262,7 @@ class KeyResults extends React.Component {
                                                     fontSize: '1rem', paddingTop: '3px'
                                                 }}
                                             > Add Task</Button>
-                                            <div style={{ fontFamily: 'OCR A Std, monospace', fontSize: '15px', textAlign: 'center'}}>Completed: {String(obj.key_results.keyResult5[2].status)}</div>
+                                            <div style={{ fontFamily: 'OCR A Std, monospace', fontSize: '15px', textAlign: 'center', paddingTop: '15px'}}>Mark as Complete: {String(obj.key_results.keyResult5[2].status)}</div>
                                         </div>
                                     </Collapse>
                                 </div>
