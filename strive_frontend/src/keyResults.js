@@ -16,7 +16,8 @@ class KeyResults extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            value: ""
+            value: "",
+            skip: 0
         }
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -32,6 +33,8 @@ class KeyResults extends React.Component {
         event.preventDefault();
         this.props.handleSearch(this.state.value);
     }
+
+
 
 
     render() {
@@ -78,9 +81,10 @@ class KeyResults extends React.Component {
                         var keyresults = obj.key_results;
                         var objIndex = objectives.indexOf(obj);
                         var progress = obj.progress;
-                        for (let i = 1; i <= 5; i ++) {
-                            displayKRS.push(<KeyResult keyresults={keyresults} index={i} objectiveId={objIndex} objectiveProgress={progress}/>)
-                        }  
+                
+                        for(let i in keyresults) {
+                            displayKRS.push(<KeyResult removeKey={this.removeKey} keyresults={keyresults} index={Number(i)} objectiveId={objIndex} objectiveProgress={progress}/>)
+                        }
                         return displayKRS;
                     })}
                 </Container>

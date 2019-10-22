@@ -65,7 +65,6 @@ class KeyResult extends React.Component {
             objectiveId: this.state.objectiveId,
             currentProgress: this.props.objectiveProgress
         })
-
             .then(() => {
                 window.location.href = '/progress'
             })
@@ -80,7 +79,7 @@ class KeyResult extends React.Component {
     render() {
         const { keyresults } = this.props;
         const i = this.state.KRindex;
-        const romanNumeral = {'0': 'I', '1': 'II', '2': 'III', '3': 'IV', '4': 'V'}
+        const romanNumeral = {'0': 'I', '1': 'II', '2': 'III', '3': 'IV', '4': 'V'};
         return(
             <div>
                 <ListGroup.Item
@@ -140,7 +139,8 @@ class KeyResult extends React.Component {
                                 </Form>
                             </div>
                         </Collapse>
-                        <Form onClick={(() => this.setState({disable: true}))}>
+               
+                        <Form onSubmit={(() => console.log('submitedd'))}>
                             <Form.Check
                                 style={{
                                     width: '20rem', position: 'relative',
