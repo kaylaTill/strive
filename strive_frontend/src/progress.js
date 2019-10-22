@@ -4,10 +4,10 @@ import _ from 'underscore';
 
 const Progress = ((props) => {
   const { objectives } = props;
+
   return (
     <div>
       {objectives.map((obj) => {
-        const percentage = Math.floor(Math.random() * 100)
           return(
             <div style={{ width: '15rem', 
             position: 'relative', left: '5rem', height: '15rem',
@@ -15,7 +15,7 @@ const Progress = ((props) => {
             marginTop: '3rem',
             marginBottom: '5rem'
             }}>
-              <CircularProgressbar value={percentage}  
+              <CircularProgressbar value={obj.progress}  
                 styles={
                   buildStyles({
                     pathColor:'black',
@@ -25,7 +25,7 @@ const Progress = ((props) => {
                   }/>
                 <div style={{ fontSize: '15px', fontFamily: 'OCR A Std, monospace' }}>{obj.name}</div>
                 <br></br>
-                <div style={{ fontSize: '15px', fontFamily: 'OCR A Std, monospace' }}>{`${percentage}% Completed`}</div>
+                <div style={{ fontSize: '15px', fontFamily: 'OCR A Std, monospace' }}>{`${obj.progress}% Completed`}</div>
             </div>
           )
       })}

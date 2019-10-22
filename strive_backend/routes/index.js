@@ -5,6 +5,7 @@ const Sequelize = require('sequelize');
 const quotes = require('../models/quotes.js');
 const users = require('../models/users.js');
 const objectives = require('../models/objectives.js');
+const tasks = require('../models/task.js');
 var session = require('express-session');
 const bcrypt = require('bcrypt');
 const saltRounds = 10;
@@ -139,15 +140,18 @@ router.post('/addObjective', (req, res, next) => {
       name: requestData.name,
       description: requestData.description,
       timeSpan: requestData.timeSpan,
-      keyResult1: requestData.keyResult1,
-      keyResult2: requestData.keyResult2,
-      keyResult3: requestData.keyResult3,
-      keyResult4: requestData.keyResult4,
-      keyResult5: requestData.keyResult5,
+      key_results: { 
+        "1": [{ "name": `${requestData.keyResult1}`}, {"task": []}, {"status": false}],
+        "2": [{ "name": `${requestData.keyResult2}`}, {"task": []}, {"status": false}],
+        "3": [{ "name": `${requestData.keyResult3}`}, {"task": []}, {"status": false}],
+        "4": [{ "name": `${requestData.keyResult4}`}, {"task": []}, {"status": false}],
+        "5": [{ "name": `${requestData.keyResult5}`}, {"task": []}, {"status": false}],
+      },
+      progress: 0,
       user_id: result.id
     })
-    .then(() => {
-      console.log('addded');
+    .then((result) => {
+      console.log('------new objective added------');
     })
     .catch((error) => {
       console.log(error);
@@ -158,6 +162,41 @@ router.post('/addObjective', (req, res, next) => {
     res.sendStatus(404);
   });
 })
+
+router.post('/addTask', (req, res, next) => {
+  // objective id, KR id in the objective, task
+  // { task: 'test task', KRindex: 1, objectiveId: 1 }
+  tasks.Task.create({
+    task: req.body.task,
+    objective_id: req.body.objectiveId,
+    KR_id: req.body.KRindex
+  })
+  .then((result) => {
+    console.log('------Task Created------');
+    res.sendStatus(200);
+  })
+  .catch((err) => {
+    console.log(err);
+    res
+  })  
+})
+
+router.post('/getTask', (req, res, next) => {
+  tasks.Task.findAll({
+    where: {
+      objective_id: req.body.objectiveId,
+      KR_id: req.body.KRindex
+    }
+  })
+  .then((results) => {
+    res.send(results);
+  })
+  .catch((err) => {
+    console.log(err);
+    res.sendStatus(404)
+  })
+})
+
 
 router.get('/getUserObjectives', (req, res, next) => {
   var user = req.session.user.username;
@@ -186,5 +225,23 @@ router.get('/getUserObjectives', (req, res, next) => {
   })
 
 }) 
+
+
+router.post('/addProgress', (req, res, next) => {
+  objectives.Objective.update(
+    { progress: req.body.currentProgress + 25 },
+    { where: { id: req.body.objectiveId } }
+  )
+    .then((result) => {
+      console.log('---Progress Updated by 25!');
+      res.sendStatus(200);
+    })
+    .catch((err) => {
+      console.log(err)
+    })
+})
+
+
+
 
 module.exports = router;

@@ -113,7 +113,7 @@ class UserHomePage extends React.Component {
     handleLogout() {
         axios.get('/logout')
         .then(() => {
-            window.location.reload(false);
+            window.location.href = '/';
         })
         .catch((err) => {
             console.log(err);
@@ -129,8 +129,8 @@ class UserHomePage extends React.Component {
             keyResult1: keyResult1,
             keyResult2: keyResult2,
             keyResult3: keyResult3,
-            keyResult4: keyResult4,
-            keyResult5: keyResult5
+            keyResult4: keyResult4 ? keyResult4 : null,
+            keyResult5: keyResult5 ? keyResult5: null
         })
         .then(() => {
            console.log('created!')
@@ -144,8 +144,8 @@ class UserHomePage extends React.Component {
         this.setState({ searchTerm: searchTerm })
     }
 
+
     filterBySearchedTerm() {
-        console.log(this.state.searchTerm)
         if (this.state.searchTerm) {
            return this.state.objectives.filter(obj => obj.name.toLowerCase() === this.state.searchTerm.toLowerCase())
         } else {
@@ -166,17 +166,13 @@ class UserHomePage extends React.Component {
 
 
 
-
-
     render() {
         const objectives = this.filterBySearchedTerm();
         return (
             <Router>
                 <Nav>
                     <NavLeft>
-                        <Link to={'/'}>
-                            <NavItem onClick={this.backToHome}> Strive </NavItem>
-                        </Link>
+                        <NavItem onClick={this.backToHome}> Strive </NavItem>
                     </NavLeft>
 
                     <NavRight>
@@ -195,10 +191,8 @@ class UserHomePage extends React.Component {
                         </Link>
 
                         <NavItem>|</NavItem>
-
-                        <Link to={'/'}>
-                            <NavItem onClick={this.handleLogout}> Logout</NavItem>
-                        </Link>
+                    
+                        <NavItem onClick={this.handleLogout}> Logout</NavItem>
                     </NavRight>
                 </Nav>
 

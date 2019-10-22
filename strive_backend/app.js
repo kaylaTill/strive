@@ -37,6 +37,7 @@ app.use('/getUserObjectives', indexRouter);
 app.use('/moreObjectives', indexRouter);
 app.use('/keyResults', indexRouter);
 app.use('/progress', indexRouter);
+app.use('/addProgress', indexRouter);
 
 
 app.listen(3000)

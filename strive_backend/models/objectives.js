@@ -16,25 +16,11 @@ const Objective = sequelize.define('objective', {
         type: Sequelize.STRING,
         allowNull: false
     },
-    keyResult1: {
-        type: Sequelize.STRING,
-        allowNull: false
+    key_results: {
+        type: Sequelize.JSON
     },
-    keyResult2: {
-        type: Sequelize.STRING,
-        allowNull: false
-    },
-    keyResult3: {
-        type: Sequelize.STRING,
-        allowNull: false
-    },
-    keyResult4: {
-        type: Sequelize.STRING,
-        allowNull: false
-    },
-    keyResult5: {
-        type: Sequelize.STRING,
-        allowNull: false
+    progress: {
+        type: Sequelize.INTEGER
     },
     user_id: {
         type: Sequelize.INTEGER

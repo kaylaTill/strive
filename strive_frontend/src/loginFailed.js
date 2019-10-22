@@ -19,11 +19,9 @@ const LoginFailure = (props) => {
                 Uh oh, we couldn't find an account under that username and password, 
                 please try again or register a new account.
             </div>
-            <Link to={'/'}>
-                <Button variant="outline-secondary">
-                    Back To Home
-                </Button>
-            </Link>
+            <Button variant="outline-secondary" onClick={(() => window.location.href = '/')}>
+                Back To Home
+            </Button>
             <Link to={'/register'}>
                 <Button variant="outline-secondary">
                     Register Account
