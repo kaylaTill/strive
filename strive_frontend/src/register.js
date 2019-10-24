@@ -5,8 +5,6 @@ import { BrowserRouter as Router, Link, Route, Switch } from 'react-router-dom';
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 
 
-
-
 const StyledForm = styled.form`
     font-size: 15px;
     font-family: OCR A Std, monospace;
