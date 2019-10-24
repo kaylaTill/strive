@@ -77,8 +77,6 @@ class RootHome extends React.Component {
         const { loginFailed } = this.state;
         return (
             <Router>
-                {/* {sessionOpen && this.forceUpdate()} */}
-                {/* REACT ROUTES */}
                 <Suspense fallback={<div></div>}>
                      <Switch>
                         <Route exact={true} path={'/'}>
