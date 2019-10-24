@@ -1,13 +1,13 @@
 import React, { Suspense } from 'react';
 import styled from 'styled-components';
 import { BrowserRouter as Router, Link, Route, Switch, Redirect } from 'react-router-dom';
-const Register = (React.lazy(() => import('./register.js')));
-const Login = (React.lazy(() => import('./login.js')));
-const AboutPage = (React.lazy(() => import('./about.js')));
-const RegisterSuccess = (React.lazy(() => import('./registrationSuccess.js')));
-const RegisterFailure = (React.lazy(() => import('./registrationFailed.js')));
-const LoginFailure = (React.lazy(() => import('./loginFailed.js')));
-const PublicNav = (React.lazy(() => import('./publicNav.js')));
+const Register = (React.lazy(() => import('./registration/register.js')));
+const Login = (React.lazy(() => import('./publicPages/login.js')));
+const AboutPage = (React.lazy(() => import('./publicPages/about.js')));
+const RegisterSuccess = (React.lazy(() => import('./registration/registrationSuccess.js')));
+const RegisterFailure = (React.lazy(() => import('./registration/registrationFailed.js')));
+const LoginFailure = (React.lazy(() => import('./publicPages/loginFailed.js')));
+const PublicNav = (React.lazy(() => import('./publicPages/publicNav.js')));
 import axios from 'axios';
 
 const Center = styled.h1`

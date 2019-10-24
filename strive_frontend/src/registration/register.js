@@ -2,7 +2,7 @@ import React from "react";
 import { FormGroup, FormControl, Form, Button } from "react-bootstrap";
 import styled from 'styled-components';
 import { BrowserRouter as Router, Link, Route, Switch } from 'react-router-dom';
-import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
+import '../../node_modules/bootstrap/dist/css/bootstrap.min.css';
 
 
 const StyledForm = styled.form`
