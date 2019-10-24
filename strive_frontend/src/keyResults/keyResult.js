@@ -1,10 +1,9 @@
 import React, { Suspense} from 'react';
 import styled from 'styled-components';
 import { Card, Button, ListGroup, Form, ButtonToolbar, Collapse, InputGroup } from 'react-bootstrap';
-import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
+import '../../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import _ from 'underscore';
 import axios from 'axios';
-import KeyResults from './keyResults';
 
 
 class KeyResult extends React.Component {
@@ -106,7 +105,7 @@ class KeyResult extends React.Component {
                             onClick={(() => this.setState({ taskOpen: !this.state.taskOpen }))}
                             style={{
                                 width: '10rem', position: 'relative',
-                                height: '2rem', marginTop: '2rem', left: '31.5rem',
+                                height: '2rem', marginTop: '2rem', left: '31.7rem',
                                 fontSize: '1rem', paddingTop: '3px'
                             }}>
                             Add Task
@@ -148,7 +147,7 @@ class KeyResult extends React.Component {
                                     marginTop: '2rem',
                                     marginBottom: '2rem',
                                     fontFamily: 'OCR A Std, monospace',
-                                    fontSize: '1rem', left: '28.5rem',
+                                    fontSize: '1rem', left: '30rem',
                                 }}
                                 onClick={this.addProgress}
                                 id={`complete`}

@@ -2,7 +2,7 @@ import React, { Suspense } from 'react';
 import styled from 'styled-components';
 import { Button, Card } from 'react-bootstrap';
 import { BrowserRouter as Router, Link, Route, Switch, Redirect } from 'react-router-dom';
-import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
+import '../../node_modules/bootstrap/dist/css/bootstrap.min.css';
 
 
 const Container = styled.div`

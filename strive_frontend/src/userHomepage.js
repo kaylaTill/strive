@@ -2,12 +2,11 @@ import React, { Suspense } from 'react';
 import styled from 'styled-components';
 import { BrowserRouter as Router, Link, Route, Switch, Redirect, useParams, useRouteMatch} from 'react-router-dom';
 import axios from 'axios';
-import { Card } from 'react-bootstrap';
-const Objectives = (React.lazy(() => import('./objectives.js')));
-const NewObjective = (React.lazy(() => import('./newObj.js')));
-const MoreObjectives = (React.lazy(() => import('./moreObjectives.js')));
-const KeyResults = (React.lazy(() => import('./keyResults.js')));
-const Progress = (React.lazy(() => import('./progress.js')));
+const Objectives = (React.lazy(() => import('./objectives/objectives.js')));
+const NewObjective = (React.lazy(() => import('./objectives/newObj.js')));
+const MoreObjectives = (React.lazy(() => import('./objectives/moreObjectives.js')));
+const KeyResults = (React.lazy(() => import('./keyResults/keyResults.js')));
+const Progress = (React.lazy(() => import('./keyResults/progress.js')));
 
 
 const Center = styled.h1`
