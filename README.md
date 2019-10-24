@@ -15,6 +15,7 @@
 ![](keyresults-addTask.gif)
 - Key Results stores each users 5 key results to each objective correctly (3 Minimum)
 - Allows for user to add task to each key result and persist task storing it with it's key result
+- Effeciently searches through the user's objectives and returns the correct match
 
 
 
