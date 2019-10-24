@@ -92,11 +92,16 @@ class KeyResult extends React.Component {
 
                 <Collapse in={this.state.open}>
                     <div id="keyresult-collapse-text">
-                        <div style={{ fontFamily: 'OCR A Std, monospace', height: '3rem', fontSize: '18px', textAlign: 'center' }}>Tasks</div>
+                        <div style={{ fontFamily: 'OCR A Std, monospace', 
+                        height: '3rem', fontSize: '18px', 
+                        textAlign: 'center' }}>Tasks</div>
 
                         <ListGroup>
                             {this.state.taskData.map((taskObj, index) => (
-                                <ListGroup.Item style={{ fontSize: '15px', textAlign: 'center' }}>{romanNumeral[String(index)]}.        {taskObj.task}</ListGroup.Item>
+                                <ListGroup.Item style={{ fontSize: '15px', 
+                                    textAlign: 'center' }}>
+                                    {romanNumeral[String(index)]}.        {taskObj.task}
+                                </ListGroup.Item>
                             ))}
                         </ListGroup>
 
