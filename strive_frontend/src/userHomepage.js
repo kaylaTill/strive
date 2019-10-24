@@ -207,6 +207,7 @@ class UserHomePage extends React.Component {
                                 {`- ${this.state.quote_author}`}
                             </Center>
                         </Route>
+                        
                         {/* REDIRECTS ON LOGIN AND REGISTER */}
                         <Route exact={true} path={'/login'}>
                             <Center>
