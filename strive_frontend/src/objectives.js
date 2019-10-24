@@ -19,7 +19,8 @@ const Objectives = ((props) => {
             <Container>
                 {limitedObjectives.map((obj) =>(
                     <div>
-                        <Card variant="outline-dark" style={{ width: '20rem', height: '20rem', float: 'left', marginRight: '3rem'}}>
+                        <Card variant="outline-dark" 
+                            style={{ width: '20rem', height: '20rem', float: 'left', marginRight: '3rem'}}>
                             <Card.Body style={{ color: '#000000', fontFamily: 'OCR A Std, monospace', textAlign: 'center'}}>
                                 <Card.Title>{obj.name}</Card.Title>
                                 <Card.Text>{obj.description}</Card.Text>
@@ -31,7 +32,6 @@ const Objectives = ((props) => {
                     </div>
                 ))}
             </Container>
-
             <Button href={'/newObjective'} variant="outline-dark" size="lg" block 
                 style={{width: '60rem', position: 'relative', left: '6rem'}}>
                 New Objective
@@ -39,7 +39,7 @@ const Objectives = ((props) => {
             <Button href={'/moreObjectives'} variant="outline-dark" size="lg" block 
                 style={{width: '60rem', position: 'relative', left: '6rem', marginBottom: '3rem' }}>
                 Show All Objectives
-            </Button>
+            </Button>       
         </div>
     )
 });

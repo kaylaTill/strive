@@ -223,7 +223,7 @@ class UserHomePage extends React.Component {
                             </Center>
                         </Route>
 
-
+                    {/* OBJECTIVES AND KEY RESULTS  */}
                         <Route path={'/objectives'}>
                             <Objectives objectives={this.state.objectives}/>
                         </Route>

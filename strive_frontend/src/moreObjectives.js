@@ -19,7 +19,9 @@ const MoreObjectives = ((props) => {
             <Container>
                 {allObjectives.map((obj) => (
                     <div>
-                        <Card variant="outline-dark" style={{ width: '20rem', height: '20rem', float: 'left', marginTop: '3rem', 
+                        <Card variant="outline-dark" style={{ width: '20rem', 
+                            height: '20rem', float: 'left', 
+                            marginTop: '3rem', 
                             marginRight: '3rem'}}>
                             <Card.Body style={{ color: '#000000', fontFamily: 'OCR A Std, monospace', textAlign: 'center' }}>
                                 <Card.Title>{obj.name}</Card.Title>

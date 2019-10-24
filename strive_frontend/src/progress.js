@@ -4,7 +4,6 @@ import _ from 'underscore';
 
 const Progress = ((props) => {
   const { objectives } = props;
-
   return (
     <div>
       {objectives.map((obj) => {
@@ -23,9 +22,13 @@ const Progress = ((props) => {
                     trailColor: '#cccccc',
                     backgroundColor: '#000000'})
                   }/>
-                <div style={{ fontSize: '15px', fontFamily: 'OCR A Std, monospace' }}>{obj.name}</div>
-                <br></br>
-                <div style={{ fontSize: '15px', fontFamily: 'OCR A Std, monospace' }}>{`${obj.progress}% Completed`}</div>
+
+                <div style={{ fontSize: '15px', 
+                fontFamily: 'OCR A Std, monospace' }}>
+                    <div>{obj.name}</div>
+                    <br></br>
+                    <div>{`${obj.progress}% Completed`}</div>
+                </div>
             </div>
           )
       })}
