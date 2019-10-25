@@ -6,24 +6,24 @@
 ### Previews
 #### User Login and User Homepage
 ![](login-userhome.gif)
-- Application persist users and user data specific to each user
-- On correct log in application renders a stack of quotes, shuffled on refresh
-- Allows users to create objectives and key results that will be persisted in the database
-- Stores 3 objectives on main objective screen and others are store at "Show All Objectives"
+- Application stores specific user data for eacj user
+- On valid log in application renders a stack of quotes, shuffled on refresh
+- Allows users to create objectives and key results that will be stored correctly and persisted in the database
+- Stores 3 objectives on main objective page, all other objectives are stored at "Show All Objectives"
 
 #### Key Results and Task Addition
 ![](keyresults-addTask.gif)
-- Key Results stores each users 5 key results to each objective correctly (3 Minimum)
-- Allows for user to add task to each key result and persist task storing it with it's key result
+- Stores each user's key results in a modern list format corresponding to it's objective (3 Minimum)
+- Allows for users to add tasks to each key result and stores  persistent data corresponding to it's key result
 - Effeciently searches through the user's objectives and returns the correct match
 
 
 
 #### Objective Progress and Logout
 ![](progress.gif)
-- Upon Completion of a key result, user will be redirected to the progress page where each completed key result will add 25% to the overall objective progress
-- Persist and stores data in a visual progress tracker tailored to each objective and to each user 
-- Effectively stores data after log out and displays data on logout
+- Upon completion of a key result, the user will be redirected to the progress page, where each completed key result will add the correct percentage to the overall objective progress
+- Persist and stores data in a visual progress tracker tailored to each objective and user 
+- Effectively stores data after log out and rerenders data on login
 
 
 ### Technologies Used 
