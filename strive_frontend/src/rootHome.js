@@ -84,13 +84,13 @@ class RootHome extends React.Component {
                             <Center>"Not your average to-do list"</Center>
                         </Route>
 
-                        {/* ABOUT  */}
+                        
                         <Route exact={true} path={'/about'}>
                             <PublicNav />
                             <AboutPage />
                         </Route>
 
-                        {/* REGISTER AND LOG INCONFIRMATION */}
+                        
                         <Route exact={true} path={'/registrationSuccess'}>
                             <RegisterSuccess />
                         </Route>
@@ -101,7 +101,7 @@ class RootHome extends React.Component {
                             <LoginFailure />
                         </Route>
 
-                        {/* REGISTER */}
+            
                         <Route exact={true} path={'/register'}>
                             <PublicNav />
                             <Register handleRegister={this.handleRegister} />
@@ -109,7 +109,7 @@ class RootHome extends React.Component {
                             {(!redirectSuccess && redirectFailure) && (<Redirect to={'/registrationFailure'} />)}
                         </Route>
 
-                        {/* LOGIN */}
+        
                         <Route exact={true} path={'/login'}>
                             <PublicNav />
                             <Login handleLogin={this.handleLogin} />

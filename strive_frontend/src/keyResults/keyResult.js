@@ -1,6 +1,5 @@
-import React, { Suspense} from 'react';
-import styled from 'styled-components';
-import { Card, Button, ListGroup, Form, ButtonToolbar, Collapse, InputGroup } from 'react-bootstrap';
+import React from 'react';
+import { Button, ListGroup, Form, Collapse, } from 'react-bootstrap';
 import '../../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import _ from 'underscore';
 import axios from 'axios';

@@ -2,7 +2,6 @@ var express = require('express');
 var path = require('path');
 var session = require('express-session')
 var bodyParser = require('body-parser');
-// var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var indexRouter = require('./routes/index');
 const secret = '_my_Secret_String_394324';

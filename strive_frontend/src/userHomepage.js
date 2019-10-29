@@ -1,6 +1,6 @@
 import React, { Suspense } from 'react';
 import styled from 'styled-components';
-import { BrowserRouter as Router, Link, Route, Switch, Redirect, useParams, useRouteMatch} from 'react-router-dom';
+import { BrowserRouter as Router, Link, Route, Switch } from 'react-router-dom';
 import axios from 'axios';
 const Objectives = (React.lazy(() => import('./objectives/objectives.js')));
 const NewObjective = (React.lazy(() => import('./objectives/newObj.js')));
@@ -198,7 +198,7 @@ class UserHomePage extends React.Component {
                 <Suspense fallback={<div></div>}>
                     <Switch>
 
-                        {/* HOME */}
+            
                         <Route exact={true} path={'/'}>
                             <Center>
                                 {`${this.state.quote_text}`}
@@ -207,7 +207,7 @@ class UserHomePage extends React.Component {
                             </Center>
                         </Route>
                         
-                        {/* REDIRECTS ON LOGIN AND REGISTER */}
+
                         <Route exact={true} path={'/login'}>
                             <Center>
                                 {`${this.state.quote_text}`}
@@ -223,7 +223,6 @@ class UserHomePage extends React.Component {
                             </Center>
                         </Route>
 
-                    {/* OBJECTIVES AND KEY RESULTS  */}
                         <Route path={'/objectives'}>
                             <Objectives objectives={this.state.objectives}/>
                         </Route>

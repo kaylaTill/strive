@@ -1,7 +1,6 @@
-import React, { Suspense } from 'react';
+import React from 'react';
 import styled from 'styled-components';
-import { Button, Card } from 'react-bootstrap';
-import { BrowserRouter as Router, Link, Route, Switch, Redirect } from 'react-router-dom';
+import { Card } from 'react-bootstrap';
 import '../../node_modules/bootstrap/dist/css/bootstrap.min.css';
 
 

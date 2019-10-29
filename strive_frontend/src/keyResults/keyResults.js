@@ -1,7 +1,7 @@
-import React, { Suspense, createRef } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import KeyResult from './keyResult.js';
-import { Card, Button, ListGroup, Form, ButtonToolbar, Collapse } from 'react-bootstrap';
+import { Card, Button, Form, ButtonToolbar } from 'react-bootstrap';
 import '../../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import _ from 'underscore';
 

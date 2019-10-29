@@ -1,7 +1,5 @@
 import React from 'react';
-import styled from 'styled-components';
-import { Form, Button, Col } from 'react-bootstrap';
-import { BrowserRouter as Router, Link, Route, Switch } from 'react-router-dom';
+import { Form, Button } from 'react-bootstrap';
 import '../../node_modules/bootstrap/dist/css/bootstrap.min.css';
 
 class NewObjective extends React.Component {
