@@ -10,14 +10,8 @@ var session = require('express-session');
 const bcrypt = require('bcrypt');
 const saltRounds = 10;
 
-/* GET home page. */
-router.get('/', function(req, res, next) {
-  res.sendFile(path.resolve(__dirname, '../../strive_frontend/dist/index.html'));
-});
 
 
-
-//register=> post new user
 router.post('/register', function (req, res, next) {
   users.User.findAll({ 
     where: Sequelize.or(
@@ -44,14 +38,9 @@ router.post('/register', function (req, res, next) {
             }
             res.sendStatus(200);
           })
-          console.log('Succesful session created for new user!');
-        })
-        .catch(function(err) {
-          console.log(`Hash Error: ${err}`);
         })
       });
     } else {
-      console.log('Invalid Registration');
       res.sendStatus(401);
     }
   })
@@ -70,23 +59,20 @@ router.post('/login', function (req, res, next) {
   .then((user)=> {
     if (!user) {
       res.sendStatus(401);
-      console.log("Sorry, couldn't find a user under that username!");
     } else {
 
       bcrypt.compare(req.body.password, user.password, function (err, result) {
         if (result == true) {
-          //store cookies for user login
+          
           req.session.user = user;
           req.session.save((err) => {
             if (err) {
               console.log(err);
-              // console.log(req.session);
             }
             res.send('Logged In');
           });
         } else {
           res.sendStatus(401);
-          console.log('Incorrect password, Please try again!');
         }
       });
     }
@@ -94,10 +80,9 @@ router.post('/login', function (req, res, next) {
 });
 
 
-// testing cookie connection
+
 router.get('/loggedIn', function(req, res, next) {
   if (req.session.user) {
-    console.log(`Succesful session for ${req.session.user}`);
     return res.sendStatus(200);
   } else {
     res.sendStatus(404);
@@ -113,10 +98,6 @@ router.get('/logout', (req, res, next) => {
   return res.sendStatus(200);
 })
 
-
-// USER HOME ROUTES
-
-//GET a single quote each time we login
 router.get('/quote', function (req, res, next) {
   var rand_id = Math.floor(Math.random() * 51) + 1;
   quotes.Quote.findOne({ where: { id: rand_id } }).then(quote => {
@@ -127,7 +108,7 @@ router.get('/quote', function (req, res, next) {
 
 
 router.post('/addObjective', (req, res, next) => {
-  //set user to user_id => foreign key
+  
   var user = req.session.user.username;
   var requestData = req.body;
   users.User.findOne({
@@ -164,20 +145,16 @@ router.post('/addObjective', (req, res, next) => {
 })
 
 router.post('/addTask', (req, res, next) => {
-  // objective id, KR id in the objective, task
-  // { task: 'test task', KRindex: 1, objectiveId: 1 }
   tasks.Task.create({
     task: req.body.task,
     objective_id: req.body.objectiveId,
     KR_id: req.body.KRindex
   })
   .then((result) => {
-    console.log('------Task Created------');
     res.sendStatus(200);
   })
   .catch((err) => {
     console.log(err);
-    res
   })  
 })
 
@@ -192,7 +169,6 @@ router.post('/getTask', (req, res, next) => {
     res.send(results);
   })
   .catch((err) => {
-    console.log(err);
     res.sendStatus(404)
   })
 })
@@ -233,7 +209,6 @@ router.post('/addProgress', (req, res, next) => {
     { where: { id: req.body.objectiveId } }
   )
     .then((result) => {
-      console.log('---Progress Updated by 25!');
       res.sendStatus(200);
     })
     .catch((err) => {
@@ -241,6 +216,10 @@ router.post('/addProgress', (req, res, next) => {
     })
 })
 
+
+router.get('*', function (req, res, next) {
+  res.sendFile(path.resolve(__dirname, '../../strive_frontend/dist/index.html'));
+});
 
 
 
