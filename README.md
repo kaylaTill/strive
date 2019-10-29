@@ -6,7 +6,7 @@
 ### Previews
 #### User Login and User Homepage
 ![](login-userhome.gif)
-- Application stores specific user data for eacj user
+- Application stores specific user data for each user
 - On valid log in application renders a stack of quotes, shuffled on refresh
 - Allows users to create objectives and key results that will be stored correctly and persisted in the database
 - Stores 3 objectives on main objective page, all other objectives are stored at "Show All Objectives"
